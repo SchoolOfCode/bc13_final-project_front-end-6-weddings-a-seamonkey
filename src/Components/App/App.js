@@ -1,13 +1,15 @@
-import './App.css';
-import Search from '../Search/Search';
+import "./App.css";
+import Search from "../Search/Search";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">Food app coming...</header>
-      <Search />
-    </div>
-  );
+	return (
+		<div className="App">
+			<header className="App-header">
+				Food app coming...
+				<Search />
+			</header>
+		</div>
+	);
 }
 
 export default App;

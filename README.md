@@ -12,3 +12,7 @@
         - --font-color: #23321F;
         - --content-color: #F0FFFF; /* @100% */
         - --menu-bar: #23321F;
+
+## Images
+
+    - Happy and sad face added (src/Images)

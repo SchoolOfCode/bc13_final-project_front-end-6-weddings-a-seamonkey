@@ -1,0 +1,20 @@
+
+* {
+  --background-color: #D4EDDD;
+  --font-color: #23321F;
+  --content-color: #F0FFFF; /* @100% */
+  --menu-bar: #23321F;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--background-color);
+  min-height: 100vh;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: var(--font-color);
+}
+

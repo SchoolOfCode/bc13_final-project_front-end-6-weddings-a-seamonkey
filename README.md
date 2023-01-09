@@ -1,1 +1,19 @@
-# final-project_front-end
+# Final Project Frontend
+
+## For Development
+
+    - npm i
+    - create a .env file - current backend set up for port 3001
+
+## CSS Variables
+
+    - CSS Variables are stored in App.css
+        - --background-color: #D4EDDD;
+        - --font-color: #23321F;
+        - --content-color: #F0FFFF; /* @100% */
+        - --menu-bar: #23321F;
+
+## Images
+
+    - Happy and sad face added (src/Images)
+

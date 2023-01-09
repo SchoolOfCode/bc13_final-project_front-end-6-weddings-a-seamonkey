@@ -1,4 +1,4 @@
-# final-project_front-end
+# Final Project Frontend
 
 ## For Development
 
@@ -16,3 +16,4 @@
 ## Images
 
     - Happy and sad face added (src/Images)
+

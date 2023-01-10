@@ -2,6 +2,7 @@
   "name": "bc13_final-project_front-end-6-weddings-a-seamonkey",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

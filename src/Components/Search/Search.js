@@ -1,5 +1,5 @@
-import NegativeOutcome from './NegativeOutcome';
-import PositiveOutcome from './PositiveOutcome';
+import NegativeOutcome from './NegativeOutcome.js';
+import PositiveOutcome from './PositiveOutcome.js';
 import magnifying from '../../Images/magnifying-dark.png';
 import './Search.css';
 import { useState } from 'react';
@@ -48,10 +48,6 @@ export default function Search() {
     setSearch({ ...search, searchTerm: newSearchTerm });
   }
 
-  function onClick() {
-    console.log('Clicked');
-    console.log(search);
-  }
 
   function glutenChecked(e) {
     if (e.target.checked === true) {
@@ -75,6 +71,15 @@ export default function Search() {
     } else {
       setSearch({ ...search, lactose: true });
     }
+  }
+
+  async function onClick() {
+    console.log('Clicked');
+    console.log(search);
+    console.log(typeof search.searchTerm)
+    const response = await fetch (`http://localhost:3010/api/foods/${search.searchTerm}`)
+    const data = await response.json()
+    console.log(data.payload)
   }
 
   //We want to explore other options to simplify this code ^^^

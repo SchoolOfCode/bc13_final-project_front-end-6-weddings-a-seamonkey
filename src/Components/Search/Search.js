@@ -42,6 +42,7 @@ export default function Search() {
   };
 
   const [search, setSearch] = useState(initialSearch);
+  const [outcome, setOutcome] = useState(<></>)
 
   function onChange(e) {
     const newSearchTerm = e.target.value;
@@ -74,12 +75,16 @@ export default function Search() {
   }
 
   async function onClick() {
-    console.log('Clicked');
-    console.log(search);
-    console.log(typeof search.searchTerm)
     const response = await fetch (`http://localhost:3010/api/foods/${search.searchTerm}`)
     const data = await response.json()
-    console.log(data.payload)
+    const payload = data.payload
+    console.log(payload);
+    console.log(search);
+    if(search.fodmap === true && search.gluten === true && search.lactose === true) {setOutcome(<PositiveOutcome/>)}
+    elseif (payload.fodmap === search.fodmap || payload.gluten === search.gluten || payload.lactose === search.lactose) {
+      setOutcome(<PositiveOutcome/>)
+    } else 
+      setOutcome(<NegativeOutcome/>)
   }
 
   //We want to explore other options to simplify this code ^^^
@@ -108,8 +113,7 @@ export default function Search() {
         </div>
       </div>
       <div className="display-outcome">
-        <PositiveOutcome></PositiveOutcome>
-        <NegativeOutcome></NegativeOutcome>
+        {outcome}
       </div>
     </div>
   );

@@ -1,0 +1,4 @@
+.searchCheckbox {
+    display: flex;
+    flex-direction: column;
+}

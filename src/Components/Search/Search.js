@@ -79,13 +79,32 @@ export default function Search() {
     const data = await response.json()
     const payload = data.payload
     console.log(payload);
-    console.log(search);
-    if(search.fodmap === true && search.gluten === true && search.lactose === true) {setOutcome(<PositiveOutcome/>)}
-    elseif (payload.fodmap === search.fodmap || payload.gluten === search.gluten || payload.lactose === search.lactose) {
-      setOutcome(<PositiveOutcome/>)
-    } else 
-      setOutcome(<NegativeOutcome/>)
+    //console.log(search);
+    if (search.gluten === false) {
+      if (search.gluten !== payload.gluten){
+        setOutcome(<NegativeOutcome/>)
+      }
+      else {setOutcome(<PositiveOutcome/>)
+      }
   }
+    if (search.fodmap === false) {
+      if (search.fodmap !== payload.fodmap){
+        setOutcome(<NegativeOutcome/>)
+      }
+      else {setOutcome(<PositiveOutcome/>)
+      }
+  }
+    if (search.lactose === false) {
+     if (search.lactose !== payload.lactose){
+        setOutcome(<NegativeOutcome/>)
+      }
+      else {setOutcome(<PositiveOutcome/>)
+     }
+  }
+  if (search.gluten === true && search.fodmap === true && search.lactose === true) {
+    setOutcome(<PositiveOutcome/>)
+  }
+}
 
   //We want to explore other options to simplify this code ^^^
 
@@ -117,4 +136,4 @@ export default function Search() {
       </div>
     </div>
   );
-}
+  }

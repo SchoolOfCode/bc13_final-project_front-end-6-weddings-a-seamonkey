@@ -53,28 +53,30 @@ export default function Search() {
   }
 
   function glutenChecked(e) {
-    if (e.target.checked === true) {
-      setSearch({ ...search, gluten: false });
-    } else {
-      setSearch({ ...search, gluten: true });
-    }
-    console.log(search.gluten);
+    // if (e.target.checked === true) {
+    //   setSearch({ ...search, gluten: false });
+    // } else {
+    //   setSearch({ ...search, gluten: true });
+    // }
+    setSearch({ ...search, gluten: !e.target.checked });
   }
 
   function fodmapChecked(e) {
-    if (e.target.checked === true) {
-      setSearch({ ...search, fodmap: false });
-    } else {
-      setSearch({ ...search, fodmap: true });
-    }
+    // if (e.target.checked === true) {
+    //   setSearch({ ...search, fodmap: false });
+    // } else {
+    //   setSearch({ ...search, fodmap: true });
+    // }
+    setSearch({ ...search, fodmap: !e.target.checked });
   }
 
   function lactoseChecked(e) {
-    if (e.target.checked === true) {
-      setSearch({ ...search, lactose: false });
-    } else {
-      setSearch({ ...search, lactose: true });
-    }
+    // if (e.target.checked === true) {
+    //   setSearch({ ...search, lactose: false });
+    // } else {
+    //   setSearch({ ...search, lactose: true });
+    // }
+    setSearch({ ...search, lactose: !e.target.checked });
   }
 
   async function onClick() {
@@ -82,7 +84,7 @@ export default function Search() {
     const data = await response.json();
     const payload = data.payload;
     console.log(payload);
-    console.log("search", search);
+    console.log('search', search);
     if (search.gluten === false) {
       if (search.gluten !== payload.gluten) {
         setOutcome(<NegativeOutcome />);

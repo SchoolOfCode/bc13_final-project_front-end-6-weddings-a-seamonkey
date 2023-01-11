@@ -44,6 +44,7 @@ export default function Search() {
     lactose: true,
   };
 
+
   const [search, setSearch] = useState(initialSearch);
   const [outcome, setOutcome] = useState(<></>);
 
@@ -64,6 +65,12 @@ export default function Search() {
     setSearch({ ...search, lactose: !e.target.checked });
   }
 
+let reason = {
+	displayGluten: false,
+	displayFodmap: false,
+	displayLactose: false,
+}
+
   async function onClick() {
     const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
     const data = await response.json();
@@ -83,6 +90,16 @@ export default function Search() {
       setOutcome(<PositiveOutcome />);
     }
   }
+
+
+
+  /*
+  
+  Only want to display the one they cannot eat
+
+  Moving a useState to another component (research?)
+
+  */
 
   /*We want to explore other options to simplify this code ^^^
 	suggested code ->
@@ -136,13 +153,13 @@ setSearch({...search, fodmap: !e.target.checked})
       <p>Choose all that apply:</p>
       <div className="searchCheckbox">
         <div>
-          <input type="checkbox" onChange={glutenChecked}></input>Gluten Free
+          <input name="gluten" type="checkbox" onChange={glutenChecked}></input>Gluten Free
         </div>
         <div>
-          <input type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
+          <input name="fodmap" type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
         </div>
         <div>
-          <input type="checkbox" onChange={lactoseChecked}></input>Lactose Free
+          <input name="lactose" type="checkbox" onChange={lactoseChecked}></input>Lactose Free
         </div>
       </div>
       <div className="display-outcome">{outcome}</div>

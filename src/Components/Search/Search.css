@@ -13,9 +13,9 @@
 
 .search > input {
     border-radius: 10px;
-    background-color: #F0FFFF;
+    background-color: var(--content-color);
     border-style: none;
-    box-shadow: 0px 4px 4px #23321F;
+    box-shadow: 0px 4px 4px var(--font-color);
     width: 90%;
 }
 

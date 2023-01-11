@@ -166,8 +166,9 @@ setSearch({...search, fodmap: !e.target.checked})
 				<div className="gluten">
 					<label className="switch">
 						<input type="checkbox" onClick={glutenChecked}></input>
-						<span className="slider round" ></span>Gluten Free
+						<span className="slider round" ></span>
 					</label>
+					<span>Gluten Free</span>
 				</div>
 				
 

@@ -150,9 +150,9 @@ setSearch({...search, fodmap: !e.target.checked})
   */
 
 	return (
-		<div>
-			<h1>Search</h1>
-			<div className="input-field-container">
+		<div className="searchComponent">
+			<h1 className="title">Search</h1>
+			<div className="search">
 				<input
 					type="text"
 					placeholder="Find by food"

@@ -2,3 +2,32 @@
     display: flex;
     flex-direction: column;
 }
+
+.search{
+    display: flex;
+    gap: 5px;
+    width: 95%;
+    justify-content: center;
+    max-width: 500px;
+}
+
+.search > input {
+    border-radius: 10px;
+    background-color: #F0FFFF;
+    border-style: none;
+    box-shadow: 0px 4px 4px #23321F;
+    width: 90%;
+}
+
+.search > img {
+    height: 40px;
+    width: auto;
+}
+
+.searchComponent{
+    width: 90%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+

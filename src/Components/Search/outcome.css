@@ -1,4 +1,11 @@
-img {
-  width: 200px;
-  height: auto;
+
+.face {
+  font-size: calc(40vw + 2vmin);
+}
+
+.outcome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }

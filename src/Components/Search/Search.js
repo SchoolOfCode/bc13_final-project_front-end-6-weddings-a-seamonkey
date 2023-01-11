@@ -1,117 +1,111 @@
-import NegativeOutcome from "./NegativeOutcome.js";
-import PositiveOutcome from "./PositiveOutcome.js";
-import magnifying from "../../Images/magnifying-dark.png";
-import "./Search.css";
-import { useState } from "react";
 
-const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
+import NegativeOutcome from './NegativeOutcome.js';
+import PositiveOutcome from './PositiveOutcome.js';
+import magnifying from '../../Images/magnifying-dark.png';
+import './Search.css';
+import { useState } from 'react';
+
+// const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
+const url = 'http://localhost:3010';
 
 export default function Search() {
-	//product_id
-	// product_Name
-	// picture
-	// lactose
-	// fodmap
-	// gluten
-	// barcode_number
 
-	//by default should be true (you can have it)
-	// if you check the box, will change to false and indicting you cant have that thing
+  //product_id
+  // product_Name
+  // picture
+  // lactose
+  // fodmap
+  // gluten
+  // barcode_number
 
-	//Example of no LACTOSE
-	//{
-	//searchTerm: input,
-	//gluten: true,
-	//fodmap: true,
-	//lactose: false
-	// }
+  //by default should be true (you can have it)
+  // if you check the box, will change to false and indicting you cant have that thing
 
-	//SEARCH BAR:
-	//TODO: need a state to store the object to send
-	//TODO: need an input for the searchTerm
-	//TODO: 3 x checkboxes
-	//TODO: need to capture the search and the checkbox inputs
+  //Example of no LACTOSE
+  //{
+  //searchTerm: input,
+  //gluten: true,
+  //fodmap: true,
+  //lactose: false
+  // }
 
-	// OUTPUT:
-	//TODO: positive version - with smiley face, positive message
-	//TODO: negative version - unhappy face, negative message
-	//Need a state set to positive or negative
-	const initialSearch = {
-		searchTerm: "",
-		gluten: true,
-		fodmap: true,
-		lactose: true,
-	};
+  //SEARCH BAR:
+  //TODO: need a state to store the object to send
+  //TODO: need an input for the searchTerm
+  //TODO: 3 x checkboxes
+  //TODO: need to capture the search and the checkbox inputs
 
-	const [search, setSearch] = useState(initialSearch);
-	const [outcome, setOutcome] = useState(<></>);
+  // OUTPUT:
+  //TODO: positive version - with smiley face, positive message
+  //TODO: negative version - unhappy face, negative message
+  //Need a state set to positive or negative
+  const initialSearch = {
+    searchTerm: '',
+    gluten: true,
+    fodmap: true,
+    lactose: true,
+  };
 
-	function onChange(e) {
-		const newSearchTerm = e.target.value;
-		setSearch({ ...search, searchTerm: newSearchTerm });
-	}
 
-	function glutenChecked(e) {
-		if (e.target.checked === true) {
-			setSearch({ ...search, gluten: false });
-		} else {
-			setSearch({ ...search, gluten: true });
-		}
-	}
+  const [search, setSearch] = useState(initialSearch);
+  const [outcome, setOutcome] = useState(<></>);
 
-	function fodmapChecked(e) {
-		if (e.target.checked === true) {
-			setSearch({ ...search, fodmap: false });
-		} else {
-			setSearch({ ...search, fodmap: true });
-		}
-	}
+  function onChange(e) {
+    const newSearchTerm = e.target.value;
+    setSearch({ ...search, searchTerm: newSearchTerm });
+  }
 
-	function lactoseChecked(e) {
-		if (e.target.checked === true) {
-			setSearch({ ...search, lactose: false });
-		} else {
-			setSearch({ ...search, lactose: true });
-		}
-	}
+  function glutenChecked(e) {
+    setSearch({ ...search, gluten: !e.target.checked });
+  }
 
-	async function onClick() {
-		const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
-		const data = await response.json();
-		const payload = data.payload;
-		console.log(payload);
-		//console.log(search);
-		if (search.gluten === false) {
-			if (search.gluten !== payload.gluten) {
-				setOutcome(<NegativeOutcome />);
-			} else {
-				setOutcome(<PositiveOutcome />);
-			}
-		}
-		if (search.fodmap === false) {
-			if (search.fodmap !== payload.fodmap) {
-				setOutcome(<NegativeOutcome />);
-			} else {
-				setOutcome(<PositiveOutcome />);
-			}
-		}
-		if (search.lactose === false) {
-			if (search.lactose !== payload.lactose) {
-				setOutcome(<NegativeOutcome />);
-			} else {
-				setOutcome(<PositiveOutcome />);
-			}
-		}
-		if (
-			search.gluten === true &&
-			search.fodmap === true &&
-			search.lactose === true
-		) {
-			setOutcome(<PositiveOutcome />);
-		}
-	}
+  function fodmapChecked(e) {
+    setSearch({ ...search, fodmap: !e.target.checked });
+  }
 
-	/*We want to explore other options to simplify this code ^^^
+  function lactoseChecked(e) {
+    setSearch({ ...search, lactose: !e.target.checked });
+  }
+
+let reason = {
+	displayGluten: false,
+	displayFodmap: false,
+	displayLactose: false,
+}
+
+  async function onClick() {
+    const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
+    const data = await response.json();
+    const payload = data.payload;
+    console.log('payload - object from db', payload);
+    console.log('search - object that we want to compare', search);
+
+    if (
+      (search.gluten === false && payload.gluten === true) ||
+      (search.fodmap === false && payload.fodmap === true) ||
+      (search.lactose === false && payload.lactose === true)
+    ) {
+      console.log('negative outcome');
+      setOutcome(<NegativeOutcome />);
+    } else {
+      console.log('positive outcome');
+      setOutcome(<PositiveOutcome />);
+    }
+  }
+
+
+
+  /*
+  
+  Only want to display the one they cannot eat
+
+  Moving a useState to another component (research?)
+
+  */
+
+  /*We want to explore other options to simplify this code ^^^
+
+
 	suggested code ->
 
 function checkboxChanged(e) {
@@ -149,10 +143,13 @@ setSearch({...search, fodmap: !e.target.checked})
           ></input>
   */
 
+
+
 	return (
-		<div>
-			<h1>Search</h1>
-			<div className="input-field-container">
+		<div className="searchComponent">
+		
+			<div className="search">
+
 				<input
 					type="text"
 					placeholder="Find by food"
@@ -162,17 +159,32 @@ setSearch({...search, fodmap: !e.target.checked})
 			</div>
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
-				<div>
-					<input type="checkbox" onChange={glutenChecked}></input>Gluten Free
+
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={glutenChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span className="toggleText">Gluten Free</span>
 				</div>
-				<div>
-					<input type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={fodmapChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Low FODMAPs</span>
 				</div>
-				<div>
-					<input type="checkbox" onChange={lactoseChecked}></input>Lactose Free
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={lactoseChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Lactose Free</span>
+
 				</div>
 			</div>
 			<div className="display-outcome">{outcome}</div>
 		</div>
 	);
+
 }

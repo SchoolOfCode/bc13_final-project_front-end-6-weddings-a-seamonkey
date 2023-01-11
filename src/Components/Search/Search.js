@@ -5,8 +5,8 @@ import magnifying from '../../Images/magnifying-dark.png';
 import './Search.css';
 import { useState } from 'react';
 
-// const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
-const url = 'http://localhost:3010';
+const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
+// const url = 'http://localhost:3010';
 
 export default function Search() {
 

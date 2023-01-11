@@ -4,6 +4,7 @@
   --font-color: #23321F;
   --content-color: #F0FFFF; /* @100% */
   --menu-bar: #23321F;
+  --toggle: #00A878
 }
 
 .App {
@@ -16,5 +17,6 @@
     align-items: center;
     font-size: calc(10px + 2vmin);
     color: var(--font-color);
+    font-size: calc(8px + 2vmin);
 }
 

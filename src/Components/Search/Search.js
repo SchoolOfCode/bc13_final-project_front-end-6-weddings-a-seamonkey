@@ -163,23 +163,26 @@ setSearch({...search, fodmap: !e.target.checked})
 			</div>
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
-				<div className="gluten">
+				<div className="toggle">
 					<label className="switch">
 						<input type="checkbox" onClick={glutenChecked}></input>
-						<span className="slider round" ></span>
+						<span className="slider round"></span>
 					</label>
-					<span>Gluten Free</span>
+					<span className="toggleText">Gluten Free</span>
 				</div>
-				
-
-				{/* <div>
-					<input type="checkbox" onChange={glutenChecked}></input>Gluten Free
-				</div> */}
-				<div>
-					<input type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={fodmapChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Low FODMAPs</span>
 				</div>
-				<div>
-					<input type="checkbox" onChange={lactoseChecked}></input>Lactose Free
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={lactoseChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Lactose Free</span>
 				</div>
 			</div>
 			<div className="display-outcome">{outcome}</div>

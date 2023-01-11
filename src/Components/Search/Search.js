@@ -76,6 +76,7 @@ export default function Search() {
 	}
 
 	async function onClick() {
+		console.log(search);
 		const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
 		const data = await response.json();
 		const payload = data.payload;
@@ -162,9 +163,17 @@ setSearch({...search, fodmap: !e.target.checked})
 			</div>
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
-				<div>
-					<input type="checkbox" onChange={glutenChecked}></input>Gluten Free
+				<div className="gluten">
+					<label className="switch">
+						<input type="checkbox" onClick={glutenChecked}></input>
+						<span className="slider round" ></span>Gluten Free
+					</label>
 				</div>
+				
+
+				{/* <div>
+					<input type="checkbox" onChange={glutenChecked}></input>Gluten Free
+				</div> */}
 				<div>
 					<input type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
 				</div>

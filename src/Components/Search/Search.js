@@ -152,7 +152,7 @@ setSearch({...search, fodmap: !e.target.checked})
 
 	return (
 		<div className="searchComponent">
-			<h1 className="title">Search</h1>
+		
 			<div className="search">
 				<input
 					type="text"

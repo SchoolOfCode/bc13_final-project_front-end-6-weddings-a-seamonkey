@@ -1,10 +1,9 @@
-import sadFace from '../../Images/sad-face.png';
 import './outcome.css';
 
 export default function NegativeOutcome() {
   return (
-    <div>
-      <img src={sadFace} alt="Sad face" />
+    <div className="outcome">
+      <span className="face">☹️</span>
       <p>Dont Eat this!</p>
     </div>
   );

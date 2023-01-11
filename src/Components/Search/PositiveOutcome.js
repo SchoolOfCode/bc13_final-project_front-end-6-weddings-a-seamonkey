@@ -1,10 +1,9 @@
-import happyFace from '../../Images/happy-face.png';
 import './outcome.css';
 
 export default function PositiveOutcome() {
   return (
-    <div>
-      <img src={happyFace} alt="Happy face" />
+    <div className="outcome">
+      <span className="face">😃</span>
     </div>
   );
 }

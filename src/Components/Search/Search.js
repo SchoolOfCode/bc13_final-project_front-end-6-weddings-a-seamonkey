@@ -1,3 +1,4 @@
+
 import NegativeOutcome from './NegativeOutcome.js';
 import PositiveOutcome from './PositiveOutcome.js';
 import magnifying from '../../Images/magnifying-dark.png';
@@ -104,6 +105,7 @@ let reason = {
 
   /*We want to explore other options to simplify this code ^^^
 
+
 	suggested code ->
 
 function checkboxChanged(e) {
@@ -142,10 +144,12 @@ setSearch({...search, fodmap: !e.target.checked})
   */
 
 
+
 	return (
 		<div className="searchComponent">
 		
 			<div className="search">
+
 				<input
 					type="text"
 					placeholder="Find by food"
@@ -155,6 +159,7 @@ setSearch({...search, fodmap: !e.target.checked})
 			</div>
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
+
 				<div className="toggle">
 					<label className="switch">
 						<input type="checkbox" onClick={glutenChecked}></input>
@@ -175,6 +180,7 @@ setSearch({...search, fodmap: !e.target.checked})
 						<span className="slider round"></span>
 					</label>
 					<span>Lactose Free</span>
+
 				</div>
 			</div>
 			<div className="display-outcome">{outcome}</div>

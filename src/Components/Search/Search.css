@@ -1,4 +1,129 @@
+/* CSS for search component */
+
 .searchCheckbox {
     display: flex;
     flex-direction: column;
+    gap: 20px;
 }
+
+.search{
+    display: flex;
+    /* flex-direction: column; */
+    gap: 5px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    background-color: var(--content-color);
+    box-shadow: 0px 4px 4px var(--font-color);
+    padding: 5px 20px;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.search > input {
+    
+    align-self: center;
+    width: 90%;
+    height: 98%;
+    border-style: none;
+        border-radius: 15px;
+        background-color: var(--content-color);
+        border-style: none;
+    font-size: calc(8px + 2vmin);
+}
+
+.search>input:focus {
+    outline: none;   
+}
+
+.searchComponent{
+  width: 90%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CSS for magnifing glass */
+.search > img {
+    height: auto;
+    width: 8%;
+    /* transform: translate(-120%, 0%); */
+    /* margin-left: -12%; */
+}
+
+/* CSS for the div of the toggle button */
+
+.toggle{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-radius: 15px;
+  background-color: var(--content-color);
+  border-style: none;
+  box-shadow: 0px 4px 4px var(--font-color);
+  padding: 5px 20px;
+  font-size: calc(8px + 2vmin);
+}
+
+/* CSS for toggle button */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    /* width: 60px; */
+    /* height: 34px; */
+    width: 50px;
+    height: 28px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+    /* box-shadow: 0px 4px 4px var(--font-color); */
+  }
+
+  input:checked + .slider {
+    background-color: var(--toggle);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+  }
+  
+  /* CSS for circles inside of toggle */
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 21px;
+    width: 21px;
+    left: 4px;
+    bottom: 4px;
+    background-color: var(--menu-bar);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+    
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+    
+  }

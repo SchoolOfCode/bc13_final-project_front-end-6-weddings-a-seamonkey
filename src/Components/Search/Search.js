@@ -8,6 +8,7 @@ import { useState } from 'react';
 const url = 'http://localhost:3010';
 
 export default function Search() {
+
   //product_id
   // product_Name
   // picture
@@ -102,6 +103,7 @@ let reason = {
   */
 
   /*We want to explore other options to simplify this code ^^^
+
 	suggested code ->
 
 function checkboxChanged(e) {
@@ -139,30 +141,44 @@ setSearch({...search, fodmap: !e.target.checked})
           ></input>
   */
 
-  return (
-    <div>
-      <h1>Search</h1>
-      <div className="input-field-container">
-        <input
-          type="text"
-          placeholder="Find by food"
-          onChange={onChange}
-        ></input>
-        <img src={magnifying} alt="Magnifying glass" onClick={onClick} />
-      </div>
-      <p>Choose all that apply:</p>
-      <div className="searchCheckbox">
-        <div>
-          <input name="gluten" type="checkbox" onChange={glutenChecked}></input>Gluten Free
-        </div>
-        <div>
-          <input name="fodmap" type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
-        </div>
-        <div>
-          <input name="lactose" type="checkbox" onChange={lactoseChecked}></input>Lactose Free
-        </div>
-      </div>
-      <div className="display-outcome">{outcome}</div>
-    </div>
-  );
+
+	return (
+		<div className="searchComponent">
+		
+			<div className="search">
+				<input
+					type="text"
+					placeholder="Find by food"
+					onChange={onChange}
+				></input>
+				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
+			</div>
+			<p>Choose all that apply:</p>
+			<div className="searchCheckbox">
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={glutenChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span className="toggleText">Gluten Free</span>
+				</div>
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={fodmapChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Low FODMAPs</span>
+				</div>
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={lactoseChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Lactose Free</span>
+				</div>
+			</div>
+			<div className="display-outcome">{outcome}</div>
+		</div>
+	);
+
 }

@@ -44,6 +44,7 @@ export default function Search() {
     lactose: true,
   };
 
+
   const [search, setSearch] = useState(initialSearch);
   const [outcome, setOutcome] = useState(<></>);
 
@@ -53,65 +54,52 @@ export default function Search() {
   }
 
   function glutenChecked(e) {
-    if (e.target.checked === true) {
-      setSearch({ ...search, gluten: false });
-    } else {
-      setSearch({ ...search, gluten: true });
-    }
-    console.log(search.gluten);
+    setSearch({ ...search, gluten: !e.target.checked });
   }
 
   function fodmapChecked(e) {
-    if (e.target.checked === true) {
-      setSearch({ ...search, fodmap: false });
-    } else {
-      setSearch({ ...search, fodmap: true });
-    }
+    setSearch({ ...search, fodmap: !e.target.checked });
   }
 
   function lactoseChecked(e) {
-    if (e.target.checked === true) {
-      setSearch({ ...search, lactose: false });
-    } else {
-      setSearch({ ...search, lactose: true });
-    }
+    setSearch({ ...search, lactose: !e.target.checked });
   }
+
+let reason = {
+	displayGluten: false,
+	displayFodmap: false,
+	displayLactose: false,
+}
 
   async function onClick() {
     const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
     const data = await response.json();
     const payload = data.payload;
-    console.log(payload);
-    console.log("search", search);
-    if (search.gluten === false) {
-      if (search.gluten !== payload.gluten) {
-        setOutcome(<NegativeOutcome />);
-      } else {
-        setOutcome(<PositiveOutcome />);
-      }
-    }
-    if (search.fodmap === false) {
-      if (search.fodmap !== payload.fodmap) {
-        setOutcome(<NegativeOutcome />);
-      } else {
-        setOutcome(<PositiveOutcome />);
-      }
-    }
-    if (search.lactose === false) {
-      if (search.lactose !== payload.lactose) {
-        setOutcome(<NegativeOutcome />);
-      } else {
-        setOutcome(<PositiveOutcome />);
-      }
-    }
+    console.log('payload - object from db', payload);
+    console.log('search - object that we want to compare', search);
+
     if (
-      search.gluten === true &&
-      search.fodmap === true &&
-      search.lactose === true
+      (search.gluten === false && payload.gluten === true) ||
+      (search.fodmap === false && payload.fodmap === true) ||
+      (search.lactose === false && payload.lactose === true)
     ) {
+      console.log('negative outcome');
+      setOutcome(<NegativeOutcome />);
+    } else {
+      console.log('positive outcome');
       setOutcome(<PositiveOutcome />);
     }
   }
+
+
+
+  /*
+  
+  Only want to display the one they cannot eat
+
+  Moving a useState to another component (research?)
+
+  */
 
   /*We want to explore other options to simplify this code ^^^
 	suggested code ->
@@ -165,13 +153,13 @@ setSearch({...search, fodmap: !e.target.checked})
       <p>Choose all that apply:</p>
       <div className="searchCheckbox">
         <div>
-          <input type="checkbox" onChange={glutenChecked}></input>Gluten Free
+          <input name="gluten" type="checkbox" onChange={glutenChecked}></input>Gluten Free
         </div>
         <div>
-          <input type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
+          <input name="fodmap" type="checkbox" onChange={fodmapChecked}></input>Low FODMAPs
         </div>
         <div>
-          <input type="checkbox" onChange={lactoseChecked}></input>Lactose Free
+          <input name="lactose" type="checkbox" onChange={lactoseChecked}></input>Lactose Free
         </div>
       </div>
       <div className="display-outcome">{outcome}</div>

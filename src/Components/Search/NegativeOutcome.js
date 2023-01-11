@@ -5,7 +5,7 @@ export default function NegativeOutcome() {
   return (
     <div>
       <img src={sadFace} alt="Sad face" />
-      <p>Dont Eat this!</p>
+      <p>You can't eat this because it contains *props*</p>
     </div>
   );
 }

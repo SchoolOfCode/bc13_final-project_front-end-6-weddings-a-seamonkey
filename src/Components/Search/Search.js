@@ -51,6 +51,11 @@ export default function Search() {
 
   const [search, setSearch] = useState(initialSearch);
   const [outcome, setOutcome] = useState(<></>);
+  // could use default state for outcome to display a message like 'please enter food'
+  const [lactoseResult, setLactoseResult] = useState("");
+  const [fodmapResult, setFodmapResult] = useState("");
+  const [glutenResult, setGlutenResult] = useState("");
+
 
   function onChange(e) {
     const newSearchTerm = e.target.value;
@@ -69,12 +74,6 @@ export default function Search() {
     setSearch({ ...search, lactose: !e.target.checked });
   }
 
-let reason = {
-	displayGluten: false,
-	displayFodmap: false,
-	displayLactose: false,
-}
-
   async function onClick() {
     const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
     const data = await response.json();
@@ -82,16 +81,34 @@ let reason = {
     console.log('payload - object from db', payload);
     console.log('search - object that we want to compare', search);
 
+    if (search.gluten === false && payload.gluten === true) {
+      setGlutenResult("gluten")
+    }
+    else {setGlutenResult("")}
+
+    if (search.lactose === false && payload.lactose === true) {
+      setLactoseResult("lactose")
+    }
+
+    else {setLactoseResult("")}
+
+    if (search.fodmap === false && payload.fodmap === true) {
+      setLactoseResult("fodmap")
+      console.log(lactoseResult)
+    }
+
+    else {setFodmapResult("")}
+
     if (
       (search.gluten === false && payload.gluten === true) ||
       (search.fodmap === false && payload.fodmap === true) ||
       (search.lactose === false && payload.lactose === true)
     ) {
-      console.log('negative outcome');
-      setOutcome(<NegativeOutcome />);
+      //console.log('negative outcome');
+      setOutcome(<NegativeOutcome lactoseResult = {lactoseResult} fodmapResult = {fodmapResult} glutenResult = {glutenResult} />);
     } else {
-      console.log('positive outcome');
-      setOutcome(<PositiveOutcome />);
+      //console.log('positive outcome', payload.product_name);
+      setOutcome(<PositiveOutcome searchResult = {payload.product_name}/>);
     }
   }
 

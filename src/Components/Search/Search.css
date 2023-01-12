@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin-bottom: 40px;
 }
 
 .search{
@@ -42,6 +43,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 /* CSS for magnifing glass */
@@ -129,3 +131,21 @@
     
   }
 
+  .search-button {
+    border-radius: 15px;
+    background-color: var(--content-color);
+    box-shadow: 0px 4px 4px var(--font-color);
+    padding: 5px 20px;
+    font-size: calc(4px + 2vmin);
+    color: var(--font-color);
+  }
+
+/* .search-button:hover { */
+  /* background-color: var(--toggle); */
+  /* color: white; */
+/* } */
+
+.search-button:active {
+      box-shadow: 0px 0px 0px var(--font-color);
+      background-color: var(--toggle);
+}

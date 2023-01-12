@@ -1,3 +1,4 @@
+
 import NegativeOutcome from './NegativeOutcome.js';
 import PositiveOutcome from './PositiveOutcome.js';
 import DefaultOutcome from './DefaultOutcome.js';
@@ -9,6 +10,7 @@ const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 // const url = 'http://localhost:3010';
 
 export default function Search() {
+
   //product_id
   // product_Name
   // picture
@@ -124,7 +126,7 @@ export default function Search() {
 
   */
 
-  /*We want to explore other options to simplify this code ^^^
+	/*We want to explore other options to simplify this code ^^^
 
 
 	suggested code ->

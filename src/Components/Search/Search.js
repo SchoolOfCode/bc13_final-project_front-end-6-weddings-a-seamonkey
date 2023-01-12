@@ -150,15 +150,7 @@ setSearch({...search, fodmap: !e.target.checked})
 	return (
 		<div className="searchComponent">
 		
-			<div className="search">
-
-				<input
-					type="text"
-					placeholder="Find by food"
-					onChange={onChange}
-				></input>
-				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
-			</div>
+			
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
 
@@ -185,8 +177,20 @@ setSearch({...search, fodmap: !e.target.checked})
 
 				</div>
 			</div>
-			<div className="display-outcome">{outcome}</div>
-		</div>
+		
+		  <div className="search">
+
+				<input
+					type="text"
+					placeholder="Type food or barcode"
+					onChange={onChange}
+				></input>
+				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
+			</div>
+      <button className="search-button" onClick={onClick}>Can I eat this?</button>
+      <div className="display-outcome">{outcome}</div>
+    </div>
+
 	);
 
 }

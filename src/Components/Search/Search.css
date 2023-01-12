@@ -129,3 +129,9 @@
     
   }
 
+  .search-button {
+    border-radius: 15px;
+    background-color: var(--content-color);
+    box-shadow: 0px 4px 4px var(--font-color);
+  }
+

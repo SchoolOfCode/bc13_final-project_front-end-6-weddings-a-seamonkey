@@ -83,6 +83,7 @@ export default function Search() {
 
     if (search.gluten === false && payload.gluten === true) {
       setGlutenResult("gluten")
+      console.log(glutenResult)
     }
     else {setGlutenResult("")}
 
@@ -93,8 +94,8 @@ export default function Search() {
     else {setLactoseResult("")}
 
     if (search.fodmap === false && payload.fodmap === true) {
-      setLactoseResult("fodmap")
-      console.log(lactoseResult)
+      setFodmapResult("high fodmap")
+      console.log(fodmapResult)
     }
 
     else {setFodmapResult("")}
@@ -202,7 +203,7 @@ setSearch({...search, fodmap: !e.target.checked})
 
 				</div>
 			</div>
-			<div className="display-outcome">{outcome}</div>
+			<div className="display-outcome" >{outcome}</div>
 		</div>
 	);
 

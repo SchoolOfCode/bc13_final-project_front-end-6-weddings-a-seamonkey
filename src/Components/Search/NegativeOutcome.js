@@ -8,7 +8,13 @@ export default function NegativeOutcome({glutenResult,fodmapResult,lactoseResult
     <div className="outcome">
       <span className="face">☹️</span>
       <p>Dont Eat this!</p>
-      <p>Product contains {glutenResult} {fodmapResult} {lactoseResult}</p>
+      <>Product contains:</> 
+      <br></br>
+      <>{glutenResult}</>
+      <br></br>
+      <>{fodmapResult}</>
+      <br></br>
+      <>{lactoseResult}</>
     </div>
   );
 }

@@ -1,103 +1,96 @@
-
-
-import NegativeOutcome from './NegativeOutcome.js';
-import PositiveOutcome from './PositiveOutcome.js';
-import magnifying from '../../Images/magnifying-dark.png';
-import './Search.css';
-import { useState } from 'react';
+import NegativeOutcome from "./NegativeOutcome.js";
+import PositiveOutcome from "./PositiveOutcome.js";
+import magnifying from "../../Images/magnifying-dark.png";
+import "./Search.css";
+import { useState } from "react";
 
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
 // const url = 'http://localhost:3010';
 
-
 export default function Search() {
+	//product_id
+	// product_Name
+	// picture
+	// lactose
+	// fodmap
+	// gluten
+	// barcode_number
 
-  //product_id
-  // product_Name
-  // picture
-  // lactose
-  // fodmap
-  // gluten
-  // barcode_number
+	//by default should be true (you can have it)
+	// if you check the box, will change to false and indicting you cant have that thing
 
-  //by default should be true (you can have it)
-  // if you check the box, will change to false and indicting you cant have that thing
+	//Example of no LACTOSE
+	//{
+	//searchTerm: input,
+	//gluten: true,
+	//fodmap: true,
+	//lactose: false
+	// }
 
-  //Example of no LACTOSE
-  //{
-  //searchTerm: input,
-  //gluten: true,
-  //fodmap: true,
-  //lactose: false
-  // }
+	//SEARCH BAR:
+	//TODO: need a state to store the object to send
+	//TODO: need an input for the searchTerm
+	//TODO: 3 x checkboxes
+	//TODO: need to capture the search and the checkbox inputs
 
-  //SEARCH BAR:
-  //TODO: need a state to store the object to send
-  //TODO: need an input for the searchTerm
-  //TODO: 3 x checkboxes
-  //TODO: need to capture the search and the checkbox inputs
+	// OUTPUT:
+	//TODO: positive version - with smiley face, positive message
+	//TODO: negative version - unhappy face, negative message
+	//Need a state set to positive or negative
+	const initialSearch = {
+		searchTerm: "",
+		gluten: true,
+		fodmap: true,
+		lactose: true,
+	};
 
-  // OUTPUT:
-  //TODO: positive version - with smiley face, positive message
-  //TODO: negative version - unhappy face, negative message
-  //Need a state set to positive or negative
-  const initialSearch = {
-    searchTerm: '',
-    gluten: true,
-    fodmap: true,
-    lactose: true,
-  };
+	const [search, setSearch] = useState(initialSearch);
+	const [outcome, setOutcome] = useState(<></>);
 
+	function onChange(e) {
+		const newSearchTerm = e.target.value;
+		setSearch({ ...search, searchTerm: newSearchTerm });
+	}
 
-  const [search, setSearch] = useState(initialSearch);
-  const [outcome, setOutcome] = useState(<></>);
+	function glutenChecked(e) {
+		setSearch({ ...search, gluten: !e.target.checked });
+	}
 
-  function onChange(e) {
-    const newSearchTerm = e.target.value;
-    setSearch({ ...search, searchTerm: newSearchTerm });
-  }
+	function fodmapChecked(e) {
+		setSearch({ ...search, fodmap: !e.target.checked });
+	}
 
-  function glutenChecked(e) {
-    setSearch({ ...search, gluten: !e.target.checked });
-  }
+	function lactoseChecked(e) {
+		setSearch({ ...search, lactose: !e.target.checked });
+	}
 
-  function fodmapChecked(e) {
-    setSearch({ ...search, fodmap: !e.target.checked });
-  }
+	let reason = {
+		displayGluten: false,
+		displayFodmap: false,
+		displayLactose: false,
+	};
 
-  function lactoseChecked(e) {
-    setSearch({ ...search, lactose: !e.target.checked });
-  }
+	async function onClick() {
+		const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
+		const data = await response.json();
+		const payload = data.payload;
+		console.log("payload - object from db", payload);
+		console.log("search - object that we want to compare", search);
 
-let reason = {
-	displayGluten: false,
-	displayFodmap: false,
-	displayLactose: false,
-}
+		if (
+			(search.gluten === false && payload.gluten === true) ||
+			(search.fodmap === false && payload.fodmap === true) ||
+			(search.lactose === false && payload.lactose === true)
+		) {
+			console.log("negative outcome");
+			setOutcome(<NegativeOutcome />);
+		} else {
+			console.log("positive outcome");
+			setOutcome(<PositiveOutcome />);
+		}
+	}
 
-  async function onClick() {
-    const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
-    const data = await response.json();
-    const payload = data.payload;
-    console.log('payload - object from db', payload);
-    console.log('search - object that we want to compare', search);
-
-    if (
-      (search.gluten === false && payload.gluten === true) ||
-      (search.fodmap === false && payload.fodmap === true) ||
-      (search.lactose === false && payload.lactose === true)
-    ) {
-      console.log('negative outcome');
-      setOutcome(<NegativeOutcome />);
-    } else {
-      console.log('positive outcome');
-      setOutcome(<PositiveOutcome />);
-    }
-  }
-
-
-
-  /*
+	/*
   
   Only want to display the one they cannot eat
 
@@ -105,7 +98,7 @@ let reason = {
 
   */
 
-  /*We want to explore other options to simplify this code ^^^
+	/*We want to explore other options to simplify this code ^^^
 
 
 	suggested code ->
@@ -145,23 +138,19 @@ setSearch({...search, fodmap: !e.target.checked})
           ></input>
   */
 
-
-
 	return (
 		<div className="searchComponent">
-		
 			<div className="search">
-
+				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
 				<input
 					type="text"
-					placeholder="Find by food"
+					placeholder="Type food or barcode"
 					onChange={onChange}
 				></input>
-				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
 			</div>
+
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
-
 				<div className="toggle">
 					<label className="switch">
 						<input type="checkbox" onClick={glutenChecked}></input>
@@ -182,11 +171,13 @@ setSearch({...search, fodmap: !e.target.checked})
 						<span className="slider round"></span>
 					</label>
 					<span>Lactose Free</span>
-
 				</div>
 			</div>
+
+			<button className="search-button" onClick={onClick}>
+				Can I eat this?
+			</button>
 			<div className="display-outcome">{outcome}</div>
 		</div>
 	);
-
 }

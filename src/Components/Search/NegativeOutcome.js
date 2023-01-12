@@ -1,14 +1,16 @@
-
 import './outcome.css';
 
-export default function NegativeOutcome({glutenResult,fodmapResult,lactoseResult}) {
+export default function NegativeOutcome({
+  glutenResult,
+  fodmapResult,
+  lactoseResult,
+  payload,
+}) {
   return (
-
-
     <div className="outcome">
       <span className="face">☹️</span>
-      <p>Dont Eat this!</p>
-      <>Product contains:</> 
+      <p>Don't Eat {payload.product_name}!</p>
+      <>Product contains:</>
       <br></br>
       <>{glutenResult}</>
       <br></br>

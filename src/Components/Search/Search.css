@@ -136,13 +136,16 @@
     background-color: var(--content-color);
     box-shadow: 0px 4px 4px var(--font-color);
     padding: 5px 20px;
+    font-size: calc(4px + 2vmin);
+    color: var(--font-color);
   }
 
-.search-button:hover {
-  background-color: var(--toggle);
+/* .search-button:hover { */
+  /* background-color: var(--toggle); */
   /* color: white; */
-}
+/* } */
 
 .search-button:active {
       box-shadow: 0px 0px 0px var(--font-color);
+      background-color: var(--toggle);
 }

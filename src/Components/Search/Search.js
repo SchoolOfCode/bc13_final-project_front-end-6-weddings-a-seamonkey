@@ -169,7 +169,7 @@ setSearch({...search, fodmap: !e.target.checked})
 				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
 				<input
 					type="text"
-					placeholder="Find by food"
+					placeholder="Find by food or barcode"
 					onChange={onChange}
 				></input>
 			</div>

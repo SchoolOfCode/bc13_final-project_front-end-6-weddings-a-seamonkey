@@ -1,5 +1,3 @@
-
-
 import NegativeOutcome from './NegativeOutcome.js';
 import PositiveOutcome from './PositiveOutcome.js';
 import DefaultOutcome from './DefaultOutcome.js';
@@ -9,9 +7,7 @@ import { useState } from 'react'
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 // const url = 'http://localhost:3010';
 
-
 export default function Search() {
-
   //product_id
   // product_Name
   // picture
@@ -167,41 +163,46 @@ setSearch({...search, fodmap: !e.target.checked})
           ></input>
   */
 
-  return (
-    <div className="searchComponent">
-      <div className="search">
-        <input
-          type="text"
-          placeholder="Find by food"
-          onChange={onChange}
-        ></input>
-        <img src={magnifying} alt="Magnifying glass" onClick={onClick} />
-      </div>
-      <p>Choose all that apply:</p>
-      <div className="searchCheckbox">
-        <div className="toggle">
-          <label className="switch">
-            <input type="checkbox" onClick={glutenChecked}></input>
-            <span className="slider round"></span>
-          </label>
-          <span className="toggleText">Gluten Free</span>
-        </div>
-        <div className="toggle">
-          <label className="switch">
-            <input type="checkbox" onClick={fodmapChecked}></input>
-            <span className="slider round"></span>
-          </label>
-          <span>Low FODMAPs</span>
-        </div>
-        <div className="toggle">
-          <label className="switch">
-            <input type="checkbox" onClick={lactoseChecked}></input>
-            <span className="slider round"></span>
-          </label>
-          <span>Lactose Free</span>
-        </div>
-      </div>
-      <div className="display-outcome">{outcome}</div>
-    </div>
-  );
+
+	return (
+		<div className="searchComponent">
+			<div className="search">
+				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
+				<input
+					type="text"
+					placeholder="Find by food or barcode"
+					onChange={onChange}
+				></input>
+			</div>
+			<p>Choose all that apply:</p>
+			<div className="searchCheckbox">
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={glutenChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span className="toggleText">Gluten Free</span>
+				</div>
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={fodmapChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Low FODMAPs</span>
+				</div>
+				<div className="toggle">
+					<label className="switch">
+						<input type="checkbox" onClick={lactoseChecked}></input>
+						<span className="slider round"></span>
+					</label>
+					<span>Lactose Free</span>
+				</div>
+			</div>
+			<button className="search-button" onClick={onClick}>
+				Can I eat this?
+			</button>
+			<div className="display-outcome">{outcome}</div>
+		</div>
+	);
+
 }

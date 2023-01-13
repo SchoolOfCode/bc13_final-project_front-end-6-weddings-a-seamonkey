@@ -6,4 +6,5 @@ export default function DefaultOutcome() {
 			{/* <p>Please, enter a product in the search bar</p> */}
 		</div>
 	);
+
 }

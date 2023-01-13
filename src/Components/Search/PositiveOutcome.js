@@ -8,4 +8,5 @@ export default function PositiveOutcome({ searchResult }) {
 			<p>You're good to go - enjoy your {searchResult}!</p>
 		</div>
 	);
+
 }

@@ -13,4 +13,5 @@ export default function NegativeOutcome({ outcome }) {
 			})}
 		</div>
 	);
+
 }

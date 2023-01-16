@@ -97,11 +97,13 @@ export default function Search() {
 					onChange={onChange}
 				></input>
 			</div>
+
 			{noProductError === true ? (
 				<p className="no-product-error">Product not found. Please try again</p>
 			) : (
 				<></>
 			)}
+
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
 				<div className="toggle">
@@ -146,4 +148,5 @@ export default function Search() {
 			</div>
 		</div>
 	);
+
 }

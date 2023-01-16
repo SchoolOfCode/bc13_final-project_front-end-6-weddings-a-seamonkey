@@ -1,11 +1,19 @@
 import "./App.css";
-import Search from "../Search/Search.js";
+import TemporaryDrawer from "../../Navigation/menu/index.js";
+import { Outlet } from "react-router";
+
 
 function App() {
 	return (
-		<div className="App">
-				<Search />
+		<>
+		<div className="Menu">
+			<TemporaryDrawer/>
 		</div>
+		<div className="App">
+			
+			<Outlet/>
+		</div>
+		</>
 	);
 }
 

@@ -20,3 +20,10 @@
     font-size: calc(8px + 2vmin);
 }
 
+.Menu {
+  background-color: var(--background-color);
+  min-width: 100vw;
+  display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}

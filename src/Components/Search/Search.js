@@ -22,6 +22,8 @@ export default function Search() {
 
 	const [search, setSearch] = useState(initialSearch);
 	const [outcome, setOutcome] = useState(initialOutcome);
+	const [noProductError, setNoProductError] = useState(false);
+	const [loadingSearch, setLoadingSearch] = useState(false)
 
 	function onChange(e) {
 		const newSearchTerm = e.target.value;
@@ -40,11 +42,18 @@ export default function Search() {
 		setSearch({ ...search, lactose: !e.target.checked });
 	}
 
+
+
 	async function onClick() {
 		setOutcome(initialOutcome);
+		setLoadingSearch(true)
 		const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
 		const data = await response.json();
 		const payload = data.payload;
+		setLoadingSearch(false)
+
+		if (payload !== undefined) {
+			setNoProductError(false);
 		console.log("payload - object from db", payload);
 		console.log("search - object that we want to compare", search);
 		let newProductName = payload.product_name;
@@ -73,6 +82,10 @@ export default function Search() {
 		};
 
 		setOutcome(newObject);
+	 }
+	 else {
+		setNoProductError(true)
+	 }
 	}
 
 	return (
@@ -85,6 +98,7 @@ export default function Search() {
 					onChange={onChange}
 				></input>
 			</div>
+			{noProductError === true ? <p className="no-product-error">Product not found. Please try again</p>: <></>}
 			<p>Choose all that apply:</p>
 			<div className="searchCheckbox">
 				<div className="toggle">
@@ -112,6 +126,7 @@ export default function Search() {
 			<button className="search-button" onClick={onClick}>
 				Can I eat this?
 			</button>
+			{loadingSearch === true ? <p className="loading-msg">Loading...</p>:<></>}
 
 			<div className="display-outcome">
 				{" "}

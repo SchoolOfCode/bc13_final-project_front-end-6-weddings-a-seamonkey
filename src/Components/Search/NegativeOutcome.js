@@ -8,8 +8,8 @@ export default function NegativeOutcome({ outcome }) {
 			<img className="face" src={sadFace} alt="Sad emoji face" />
 			<p>Don't eat {outcome.productName}!</p>
 			<>Product contains:</>
-			{outcome.reason.map((reason) => {
-				return <li>{reason}</li>;
+			{outcome.reason.map((reason, index) => {
+				return <li key={index}>{reason}</li>;
 			})}
 		</div>
 	);

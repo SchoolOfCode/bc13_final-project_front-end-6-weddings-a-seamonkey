@@ -1,18 +1,56 @@
-* {
-    --background-color: #D4EDDD;
-    --font-color: #23321F;
-    --content-color: #F0FFFF; /* @100% */
-    --menu-bar: #23321F;
-    --toggle: #00A878
+  .instructions {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--font-color);
+    background-color: var(--background-color);
   }
 
   .heading {
-    padding: 50px;
+    padding: 30px;
     text-align: center;
     background-color: #D4EDDD;
-    color: black;
   }
 
   .subheading {
-    color: grey;
+    text-align: center;
+    background-color: #D4EDDD;
+  }
+
+  .paragraph {
+    text-align: center;
+    background-color: #D4EDDD;
+  }
+
+  .search-bar {
+    width: 50%;
+  }
+
+  .dietary-requirements {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .barcode-scanner {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .happy-face {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sad-face {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }

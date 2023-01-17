@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Quagga from 'quagga';
 
-const Scanner = (props) => {
+const Bscan = (props) => {
 
   const firstUpdate = useRef(true);
   const [isStart, setIsStart] = useState(false);
@@ -139,4 +139,4 @@ const Scanner = (props) => {
   </div>
 }
 
-export default Scanner;
+export default Bscan;

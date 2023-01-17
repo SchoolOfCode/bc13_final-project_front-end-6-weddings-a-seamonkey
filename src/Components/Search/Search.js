@@ -4,7 +4,8 @@ import DefaultOutcome from "./DefaultOutcome.js";
 import magnifying from "../../Images/magnifying-dark.png";
 import "./Search.css";
 import { useState } from "react";
-import Scanner from "../Scanner/Scanner.js";
+
+import Bscan from "../Scanner/Scanner.js";
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
 
 export default function Search() {
@@ -147,7 +148,7 @@ export default function Search() {
 					<PositiveOutcome searchResult={outcome.productName} />
 				)}
 			</div>
-			<Scanner/>
+			<Bscan/>
 			<div id="scanner-container">
 			</div>
 		</div>

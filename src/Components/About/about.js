@@ -62,7 +62,6 @@ export default function About() {
                             <h2>Martha Bennett</h2>
                             <p className="title">SoC Bootcamper</p>
                             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                            <p>Martha's GitHub link</p>
                             <p><button className="button">Find out more</button></p>
             
 </div> )}

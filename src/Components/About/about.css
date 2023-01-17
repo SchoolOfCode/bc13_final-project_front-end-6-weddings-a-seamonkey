@@ -1,0 +1,10 @@
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: var(--background-color);
+  }
+  
+  .heading {
+    color: var(--font-color);
+  }
+  

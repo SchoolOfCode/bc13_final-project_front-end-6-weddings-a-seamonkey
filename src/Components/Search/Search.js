@@ -148,6 +148,7 @@ export default function Search() {
 					<PositiveOutcome searchResult={outcome.productName} />
 				)}
 			</div>
+			
 			<Bscan/>
 			<div id="scanner-container">
 			</div>

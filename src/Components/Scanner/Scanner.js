@@ -7,21 +7,21 @@ const Bscan = (props) => {
   const [isStart, setIsStart] = useState(false);
   const [barcode, setBarcode] = useState('');
 
-  useEffect(() => {
-    return () => {
-      if (isStart) stopScanner();
-    };
-  }, []);
+//   useEffect(() => {
+//     return () => {
+//       if (isStart) stopScanner();
+//     };
+//   }, []);
 
-  useEffect(() => {
-    if (firstUpdate.current) {
-      firstUpdate.current = false;
-      return;
-    }
+//   useEffect(() => {
+//     if (firstUpdate.current) {
+//       firstUpdate.current = false;
+//       return;
+//     }
 
-    if (isStart) startScanner();
-    else stopScanner();
-  }, [isStart]);
+//     if (isStart) startScanner();
+//     else stopScanner();
+//   }, [isStart]);
 
   const _onDetected = res => {
     // stopScanner();
@@ -130,12 +130,13 @@ const Bscan = (props) => {
   };
 
   return <div>
-    
-    <button onClick={() => setIsStart(prevStart => !prevStart)} style={{ marginBottom: 20 }}>{isStart ? 'Stop' : 'Start'}</button>
+    <button onClick={startScanner}>Start</button>
+    <button onClick={stopScanner}>Stop</button>
+    {/* <button onClick={() => setIsStart(prevStart => !prevStart)} style={{ marginBottom: 20 }}>{isStart ? 'Stop' : 'Start'}</button>
     {isStart && <React.Fragment>
       <div id="scanner-container" />
       <span>Barcode: {barcode}</span>
-    </React.Fragment>}
+    </React.Fragment>} */}
   </div>
 }
 

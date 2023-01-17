@@ -4,6 +4,7 @@ import barcodeScanner from '../../Images/barcodescanner.png';
 import dietaryRequirements from '../../Images/dietary-requirements.png';
 import happyFace from '../../Images/happy.gif';
 import sadFace from '../../Images/sad.gif';
+import canIEatThis from '../../Images/can-i-eat-this.png';
 
 function Instructions() {
 	return (
@@ -19,7 +20,8 @@ function Instructions() {
 			<img src={searchBar} alt="search bar" className="search-bar"></img>
 			<p className="paragraph">2. Select your dietary requirements:</p>
 			<img src={dietaryRequirements} alt="dietary requirements" className="dietary-requirements"></img>
-			<p className="paragraph">3. Click the 'Can I Eat This?' button</p>
+			<p className="paragraph">3. Click the 'Can I eat this?' button</p>
+			<img src={canIEatThis} alt="Can I eat this?" className="can-i-eat-this"></img>
 
 			<h2 className="subheading">Or, you can use the Barcode Scanner to scan the barcode of each product:</h2>
 			<p className="paragraph">1. Select your dietary requirements:</p>

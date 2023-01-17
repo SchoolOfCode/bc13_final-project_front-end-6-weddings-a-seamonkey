@@ -7,10 +7,10 @@ function App() {
 	return (
 		<>
 		<div className="Menu">
-			<TemporaryDrawer/>
+			<h1 className="title">FoodMap</h1>
+			<TemporaryDrawer className="button"/>
 		</div>
-		<div className="App">
-			
+		<div className="App">	
 			<Outlet/>
 		</div>
 		</>

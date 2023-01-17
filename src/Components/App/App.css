@@ -21,9 +21,19 @@
 }
 
 .Menu {
-  background-color: var(--background-color);
+  background-color: var(--menu-bar);
   min-width: 100vw;
+  min-height: 10vh;
   display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.title {
+  color: var(--content-color);
+  font-size: xx-large;
+  margin: 0;
+  margin-left: 2%;
 }

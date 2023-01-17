@@ -35,9 +35,9 @@ export default function TemporaryDrawer() {
   return (
     <div >
       {["right"].map((anchor) => (
-        <React.Fragment sx={{color: "darkgreen"}}  key={anchor}>
+        <React.Fragment key={anchor}>
         <Box>
-          <Button sx={{color: "var(--font-color)"}}  onClick={toggleDrawer(anchor, true)}><Dehaze/></Button>
+          <Button sx={{color: "var(--background-color)", paddingRight: "10%"}}  onClick={toggleDrawer(anchor, true)}><Dehaze sx={{fontSize:"xx-large", marginRight:"20%"}}/></Button>
         </Box>  
           <Drawer
             anchor={anchor}

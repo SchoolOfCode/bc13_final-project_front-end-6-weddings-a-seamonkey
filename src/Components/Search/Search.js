@@ -1,158 +1,161 @@
-import NegativeOutcome from "./NegativeOutcome.js";
-import PositiveOutcome from "./PositiveOutcome.js";
-import DefaultOutcome from "./DefaultOutcome.js";
-import magnifying from "../../Images/magnifying-dark.png";
-import "./Search.css";
-import { useState } from "react";
+import NegativeOutcome from './NegativeOutcome.js';
+import PositiveOutcome from './PositiveOutcome.js';
+import DefaultOutcome from './DefaultOutcome.js';
+import magnifying from '../../Images/magnifying-dark.png';
+import './Search.css';
+import { useState } from 'react';
 
-import Bscan from "../Scanner/Scanner.js";
-const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
+import Bscan from '../Scanner/Scanner.js';
+const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 export default function Search() {
-	const initialSearch = {
-		searchTerm: "",
-		gluten: true,
-		fodmap: true,
-		lactose: true,
-	};
+  function updateBarcode(barcode) {
+    setSearch({ ...search, searchTerm: barcode });
+  }
 
-	const initialOutcome = {
-		outcome: "default",
-		reason: [],
-		productName: "",
-	};
+  const initialSearch = {
+    searchTerm: '',
+    gluten: true,
+    fodmap: true,
+    lactose: true,
+  };
 
-	const [search, setSearch] = useState(initialSearch);
-	const [outcome, setOutcome] = useState(initialOutcome);
-	const [noProductError, setNoProductError] = useState(false);
-	const [loadingSearch, setLoadingSearch] = useState(false);
+  const initialOutcome = {
+    outcome: 'default',
+    reason: [],
+    productName: '',
+  };
 
-	function onChange(e) {
-		const newSearchTerm = e.target.value;
-		setSearch({ ...search, searchTerm: newSearchTerm });
-	}
+  const [search, setSearch] = useState(initialSearch);
+  const [outcome, setOutcome] = useState(initialOutcome);
+  const [noProductError, setNoProductError] = useState(false);
+  const [loadingSearch, setLoadingSearch] = useState(false);
 
-	function glutenChecked(e) {
-		setSearch({ ...search, gluten: !e.target.checked });
-	}
+  function onChange(e) {
+    const newSearchTerm = e.target.value;
+    setSearch({ ...search, searchTerm: newSearchTerm });
+  }
 
-	function fodmapChecked(e) {
-		setSearch({ ...search, fodmap: !e.target.checked });
-	}
+  function glutenChecked(e) {
+    setSearch({ ...search, gluten: !e.target.checked });
+  }
 
-	function lactoseChecked(e) {
-		setSearch({ ...search, lactose: !e.target.checked });
-	}
+  function fodmapChecked(e) {
+    setSearch({ ...search, fodmap: !e.target.checked });
+  }
 
-	async function onClick() {
-		if (search.searchTerm !== "") {
-			setOutcome(initialOutcome);
-			setLoadingSearch(true);
-			const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
-			const data = await response.json();
-			const payload = data.payload;
-			setLoadingSearch(false);
+  function lactoseChecked(e) {
+    setSearch({ ...search, lactose: !e.target.checked });
+  }
 
-			if (payload !== undefined) {
-				setNoProductError(false);
-				console.log("payload - object from db", payload);
-				console.log("search - object that we want to compare", search);
-				let newProductName = payload.product_name;
-				const reasonArray = [];
-				let newOutcome = "";
+  async function onClick() {
+    if (search.searchTerm !== '') {
+      setOutcome(initialOutcome);
+      setLoadingSearch(true);
+      const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
+      const data = await response.json();
+      const payload = data.payload;
+      setLoadingSearch(false);
 
-				if (search.gluten === false && payload.gluten === true) {
-					newOutcome = "negative";
-					reasonArray.push("Gluten");
-				}
+      if (payload !== undefined) {
+        setNoProductError(false);
+        console.log('payload - object from db', payload);
+        console.log('search - object that we want to compare', search);
+        let newProductName = payload.product_name;
+        const reasonArray = [];
+        let newOutcome = '';
 
-				if (search.lactose === false && payload.lactose === true) {
-					newOutcome = "negative";
-					reasonArray.push("Lactose");
-				}
+        if (search.gluten === false && payload.gluten === true) {
+          newOutcome = 'negative';
+          reasonArray.push('Gluten');
+        }
 
-				if (search.fodmap === false && payload.fodmap === true) {
-					newOutcome = "negative";
-					reasonArray.push("High Fodmap");
-				}
+        if (search.lactose === false && payload.lactose === true) {
+          newOutcome = 'negative';
+          reasonArray.push('Lactose');
+        }
 
-				const newObject = {
-					outcome: newOutcome,
-					reason: reasonArray,
-					productName: newProductName,
-				};
+        if (search.fodmap === false && payload.fodmap === true) {
+          newOutcome = 'negative';
+          reasonArray.push('High Fodmap');
+        }
 
-				setOutcome(newObject);
-			} else {
-				setNoProductError(true);
-			}
-		}
-	}
+        const newObject = {
+          outcome: newOutcome,
+          reason: reasonArray,
+          productName: newProductName,
+        };
 
-	return (
-		<div className="searchComponent">
-			<div className="search">
-				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
-				<input
-					type="text"
-					placeholder="Find by food or barcode"
-					onChange={onChange}
-				></input>
-			</div>
+        setOutcome(newObject);
+      } else {
+        setNoProductError(true);
+      }
+    }
+  }
 
-			{noProductError === true ? (
-				<p className="no-product-error">Product not found. Please try again</p>
-			) : (
-				<></>
-			)}
+  return (
+    <div className="searchComponent">
+      <div className="search">
+        <img src={magnifying} alt="Magnifying glass" onClick={onClick} />
+        <input
+          type="text"
+          placeholder="Find by food or barcode"
+          onChange={onChange}
+          value={search.searchTerm}
+        ></input>
+      </div>
 
-			<p>Choose all that apply:</p>
-			<div className="searchCheckbox">
-				<div className="toggle">
-					<label className="switch">
-						<input type="checkbox" onClick={glutenChecked}></input>
-						<span className="slider round"></span>
-					</label>
-					<span className="toggleText">Gluten Free</span>
-				</div>
-				<div className="toggle">
-					<label className="switch">
-						<input type="checkbox" onClick={fodmapChecked}></input>
-						<span className="slider round"></span>
-					</label>
-					<span>Low FODMAPs</span>
-				</div>
-				<div className="toggle">
-					<label className="switch">
-						<input type="checkbox" onClick={lactoseChecked}></input>
-						<span className="slider round"></span>
-					</label>
-					<span>Lactose Free</span>
-				</div>
-			</div>
-			<button className="search-button" onClick={onClick}>
-				Can I eat this?
-			</button>
-			{loadingSearch === true ? (
-				<p className="loading-msg">Loading...</p>
-			) : (
-				<></>
-			)}
+      {noProductError === true ? (
+        <p className="no-product-error">Product not found. Please try again</p>
+      ) : (
+        <></>
+      )}
 
-			<div className="display-outcome">
-				{outcome.outcome === "default" ? (
-					<DefaultOutcome />
-				) : outcome.outcome === "negative" ? (
-					<NegativeOutcome outcome={outcome} />
-				) : (
-					<PositiveOutcome searchResult={outcome.productName} />
-				)}
-			</div>
-			
-			<Bscan/>
-			<div id="scanner-container">
-			</div>
-		</div>
-	);
+      <p>Choose all that apply:</p>
+      <div className="searchCheckbox">
+        <div className="toggle">
+          <label className="switch">
+            <input type="checkbox" onClick={glutenChecked}></input>
+            <span className="slider round"></span>
+          </label>
+          <span className="toggleText">Gluten Free</span>
+        </div>
+        <div className="toggle">
+          <label className="switch">
+            <input type="checkbox" onClick={fodmapChecked}></input>
+            <span className="slider round"></span>
+          </label>
+          <span>Low FODMAPs</span>
+        </div>
+        <div className="toggle">
+          <label className="switch">
+            <input type="checkbox" onClick={lactoseChecked}></input>
+            <span className="slider round"></span>
+          </label>
+          <span>Lactose Free</span>
+        </div>
+      </div>
+      <button className="search-button" onClick={onClick}>
+        Can I eat this?
+      </button>
+      {loadingSearch === true ? (
+        <p className="loading-msg">Loading...</p>
+      ) : (
+        <></>
+      )}
 
+      <div className="display-outcome">
+        {outcome.outcome === 'default' ? (
+          <DefaultOutcome />
+        ) : outcome.outcome === 'negative' ? (
+          <NegativeOutcome outcome={outcome} />
+        ) : (
+          <PositiveOutcome searchResult={outcome.productName} />
+        )}
+      </div>
+
+      <Bscan updateBarcode={updateBarcode} />
+      <div id="scanner-container"></div>
+    </div>
+  );
 }

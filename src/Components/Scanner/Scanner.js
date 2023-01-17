@@ -2,30 +2,32 @@ import React, { useEffect, useRef, useState } from 'react';
 import Quagga from 'quagga';
 
 const Bscan = (props) => {
-
   const firstUpdate = useRef(true);
   const [isStart, setIsStart] = useState(false);
   const [barcode, setBarcode] = useState('');
 
-//   useEffect(() => {
-//     return () => {
-//       if (isStart) stopScanner();
-//     };
-//   }, []);
+  function onClick() {
+    props.updateBarcode(barcode);
+  }
+  //   useEffect(() => {
+  //     return () => {
+  //       if (isStart) stopScanner();
+  //     };
+  //   }, []);
 
-//   useEffect(() => {
-//     if (firstUpdate.current) {
-//       firstUpdate.current = false;
-//       return;
-//     }
+  //   useEffect(() => {
+  //     if (firstUpdate.current) {
+  //       firstUpdate.current = false;
+  //       return;
+  //     }
 
-//     if (isStart) startScanner();
-//     else stopScanner();
-//   }, [isStart]);
+  //     if (isStart) startScanner();
+  //     else stopScanner();
+  //   }, [isStart]);
 
-  const _onDetected = res => {
+  const _onDetected = (res) => {
     // stopScanner();
-    setBarcode(res.codeResult.code)
+    setBarcode(res.codeResult.code);
     console.log(res.codeResult.code);
   };
 
@@ -36,8 +38,8 @@ const Bscan = (props) => {
           type: 'LiveStream',
           target: document.querySelector('#scanner-container'),
           constraints: {
-            facingMode: 'environment' // or user
-          }
+            facingMode: 'environment', // or user
+          },
         },
         numOfWorkers: navigator.hardwareConcurrency,
         locate: true,
@@ -46,7 +48,7 @@ const Bscan = (props) => {
           drawBoundingBox: true,
           showFrequency: true,
           drawScanline: true,
-          showPattern: true
+          showPattern: true,
         },
         multiple: false,
         locator: {
@@ -63,9 +65,9 @@ const Bscan = (props) => {
             boxFromPatches: {
               showTransformed: false,
               showTransformedBox: false,
-              showBB: false
-            }
-          }
+              showBB: false,
+            },
+          },
         },
         decoder: {
           readers: [
@@ -80,11 +82,11 @@ const Bscan = (props) => {
             'i2of5_reader',
             'i2of5_reader',
             '2of5_reader',
-            'code_93_reader'
-          ]
-        }
+            'code_93_reader',
+          ],
+        },
       },
-      err => {
+      (err) => {
         if (err) {
           return console.log(err);
         }
@@ -92,7 +94,7 @@ const Bscan = (props) => {
       }
     );
     Quagga.onDetected(_onDetected);
-    Quagga.onProcessed(result => {
+    Quagga.onProcessed((result) => {
       let drawingCtx = Quagga.canvas.ctx.overlay,
         drawingCanvas = Quagga.canvas.dom.overlay;
 
@@ -104,20 +106,30 @@ const Bscan = (props) => {
             parseInt(drawingCanvas.getAttribute('width')),
             parseInt(drawingCanvas.getAttribute('height'))
           );
-          result.boxes.filter(box => box !== result.box).forEach(box => {
-            Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, {
-              color: 'green',
-              lineWidth: 2
+          result.boxes
+            .filter((box) => box !== result.box)
+            .forEach((box) => {
+              Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, {
+                color: 'green',
+                lineWidth: 2,
+              });
             });
-          });
         }
 
         if (result.box) {
-          Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: '#00F', lineWidth: 2 });
+          Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
+            color: '#00F',
+            lineWidth: 2,
+          });
         }
 
         if (result.codeResult && result.codeResult.code) {
-          Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
+          Quagga.ImageDebug.drawPath(
+            result.line,
+            { x: 'x', y: 'y' },
+            drawingCtx,
+            { color: 'red', lineWidth: 3 }
+          );
         }
       }
     });
@@ -129,15 +141,18 @@ const Bscan = (props) => {
     Quagga.stop();
   };
 
-  return <div>
-    <button onClick={startScanner}>Start</button>
-    <button onClick={Quagga.stop}>Stop</button>
-    {/* <button onClick={() => setIsStart(prevStart => !prevStart)} style={{ marginBottom: 20 }}>{isStart ? 'Stop' : 'Start'}</button>
+  return (
+    <div>
+      <button onClick={startScanner}>Start</button>
+      <button onClick={Quagga.stop}>Stop</button>
+      {/* <button onClick={() => setIsStart(prevStart => !prevStart)} style={{ marginBottom: 20 }}>{isStart ? 'Stop' : 'Start'}</button>
     {isStart && <React.Fragment>
       <div id="scanner-container" />
       <span>Barcode: {barcode}</span>
     </React.Fragment>} */}
-  </div>
-}
+      <span onClick={onClick}>Is this the right barcode: {barcode} ?</span>
+    </div>
+  );
+};
 
 export default Bscan;

@@ -25,7 +25,8 @@ const Scanner = (props) => {
 
   const _onDetected = res => {
     // stopScanner();
-    setBarcode(res.codeResult.code);
+    setBarcode(res.codeResult.code)
+    console.log(res.codeResult.code);
   };
 
   const startScanner = () => {

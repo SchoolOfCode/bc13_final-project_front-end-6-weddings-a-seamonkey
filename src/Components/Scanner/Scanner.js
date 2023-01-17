@@ -147,7 +147,7 @@ const Bscan = (props) => {
 	}, []);
 	return (
 		<div>
-			<span>Is this the right barcode: {barcode} ?</span>
+			<span>Is this the right barcode: {barcode}</span>
 			<button onClick={onClick}>Yes, search this product</button>
 			<button onClick={startScanner}>No, scan product again</button>
 			<div id="scanner-container"></div>

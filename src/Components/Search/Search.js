@@ -35,6 +35,7 @@ export default function Search() {
 
 	function switchBarcode() {
 		setBarcodeScanner(!barcodeScanner);
+		setOutcome({ ...outcome, outcome: "default" });
 	}
 
 	function onChange(e) {
@@ -97,6 +98,7 @@ export default function Search() {
 				setNoProductError(true);
 			}
 		}
+		setSearch({ ...search, searchTerm: "" });
 	}
 
 	return (

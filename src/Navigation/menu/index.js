@@ -37,13 +37,13 @@ export default function TemporaryDrawer() {
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
         <Box>
-          <Button sx={{color: "var(--background-color)", paddingRight: "10%"}}  onClick={toggleDrawer(anchor, true)}><Dehaze sx={{fontSize:"xx-large", marginRight:"20%"}}/></Button>
+          <Button sx={{color: "var(--background-color)"}}  onClick={toggleDrawer(anchor, true)}><Dehaze sx={{fontSize:"xx-large"}}/></Button>
         </Box>  
           <Drawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-            PaperProps={{sx: {backgroundColor: "var(--background-color)"}}}
+            PaperProps={{sx:{backgroundColor: "var(--background-color)"}}}
           >
             {list(anchor)}
           </Drawer>

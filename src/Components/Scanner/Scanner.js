@@ -144,13 +144,15 @@ const Bscan = (props) => {
   return (
     <div>
       <button onClick={startScanner}>Start</button>
-      <button onClick={Quagga.stop}>Stop</button>
+      <button onClick={stopScanner}>Stop</button>
       {/* <button onClick={() => setIsStart(prevStart => !prevStart)} style={{ marginBottom: 20 }}>{isStart ? 'Stop' : 'Start'}</button>
     {isStart && <React.Fragment>
       <div id="scanner-container" />
       <span>Barcode: {barcode}</span>
     </React.Fragment>} */}
-      <span onClick={onClick}>Is this the right barcode: {barcode} ?</span>
+      <span>Is this the right barcode: {barcode} ?</span>
+      <button onClick={onClick}>Yes, search this product</button>
+      <button onClick={startScanner}>No, scan product again</button>
     </div>
   );
 };

@@ -3,10 +3,10 @@ import "./about.css";
 export default function About() {
     return (
 <div>
-    <div class="about-section">
-        <h1>About FoodMap</h1>
+    <div className="about-section">
+        <h1>Why FoodMap?</h1>
 
-        <h2>Do you find shopping for your dietary requirements difficult?</h2>
+        <h2>Do you find it difficult to shop for your dietary requirements?</h2>
 
         <p>Over 15 million people in the UK live with a chronic health condition. Some of these conditions are managed using dietary restrictions.</p>
         
@@ -14,56 +14,55 @@ export default function About() {
 
         <h2>That's where FoodMap comes in!</h2>
 
-        <p>FoodMap is designed to help you work out whether the food you're buying works with your dietary requirements. Whether you have Chrohn's, Ulcerative Colitis, Coeliac Disease, Endometriosis, IBS (or any gut-impacted health conditions), following a specific diet as set out by your GP or a Dietician can help.</p>
+        <p>FoodMap is designed to help you work out whether the food you're buying works with your dietary requirements. Whether you have Crohn's, Ulcerative Colitis, Diverticulitis, Endometriosis, IBS (or any gut-impacted health conditions), following a specific diet as set out by your GP or a Dietician can help.</p>
 
         <p>Head to our 'Instructions' page to find out how to use FoodMap</p>
 
         <p>Please note: FoodMaps is not intended as a medical or diagnostic device. Always follow the guidance of your GP or a Dietician when following a restrictive or limiting diet.</p>
         
-        <p>FoodMap was developed by a team of Bootcampers from School of Code as a 4 week project.</p>
     </div>
 
-    <h2>Meet Our Team!</h2>
+        <div>
+            <h2>Who are FoodMap?</h2>
+                <p>FoodMap was developed by a team of Bootcampers from School of Code as a 4 week project.</p>
+        </div>
+
+        <h2>Meet Our Team!</h2>
     
-        <h2>Rachel Morris</h2>
-        <p class="title">SoC Bootcamper</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>Rachel's GitHub link</p>
-        <p><button class="button">Find out more</button></p>
+            <h2>Rachel Morris</h2>
+            <p className="title">SoC Bootcamper</p>
+            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p><button className="button">Find out more</button></p>
     
 
-          <h2>Luke Alexander</h2>
-          <p class="title">SoC Bootcamper</p>
-          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-          <p>Luke's GitHub link</p>
-          <p><button class="button">Find out more</button></p>
+            <h2>Luke Alexander</h2>
+            <p className="title">SoC Bootcamper</p>
+            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p><button className="button">Find out more</button></p>
    
 
-              <h2>Violeta Cique Fernández</h2>
-              <p class="title">SoC Bootcamper</p>
-              <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-              <p>Violeta's GitHub link</p>
-              <p><button class="button">Find out more</button></p>
+                <h2>Violeta Cique Fernández</h2>
+                <p className="title">SoC Bootcamper</p>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                <p><button className="button">Find out more</button></p>
          
 
-                  <h2>Steven Collins</h2>
-                  <p class="title">SoC Bootcamper</p>
-                  <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                  <p>Steven's GitHub link</p>
-                  <p><button class="button">Find out more</button></p>
+                    <h2>Steven Collins</h2>
+                    <p className="title">SoC Bootcamper</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p><button className="button">Find out more</button></p>
                
 
-                      <h2>Daniel Unknown</h2>
-                      <p class="title">SoC Bootcamper</p>
-                      <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                      <p>Daniel's GitHub link</p>
-                      <p><button class="button">Find out more</button></p>
+                        <h2>Daniel B</h2>
+                        <p className="title">SoC Bootcamper</p>
+                        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                        <p><button className="button">Find out more</button></p>
                
             
-                          <h2>Martha Bennett</h2>
-                          <p class="title">SoC Bootcamper</p>
-                          <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                          <p>Martha's GitHub link</p>
-                          <p><button class="button">Find out more</button></p>
+                            <h2>Martha Bennett</h2>
+                            <p className="title">SoC Bootcamper</p>
+                            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                            <p>Martha's GitHub link</p>
+                            <p><button className="button">Find out more</button></p>
             
 </div> )}

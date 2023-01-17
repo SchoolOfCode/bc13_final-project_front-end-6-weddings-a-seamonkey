@@ -148,6 +148,8 @@ export default function Search() {
 				)}
 			</div>
 			<Scanner/>
+			<div id="scanner-container">
+			</div>
 		</div>
 	);
 

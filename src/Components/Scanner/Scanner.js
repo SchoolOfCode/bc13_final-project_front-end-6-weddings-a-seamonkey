@@ -32,7 +32,7 @@ const Scanner = (props) => {
     Quagga.init(
       {
         inputStream: {
-          type: 'LiveStream',
+          type: 'VideoStream',
           target: document.querySelector('#scanner-container'),
           constraints: {
             facingMode: 'environment' // or user

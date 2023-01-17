@@ -5,8 +5,22 @@ export default function About() {
 <div>
     <div class="about-section">
         <h1>About FoodMap</h1>
-        <p>Some text about who we are and what we do.</p>
-        <p>Some more text about our brilliant app!</p>
+
+        <h2>Do you find shopping for your dietary requirements difficult?</h2>
+
+        <p>Over 15 million people in the UK live with a chronic health condition. Some of these conditions are managed using dietary restrictions.</p>
+        
+        <p>But what if your dietary restrictions are not, technically, allergens? Packaging can be hard to interpret and there are so many variables to consider, that shopping for even basic foodstuffs can be overwhelming.</p>
+
+        <h2>That's where FoodMap comes in!</h2>
+
+        <p>FoodMap is designed to help you work out whether the food you're buying works with your dietary requirements. Whether you have Chrohn's, Ulcerative Colitis, Coeliac Disease, Endometriosis, IBS (or any gut-impacted health conditions), following a specific diet as set out by your GP or a Dietician can help.</p>
+
+        <p>Head to our 'Instructions' page to find out how to use FoodMap</p>
+
+        <p>Please note: FoodMaps is not intended as a medical or diagnostic device. Always follow the guidance of your GP or a Dietician when following a restrictive or limiting diet.</p>
+        
+        <p>FoodMap was developed by a team of Bootcampers from School of Code as a 4 week project.</p>
     </div>
 
     <h2>Meet Our Team!</h2>

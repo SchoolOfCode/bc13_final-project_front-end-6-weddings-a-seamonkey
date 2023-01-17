@@ -20,3 +20,21 @@
     font-size: calc(8px + 2vmin);
 }
 
+.Menu {
+  background-color: var(--menu-bar);
+  min-width: 90vw;
+  min-height: 10vh;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.title {
+  color: var(--content-color);
+  font-size: xx-large;
+
+}

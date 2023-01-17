@@ -38,3 +38,16 @@
   font-size: xx-large;
 
 }
+
+.logo {
+  height: 8vh;
+  width:auto;
+  margin-left: 5%;
+}
+
+.intro{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}

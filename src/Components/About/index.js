@@ -30,39 +30,32 @@ export default function About() {
         <h2>Meet Our Team!</h2>
     
             <h2>Rachel Morris</h2>
-            <p className="title">SoC Bootcamper</p>
+            <p className="heading">SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p><button className="button">Find out more</button></p>
     
 
             <h2>Luke Alexander</h2>
-            <p className="title">SoC Bootcamper</p>
+            <p className="heading">SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-            <p><button className="button">Find out more</button></p>
    
 
                 <h2>Violeta Cique Fernández</h2>
-                <p className="title">SoC Bootcamper</p>
+                <p className="heading">SoC Bootcamper</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                <p><button className="button">Find out more</button></p>
          
 
                     <h2>Steven Collins</h2>
-                    <p className="title">SoC Bootcamper</p>
+                    <p className="heading">SoC Bootcamper</p>
                     <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                    <p><button className="button">Find out more</button></p>
                
 
                         <h2>Daniel B</h2>
-                        <p className="title">SoC Bootcamper</p>
+                        <p className="heading">SoC Bootcamper</p>
                         <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                        <p><button className="button">Find out more</button></p>
                
             
                             <h2>Martha Bennett</h2>
-                            <p className="title">SoC Bootcamper</p>
+                            <p className="heading">SoC Bootcamper</p>
                             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-                            <p>Martha's GitHub link</p>
-                            <p><button className="button">Find out more</button></p>
             
 </div> )}

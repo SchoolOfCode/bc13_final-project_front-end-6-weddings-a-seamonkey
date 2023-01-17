@@ -1,0 +1,18 @@
+* {
+    --background-color: #D4EDDD;
+    --font-color: #23321F;
+    --content-color: #F0FFFF; /* @100% */
+    --menu-bar: #23321F;
+    --toggle: #00A878
+  }
+
+  .heading {
+    padding: 50px;
+    text-align: center;
+    background-color: #D4EDDD;
+    color: black;
+  }
+
+  .subheading {
+    color: grey;
+  }

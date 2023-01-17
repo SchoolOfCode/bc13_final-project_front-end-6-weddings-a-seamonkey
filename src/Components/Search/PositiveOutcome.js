@@ -1,10 +1,10 @@
 import "./outcome.css";
-import happyFace from "../../Images/happy-face.png";
+import happy from "../../Images/happy.gif"
 
 export default function PositiveOutcome({ searchResult }) {
 	return (
 		<div className="outcome">
-			<img className="face" src={happyFace} alt="Sad emoji face" />
+			<img className="face" src={happy} alt="Happy emoji face"></img>
 			<p>You're good to go - enjoy your {searchResult}!</p>
 		</div>
 	);

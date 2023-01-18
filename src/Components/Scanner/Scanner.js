@@ -8,7 +8,9 @@ const Bscan = (props) => {
 
 	function onClick() {
 		props.updateBarcode(barcode);
+
 		props.setBarcodeScanner(!props.barcodeScanner);
+
 	}
 	//   useEffect(() => {
 	//     return () => {

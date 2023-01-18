@@ -38,12 +38,11 @@ export default function Search() {
 	const [noProductError, setNoProductError] = useState(false);
 	const [loadingSearch, setLoadingSearch] = useState(false);
 	const [barcodeScanner, setBarcodeScanner] = useState(false);
-	const [boolean, setBoolean] = useState(barcodeSearch)
 
 	function switchBarcode() {
 		setBarcodeScanner(!barcodeScanner);
 		setOutcome({ ...outcome, outcome: "default" });
-		setBoolean(barcodeSearch)
+		setSearch({ ...search, ...barcodeSearch });
 	}
 
 	function onChange(e) {

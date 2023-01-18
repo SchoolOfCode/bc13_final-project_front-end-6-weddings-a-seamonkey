@@ -22,10 +22,12 @@ export default function Search() {
 	};
 
 	const barcodeSearch = {
-		gluten:true,
-		fodmap:true,
-		lactose:true,
-	}
+
+		gluten: true,
+		fodmap: true,
+		lactose: true,
+	};
+
 
 	const initialOutcome = {
 		outcome: "default",
@@ -123,11 +125,15 @@ export default function Search() {
 			{barcodeScanner === false ? (
 				<div>
 					<div className="searchCheckbox">
-					{noProductError === true ? (
-						<p className="no-product-error">Product not found. Please try again</p>
-					) : (
-						<></>
-					)}
+
+						{noProductError === true ? (
+							<p className="no-product-error">
+								Product not found. Please try again
+							</p>
+						) : (
+							<></>
+						)}
+
 						<p>Choose all that apply:</p>
 						<div className="toggle">
 							<label className="switch">
@@ -141,7 +147,7 @@ export default function Search() {
 								<input type="checkbox" onClick={fodmapChecked}></input>
 								<span className="slider round"></span>
 							</label>
-							<span>Low FODMAPs</span>
+							<span>Low FODMAP</span>
 						</div>
 						<div className="toggle">
 							<label className="switch">
@@ -162,7 +168,13 @@ export default function Search() {
 				</div>
 			) : (
 				<div>
-					<Bscan updateBarcode={updateBarcode} switchBarcode={switchBarcode} />
+
+					<Bscan
+						barcodeScanner={barcodeScanner}
+						setBarcodeScanner={setBarcodeScanner}
+						updateBarcode={updateBarcode}
+						switchBarcode={switchBarcode}
+					/>
 				</div>
 			)}
 

@@ -6,31 +6,39 @@ export default function About() {
     return (
 <div className="about-section">
    
-        <h1>Why use FoodMap?</h1>
+        <h1>Welcome to FoodMap</h1>
 
         <h2>Do you find it difficult to shop for your dietary requirements?</h2>
 
-        <p>Over 15 million people in the UK live with a chronic health condition. Some of these conditions, such as IBS or Diverticulitis, are managed using dietary restrictions.</p>
+        <p>Over 15 million people in the UK live with a chronic health condition. Some of these conditions, such as Endometriosis and IBS, can be helped by adhering to a specific diet.</p>
         
-        <p>But what if your dietary restrictions are not, technically, allergens? Packaging in supermarkets can be hard to interpret and there are so many variables to consider, that shopping for even basic foodstuffs can be overwhelming.</p>
+        <h2>What's the problem?</h2>
+        
+        <p>Packaging in supermarkets can be hard to interpret and there are so many variables to consider, that shopping for even basic foodstuffs can feel overwhelming.</p>
 
-        <p>Here is an example of the ingredients for a product with the <strong>allergens higlighted in bold:</strong></p>
+        <h2>Example</h2>
+        
+        <p>Here is an example of the ingredients for a product with the <strong>allergens</strong> higlighted in bold:</p>
 
         <img src={ingredients} alt="ingredients" className="ingredients"></img>
 
-        <p>What if, for example, you have been advised to follow the low FODMAP diet? You may be asked to avoid ingredients that are high in FODMAPs. Foods which are high in FODMAPs are underlined in the ingredients list in red:</p>
+        <p>But what if you have been advised to follow a low FODMAP diet?</p>
+        
+        <p>You will be asked to avoid ingredients that are high in FODMAPs. This includes not only higlighted allergens such as <strong>wheat,</strong> <strong>milk</strong> and <strong>celery</strong>, but also ingredients that are not highlighted in bold.</p>
+        
+        <p>Foods which are high in FODMAPs are underlined in red:</p>
 
         <img src={ingredientsRed} alt="ingredients with red underline" className="ingredients-red"></img>
 
-        <p>Navigating a diet without this key information can make shopping for food a frustrating task.</p>
+        <p>As you can see, it's hard to pick out the ingredients you're trying to avoid.</p>
 
-        <h2>That's where FoodMap comes in!</h2>
-
-        <p>Whether you have Crohn's, Ulcerative Colitis, Diverticulitis, Endometriosis, IBS (or any gut-impacted health conditions), following a specific diet as set out by your GP or a Dietician can help.</p>
+        <h2>That's where FoodMap helps!</h2>
         
-        <p>FoodMap is designed to help you work out whether the food you're buying works with your dietary requirements.</p>
+        <p>FoodMap is designed to help you work out whether the food you're buying fits with your dietary requirements.</p>
 
-        <p>Please note: FoodMaps is not intended as a medical or diagnostic device. Always follow the guidance of your GP or a Dietician when following a restrictive or limiting diet.</p>
+        <p>You simply scan or enter the name of the product you're considering buying, and FoodMap will return a happy or sad face to let you know if you can eat it or not - simple!</p>
+
+        <p>Please note: FoodMap is not intended as a medical or diagnostic device. Always follow the guidance of your GP or a Dietician when following a restrictive or limiting diet.</p>
         
             <h2>Who are You?</h2>
                 <p>FoodMap was developed by a team of Bootcampers from School of Code as a 4-week project.</p>

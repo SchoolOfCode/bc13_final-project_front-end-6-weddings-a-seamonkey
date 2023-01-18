@@ -38,32 +38,32 @@ export default function About() {
         <h2>Meet Our Team!</h2>
     
             <h3>Rachel Morris</h3>
-            <p className="heading">SoC Bootcamper</p>
+            <p>SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
     
 
             <h3>Luke Alexander</h3>
-            <p className="heading">SoC Bootcamper</p>
+            <p>SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
    
 
             <h3>Violeta Cique Fernández</h3>
-            <p className="heading">SoC Bootcamper</p>
+            <p>SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
          
 
             <h3>Steven Collins</h3>
-            <p className="heading">SoC Bootcamper</p>
+            <p>SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                
 
             <h3>Daniel B</h3>
-            <p className="heading">SoC Bootcamper</p>
+            <p>SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                
             
             <h3>Martha Bennett</h3>
-            <p className="heading">SoC Bootcamper</p>
+            <p>SoC Bootcamper</p>
             <p>Some text that describes me lorem ipsum ipsum lorem.</p>
             
 </div> )}

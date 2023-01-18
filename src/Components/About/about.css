@@ -1,10 +1,19 @@
   .about-section {
-    padding: 50px;
-    text-align: center;
+    padding: 20px;
+    text-align: left;
+
     background-color: var(--background-color);
   }
   
   .heading {
     color: var(--font-color);
+    text-align: center;
+    padding: 20px;
+  }
+
+  .subheading {
+    text-align: center;
+    padding: 20px;
+
   }
   

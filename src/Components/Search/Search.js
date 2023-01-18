@@ -147,7 +147,7 @@ export default function Search() {
 								<input type="checkbox" onClick={fodmapChecked}></input>
 								<span className="slider round"></span>
 							</label>
-							<span>Low FODMAPs</span>
+							<span>Low FODMAP</span>
 						</div>
 						<div className="toggle">
 							<label className="switch">
@@ -175,7 +175,6 @@ export default function Search() {
 						updateBarcode={updateBarcode}
 						switchBarcode={switchBarcode}
 					/>
-
 				</div>
 			)}
 

@@ -36,6 +36,7 @@ export default function Search() {
 	function switchBarcode() {
 		setBarcodeScanner(!barcodeScanner);
 		setOutcome({ ...outcome, outcome: "default" });
+		setSearch(initialSearch)
 	}
 
 	function onChange(e) {

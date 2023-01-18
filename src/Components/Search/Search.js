@@ -121,14 +121,14 @@ export default function Search() {
 				></input>
 				<button onClick={switchBarcode}>Barcode?</button>
 			</div>
-			{noProductError === true ? (
-				<p className="no-product-error">Product not found. Please try again</p>
-			) : (
-				<></>
-			)}
 			{barcodeScanner === false ? (
 				<div>
 					<div className="searchCheckbox">
+					{noProductError === true ? (
+						<p className="no-product-error">Product not found. Please try again</p>
+					) : (
+						<></>
+					)}
 						<p>Choose all that apply:</p>
 						<div className="toggle">
 							<label className="switch">

@@ -5,7 +5,6 @@
     justify-content: center;
     color: var(--font-color);
     background-color: var(--background-color);
-  
   }
 
   .heading {
@@ -20,8 +19,9 @@
   }
 
   .paragraph {
-    text-align: center;
+    text-align: left;
     background-color: #D4EDDD;
+    padding: 20px;
   }
 
   .search-bar {

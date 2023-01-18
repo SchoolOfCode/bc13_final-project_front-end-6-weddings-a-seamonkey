@@ -6,17 +6,17 @@ export default function About() {
     return (
 <div className="about-section">
    
-        <h1>Welcome to FoodMap</h1>
+        <h1 className="heading">Welcome to FoodMap</h1>
 
-        <h2>Do you find it difficult to shop for your dietary requirements?</h2>
+        <h2 className="subheading">Do you find it difficult to shop for your dietary requirements?</h2>
 
         <p>Over 15 million people in the UK live with a chronic health condition. Some of these conditions, such as Endometriosis and IBS, can be helped by adhering to a specific diet.</p>
         
-        <h2>What's the problem?</h2>
+        <h2 className="subheading">What's the problem?</h2>
         
         <p>Packaging in supermarkets can be hard to interpret and there are so many variables to consider, that shopping for even basic foodstuffs can feel overwhelming.</p>
 
-        <h2>Example</h2>
+        <h2 className="subheading">Example</h2>
         
         <p>Here is an example of the ingredients for a product with the <strong>allergens</strong> higlighted in bold:</p>
 
@@ -32,7 +32,7 @@ export default function About() {
 
         <p>As you can see, it's hard to pick out the ingredients you're trying to avoid.</p>
 
-        <h2>That's where FoodMap helps!</h2>
+        <h2 className="subheading">That's where FoodMap helps!</h2>
         
         <p>FoodMap is designed to help you work out whether the food you're buying fits with your dietary requirements.</p>
 
@@ -40,10 +40,10 @@ export default function About() {
 
         <p>Please note: FoodMap is not intended as a medical or diagnostic device. Always follow the guidance of your GP or a Dietician when following a restrictive or limiting diet.</p>
         
-            <h2>Who are You?</h2>
+            <h2 className="subheading">Who are You?</h2>
                 <p>FoodMap was developed by a team of Bootcampers from School of Code as a 4-week project.</p>
 
-        <h2>Meet Our Team!</h2>
+        <h2 className="subheading">Meet Our Team!</h2>
     
             <h3>Rachel Morris</h3>
             <p>SoC Bootcamper</p>

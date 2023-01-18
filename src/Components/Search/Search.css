@@ -12,14 +12,16 @@
     display: flex;
     /* flex-direction: column; */
     gap: 5px;
-    width: 90%;
+    width: 85%;
     max-width: 500px;
     border-radius: 15px;
     background-color: var(--content-color);
     box-shadow: 0px 4px 4px var(--font-color);
     padding: 5px 20px;
     margin: 0;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    padding: 20px;
 }
 
 .search > input {
@@ -31,7 +33,7 @@
         border-radius: 15px;
         background-color: var(--content-color);
         border-style: none;
-    font-size: calc(8px + 2vmin);
+    font-size: calc(16px + 2vmin);
 }
 
 .search>input:focus {
@@ -49,9 +51,13 @@
 /* CSS for magnifing glass */
 .search > img {
     height: auto;
-    width: 8%;
+    width: 10%;
     /* transform: translate(-120%, 0%); */
     /* margin-left: -12%; */
+}
+
+.p {
+  font-size: 16px
 }
 
 /* CSS for the div of the toggle button */
@@ -63,9 +69,8 @@
   border-radius: 15px;
   background-color: var(--content-color);
   border-style: none;
-  box-shadow: 0px 4px 4px var(--font-color);
   padding: 5px 20px;
-  font-size: calc(8px + 2vmin);
+  font-size: calc(14px + 2vmin);
 }
 
 /* CSS for toggle button */
@@ -133,10 +138,9 @@
 
   .search-button {
     border-radius: 15px;
-    background-color: var(--content-color);
-    box-shadow: 0px 4px 4px var(--font-color);
+    background-color: rgb(92, 194, 87);
     padding: 5px 20px;
-    font-size: calc(4px + 2vmin);
+    font-size: calc(16px + 2vmin);
     color: var(--font-color);
     margin-bottom: 20px;
 
@@ -148,6 +152,5 @@
 /* } */
 
 .search-button:active {
-      box-shadow: 0px 0px 0px var(--font-color);
       background-color: var(--toggle);
 }

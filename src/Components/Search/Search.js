@@ -4,7 +4,6 @@ import DefaultOutcome from './DefaultOutcome.js';
 import magnifying from '../../Images/magnifying-dark.png';
 import './Search.css';
 import { useState } from 'react';
-import AuthenticationButton from '../Login-Logout/AuthenticationButton.js';
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 export default function Search() {
@@ -90,7 +89,6 @@ export default function Search() {
 
   return (
     <div className="searchComponent">
-      <AuthenticationButton />
       <div className="search">
         <img src={magnifying} alt="Magnifying glass" onClick={onClick} />
         <input

@@ -5,10 +5,12 @@
     justify-content: center;
     color: var(--font-color);
     background-color: var(--background-color);
+
   }
 
   .heading {
     padding: 20px;
+
     text-align: center;
     background-color: #D4EDDD;
   }
@@ -19,9 +21,11 @@
   }
 
   .paragraph {
+
     text-align: left;
     background-color: #D4EDDD;
     padding: 20px;
+
   }
 
   .search-bar {

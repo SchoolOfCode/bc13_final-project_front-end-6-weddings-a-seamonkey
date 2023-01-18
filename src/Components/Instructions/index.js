@@ -10,10 +10,12 @@ function Instructions() {
 	return (
 		<div
 			className="instructions">
+
 			
 			<h1 className="heading">How to use FoodMap</h1>
 			
 			<h2 className="subheading">What does the app do?</h2>
+
 			<p className="paragraph">This app is designed to help you navigate dietary requirements in a supermarket setting.</p>
 		
 
@@ -41,7 +43,7 @@ function Instructions() {
 			<img src={sadFace} alt="sad face" className="sad-face"></img>
 			<p className="paragraph">Happy shopping!</p>																					
 		</div>
-		
+
 	);
 }
 

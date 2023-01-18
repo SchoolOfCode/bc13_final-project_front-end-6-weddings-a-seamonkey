@@ -4,15 +4,30 @@ import DefaultOutcome from "./DefaultOutcome.js";
 import magnifying from "../../Images/magnifying-dark.png";
 import "./Search.css";
 import { useState } from "react";
+import { Cameraswitch } from "@mui/icons-material";
+import Bscan from "../Scanner/Scanner.js";
+
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
 
 export default function Search() {
+	function updateBarcode(barcode) {
+		setSearch({ ...search, searchTerm: barcode });
+	}
+
 	const initialSearch = {
 		searchTerm: "",
 		gluten: true,
 		fodmap: true,
 		lactose: true,
 	};
+
+	const barcodeSearch = {
+
+		gluten: true,
+		fodmap: true,
+		lactose: true,
+	};
+
 
 	const initialOutcome = {
 		outcome: "default",
@@ -24,6 +39,13 @@ export default function Search() {
 	const [outcome, setOutcome] = useState(initialOutcome);
 	const [noProductError, setNoProductError] = useState(false);
 	const [loadingSearch, setLoadingSearch] = useState(false);
+	const [barcodeScanner, setBarcodeScanner] = useState(false);
+
+	function switchBarcode() {
+		setBarcodeScanner(!barcodeScanner);
+		setOutcome({ ...outcome, outcome: "default" });
+		setSearch({ ...search, ...barcodeSearch });
+	}
 
 	function onChange(e) {
 		const newSearchTerm = e.target.value;
@@ -85,6 +107,7 @@ export default function Search() {
 				setNoProductError(true);
 			}
 		}
+		setSearch({ ...search, searchTerm: "" });
 	}
 
 	return (
@@ -95,46 +118,64 @@ export default function Search() {
 					type="text"
 					placeholder="Find by food or barcode"
 					onChange={onChange}
+					value={search.searchTerm}
 				></input>
+				<button onClick={switchBarcode}>Barcode?</button>
 			</div>
+			{barcodeScanner === false ? (
+				<div>
+					<div className="searchCheckbox">
 
-			{noProductError === true ? (
-				<p className="no-product-error">Product not found. Please try again</p>
-			) : (
-				<></>
-			)}
+						{noProductError === true ? (
+							<p className="no-product-error">
+								Product not found. Please try again
+							</p>
+						) : (
+							<></>
+						)}
 
-			<p>Choose any that apply:</p>
-			<div className="searchCheckbox">
-				<div className="toggle">
-					<label className="switch">
-						<input type="checkbox" onClick={glutenChecked}></input>
-						<span className="slider round"></span>
-					</label>
-					<span className="toggleText">Gluten Free</span>
+						<p>Choose all that apply:</p>
+						<div className="toggle">
+							<label className="switch">
+								<input type="checkbox" onClick={glutenChecked}></input>
+								<span className="slider round"></span>
+							</label>
+							<span className="toggleText">Gluten Free</span>
+						</div>
+						<div className="toggle">
+							<label className="switch">
+								<input type="checkbox" onClick={fodmapChecked}></input>
+								<span className="slider round"></span>
+							</label>
+							<span>Low FODMAP</span>
+						</div>
+						<div className="toggle">
+							<label className="switch">
+								<input type="checkbox" onClick={lactoseChecked}></input>
+								<span className="slider round"></span>
+							</label>
+							<span>Lactose Free</span>
+						</div>
+					</div>
+					<button className="search-button" onClick={onClick}>
+						Can I eat this?
+					</button>
+					{loadingSearch === true ? (
+						<p className="loading-msg">Loading...</p>
+					) : (
+						<></>
+					)}
 				</div>
-				<div className="toggle">
-					<label className="switch">
-						<input type="checkbox" onClick={fodmapChecked}></input>
-						<span className="slider round"></span>
-					</label>
-					<span>Low FODMAP</span>
-				</div>
-				<div className="toggle">
-					<label className="switch">
-						<input type="checkbox" onClick={lactoseChecked}></input>
-						<span className="slider round"></span>
-					</label>
-					<span>Lactose Free</span>
-				</div>
-			</div>
-			<button className="search-button" onClick={onClick}>
-				Can I eat this?
-			</button>
-			{loadingSearch === true ? (
-				<p className="loading-msg">Loading...</p>
 			) : (
-				<></>
+				<div>
+
+					<Bscan
+						barcodeScanner={barcodeScanner}
+						setBarcodeScanner={setBarcodeScanner}
+						updateBarcode={updateBarcode}
+						switchBarcode={switchBarcode}
+					/>
+				</div>
 			)}
 
 			<div className="display-outcome">
@@ -148,5 +189,4 @@ export default function Search() {
 			</div>
 		</div>
 	);
-
 }

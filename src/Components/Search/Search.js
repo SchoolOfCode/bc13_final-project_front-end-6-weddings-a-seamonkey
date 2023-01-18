@@ -21,6 +21,12 @@ export default function Search() {
 		lactose: true,
 	};
 
+	const barcodeSearch = {
+		gluten:true,
+		fodmap:true,
+		lactose:true,
+	}
+
 	const initialOutcome = {
 		outcome: "default",
 		reason: [],
@@ -32,11 +38,12 @@ export default function Search() {
 	const [noProductError, setNoProductError] = useState(false);
 	const [loadingSearch, setLoadingSearch] = useState(false);
 	const [barcodeScanner, setBarcodeScanner] = useState(false);
+	const [boolean, setBoolean] = useState(barcodeSearch)
 
 	function switchBarcode() {
 		setBarcodeScanner(!barcodeScanner);
 		setOutcome({ ...outcome, outcome: "default" });
-		setSearch(initialSearch)
+		setBoolean(barcodeSearch)
 	}
 
 	function onChange(e) {

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './style.css'
 import { Box, Button, Drawer, List, ListItem } from '@mui/material';
 import { Dehaze } from '@mui/icons-material';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 
 export default function TemporaryDrawer() {
@@ -23,7 +24,7 @@ export default function TemporaryDrawer() {
       
     >
       <List >
-        {[{id:0, label:'Search', route:"/"}, {id:1, label:'About', route:"/about"}, {id:2, label:'Instructions', route:"/instructions"}].map((text) => (
+        {[{id:0, label:'Search', route:"/"}, {id:1, label:'About', route:"/about"}, {id:2, label:'Instructions', route:"/instructions"},{id:3, label:'login',route:"/Login"}].map((text) => (
           <ListItem key={text.id}>
             <Link className="label" to={text.route}>{text.label}</Link>
           </ListItem>

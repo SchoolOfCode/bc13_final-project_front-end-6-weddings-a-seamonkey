@@ -11,13 +11,15 @@ import {
 import Search from './Components/Search/Search.js';
 import About from './Components/About/index.js';
 import Instructions from './Components/Instructions/index.js';
-
+import AuthenticationButton from './Components/Login-Logout/AuthenticationButton.js';
+import LoginButton from './Components/Login-Logout/LoginButton.js';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<App />}>
       <Route path="/" element={<Search />} />
       <Route path="/about" element={<About />} />
       <Route path="/instructions" element={<Instructions />} />
+      <Route path="/Login" element={<LoginButton />} />
     </Route>
   )
 );

@@ -52,7 +52,7 @@ export default function About() {
 
             <h3>Luke Alexander</h3>
             <p>SoC Bootcamper</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>Luke spent five years in the civil service working as a debt management adviser before deciding to make a career switch and re-training as a software developer. He wants to use the communication skills gained from thousands of difficult conversations with taxpayers and apply them in an exciting field where he can collaborate on projects that make a difference in the world.</p>
    
 
             <h3>Violeta Cique Fernández</h3>
@@ -72,6 +72,6 @@ export default function About() {
             
             <h3>Martha Bennett</h3>
             <p>SoC Bootcamper</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>Martha studied Education at University before launching her own education business in China and Hong Kong. Six years on, she has worked with some great developers and is curious to find out more about coding</p>
             
 </div> )}

@@ -6,10 +6,16 @@ import "./Search.css";
 import { useState } from "react";
 import { Cameraswitch } from "@mui/icons-material";
 import Bscan from "../Scanner/Scanner.js";
-
+import { useAuth0 } from "@auth0/auth0-react";
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
 
 export default function Search() {
+
+	//   const { user } = useAuth0()
+	//   const {sub} = user
+	   const { isAuthenticated } = useAuth0();
+
+
 	function updateBarcode(barcode) {
 		setSearch({ ...search, searchTerm: barcode });
 	}
@@ -110,6 +116,10 @@ export default function Search() {
 		setSearch({ ...search, searchTerm: "" });
 	}
 
+	function addNewListItem(){
+	//	console.log(user)
+	}
+
 	return (
 		<div className="searchComponent">
 			<div className="search">
@@ -186,6 +196,9 @@ export default function Search() {
 				) : (
 					<PositiveOutcome searchResult={outcome.productName} />
 				)}
+			</div>
+			<div>
+				{isAuthenticated ? (<button onClick={addNewListItem}>Add to list</button>) : (<p></p>)}
 			</div>
 		</div>
 	);

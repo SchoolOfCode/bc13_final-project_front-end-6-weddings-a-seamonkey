@@ -42,7 +42,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-test('I can eat Crumpets if no allergies are selected', async () => {
+test('I can eat Crumpets if no allergies are selected, positive outcome displays with happy face', async () => {
   server.use(
     rest.get('/api/foods/crumpet', (req, res, ctx) => {
       return res(
@@ -70,7 +70,9 @@ test('I can eat Crumpets if no allergies are selected', async () => {
   await screen.findByTestId('positive-outcome');
   const pPositive = screen.getByTestId('positive-outcome');
   expect(pPositive).toHaveTextContent('warburtons crumpets');
-  // add happy face here ^^
+  await screen.findByTestId('happy-face');
+  const happyFace = screen.getByTestId('happy-face');
+  expect(happyFace).toBeInTheDocument();
 });
 
 // Test that gluten, fodmap and lactose are true when rendering page

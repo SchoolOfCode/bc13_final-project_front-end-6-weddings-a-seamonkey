@@ -1,7 +1,7 @@
-  .about-section {
+.about-section {
     padding: 20px;
     text-align: left;
-
+    padding-bottom: 100px;
     background-color: var(--background-color);
   }
   
@@ -15,5 +15,19 @@
     text-align: center;
     padding: 20px;
 
+  }
+
+  .ingredients {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .ingredients-red {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
   }
   

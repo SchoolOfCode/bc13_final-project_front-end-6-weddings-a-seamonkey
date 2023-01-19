@@ -137,21 +137,33 @@ YAGNI => You Ain't Gonna Need It
             <p>Choose all that apply:</p>
             <div className="toggle">
               <label className="switch">
-                <input type="checkbox" data-testid="gluten-toggle" onClick={glutenChecked}></input>
+                <input
+                  type="checkbox"
+                  data-testid="gluten-toggle"
+                  onClick={glutenChecked}
+                ></input>
                 <span className="slider round"></span>
               </label>
               <span className="toggleText">Gluten Free</span>
             </div>
             <div className="toggle">
               <label className="switch">
-                <input type="checkbox" onClick={fodmapChecked}></input>
+                <input
+                  type="checkbox"
+                  data-testid="fodmap-toggle"
+                  onClick={fodmapChecked}
+                ></input>
                 <span className="slider round"></span>
               </label>
               <span>Low FODMAP</span>
             </div>
             <div className="toggle">
               <label className="switch">
-                <input type="checkbox" onClick={lactoseChecked}></input>
+                <input
+                  type="checkbox"
+                  data-testid="lactose-toggle"
+                  onClick={lactoseChecked}
+                ></input>
                 <span className="slider round"></span>
               </label>
               <span>Lactose Free</span>

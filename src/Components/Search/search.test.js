@@ -266,3 +266,17 @@ test('I can eat strawberries even if gluten, fodmap and lactose toggles are sele
   const happyFace = screen.getByTestId('happy-face');
   expect(happyFace).toBeInTheDocument();
 });
+
+/*
+Test gluten toggle - Only contain gluten: tesco spaghetti
+^^Can also test fodmap and lactose with positive outcome
+
+Test fodmap toggle - Only contain fodmap: NO PRODUCT
+^^Can also test gluten and lactose with positive outcome
+
+Test lactose toggle - Only contain lactose: nutella
+^^Can also test fodmap and gluten with positive outcome
+
+Test all toggles -  Contains everything: crumpets
+                    Contains nothing: strawberries
+*/

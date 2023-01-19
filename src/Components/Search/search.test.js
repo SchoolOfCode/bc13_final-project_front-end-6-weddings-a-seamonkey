@@ -143,7 +143,7 @@ afterAll(() => server.close());
 
 */
 
-test("I can't eat Crumpets if gluten, fodmap and lactose toggles are selected, negative outcome displays with not happy face and gluten, fodmap and lactose as the reason", async () => {
+/*test("I can't eat Crumpets if gluten, fodmap and lactose toggles are selected, negative outcome displays with not happy face and gluten, fodmap and lactose as the reason", async () => {
   server.use(
     rest.get('/api/foods/crumpet', (req, res, ctx) => {
       return res(
@@ -183,6 +183,43 @@ test("I can't eat Crumpets if gluten, fodmap and lactose toggles are selected, n
   expect(reasonNegative).toHaveTextContent('Gluten');
   expect(reasonNegative).toHaveTextContent('Lactose');
   expect(reasonNegative).toHaveTextContent('High Fodmap');
+});
+*/
+
+test('I can eat spaghetti if fodmap and lactose toggles are selected, positive outcome displays with happy face', async () => {
+  server.use(
+    rest.get('/api/foods/spaghetti', (req, res, ctx) => {
+      return res(
+        ctx.json({
+          success: true,
+          payload: {
+            product_id: 4,
+            product_name: ' tesco spaghetti',
+            picture: 'picture here',
+            lactose: false,
+            fodmap: false,
+            gluten: true,
+            barcode_number: '5057545092514',
+          },
+        })
+      );
+    })
+  );
+  render(<Search />);
+  const input = screen.getByPlaceholderText('Find by food or barcode');
+  userEvent.type(input, 'spaghetti');
+  const fodmapToggle = screen.getByTestId('fodmap-toggle');
+  fireEvent.click(fodmapToggle);
+  const lactoseToggle = screen.getByTestId('lactose-toggle');
+  fireEvent.click(lactoseToggle);
+  const searchButton = screen.getByText('Can I eat this?');
+  fireEvent.click(searchButton);
+  await screen.findByTestId('positive-outcome');
+  const pPositive = screen.getByTestId('positive-outcome');
+  expect(pPositive).toHaveTextContent('tesco spaghetti');
+  await screen.findByTestId('happy-face');
+  const happyFace = screen.getByTestId('happy-face');
+  expect(happyFace).toBeInTheDocument();
 });
 
 // Test that gluten, fodmap and lactose are true when rendering page

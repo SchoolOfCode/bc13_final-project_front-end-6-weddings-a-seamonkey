@@ -5,7 +5,6 @@ import ingredientsRed from '../../Images/ingredients-red.png';
 export default function About() {
     return (
 <div className="about-section">
-   
 
         <h1 className="heading">Welcome to FoodMap</h1>
 
@@ -30,7 +29,7 @@ export default function About() {
         <p>Foods which are high in FODMAPs are underlined in red:</p>
 
         <img src={ingredientsRed} alt="ingredients with red underline" className="ingredients-red"></img>
-
+        
         <p>As you can see, it's hard to pick out the ingredients you're trying to avoid.</p>
 
         <h2 className="subheading">That's where FoodMap helps!</h2>
@@ -63,7 +62,7 @@ export default function About() {
 
             <h3>Steven Collins</h3>
             <p>SoC Bootcamper</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>Before School of Code Steve worked for a global organisation for 16 years. He started in customer services and had various roles over that time, the last role Steve had was a Site Manager for a factory. Having solved problems throughout his career and a passion for tech Steve has decided to change careers to follow that passion and become a software developer.</p>
                
 
             <h3>Daniel B</h3>
@@ -73,7 +72,7 @@ export default function About() {
             
             <h3>Martha Bennett</h3>
             <p>SoC Bootcamper</p>
-            <p>Martha studied Education at University before launching her own education business in China and Hong Kong. Six years on, she has worked with some great developers and is curious to find out more about coding</p>
+            <p>Martha studied Education at University before founding an edtech business in China, Hong Kong and the UK. Six years on, she has worked with some great developers and is curious to find out more about coding.</p>
 
             
 </div> )}

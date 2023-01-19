@@ -5,9 +5,11 @@ import { Box, Button, Drawer, List, ListItem } from '@mui/material';
 import { Dehaze } from '@mui/icons-material';
 import { Auth0Provider } from '@auth0/auth0-react';
 import AuthenticationButton from '../../Components/Login-Logout/AuthenticationButton.js';
+import { useAuth0 } from '@auth0/auth0-react';
 
 
 export default function TemporaryDrawer() {
+  const { isAuthenticated } = useAuth0();
   const [state, setState] = React.useState(false,);
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -25,7 +27,7 @@ export default function TemporaryDrawer() {
       
     >
       <List >
-        {[{id:0, label:'Search', route:"/"}, {id:1, label:'About', route:"/about"}, {id:2, label:'Instructions', route:"/instructions"}, {id:3, label:'login',route:"/Login"} ].map((text) => (
+        {[{id:0, label:'Search', route:"/"}, {id:1, label:'About', route:"/about"}, {id:2, label:'Instructions', route:"/instructions"}, isAuthenticated ?{id:3, label:'Logout',route:"/Login"}:{id:3, label:'Login',route:"/Login"} ].map((text) => (
           <ListItem key={text.id}>
             <Link className="label" to={text.route}>{text.label}</Link>
           </ListItem>

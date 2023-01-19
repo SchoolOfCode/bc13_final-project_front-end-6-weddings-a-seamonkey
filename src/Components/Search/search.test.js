@@ -186,7 +186,7 @@ afterAll(() => server.close());
 });
 */
 
-test('I can eat spaghetti if fodmap and lactose toggles are selected, positive outcome displays with happy face', async () => {
+/*test('I can eat spaghetti if fodmap and lactose toggles are selected, positive outcome displays with happy face', async () => {
   server.use(
     rest.get('/api/foods/spaghetti', (req, res, ctx) => {
       return res(
@@ -221,9 +221,48 @@ test('I can eat spaghetti if fodmap and lactose toggles are selected, positive o
   const happyFace = screen.getByTestId('happy-face');
   expect(happyFace).toBeInTheDocument();
 });
+*/
 
 // Test that gluten, fodmap and lactose are true when rendering page
 // data-testid="gluten-toggle" click and check Negative outcome displays - look for "li" that says "gluten", and check the face is not happy
 // Write a test that breaks first and then fix it
 // Two test for fodmap, two for lactose and two for gluten (positive and negative)
 // Check that there is no bug when gluten is checked if product contains all of it, change fodmap and lactose to false here ^^ to check that we are testing correctly - Change back to true afterwards obvs
+
+test('I can eat strawberries even if gluten, fodmap and lactose toggles are selected, positive outcome displays with happy face', async () => {
+  server.use(
+    rest.get('/api/foods/spaghetti', (req, res, ctx) => {
+      return res(
+        ctx.json({
+          success: true,
+          payload: {
+            product_id: 9,
+            product_name: 'tesco strawberries',
+            picture: 'picture here',
+            lactose: false,
+            fodmap: false,
+            gluten: false,
+            barcode_number: '03223529',
+          },
+        })
+      );
+    })
+  );
+  render(<Search />);
+  const input = screen.getByPlaceholderText('Find by food or barcode');
+  userEvent.type(input, 'strawberries');
+  const fodmapToggle = screen.getByTestId('fodmap-toggle');
+  fireEvent.click(fodmapToggle);
+  const lactoseToggle = screen.getByTestId('lactose-toggle');
+  fireEvent.click(lactoseToggle);
+  const glutenToggle = screen.getByTestId('gluten-toggle');
+  fireEvent.click(glutenToggle);
+  const searchButton = screen.getByText('Can I eat this?');
+  fireEvent.click(searchButton);
+  await screen.findByTestId('positive-outcome');
+  const pPositive = screen.getByTestId('positive-outcome');
+  expect(pPositive).toHaveTextContent('tesco strawberries');
+  await screen.findByTestId('happy-face');
+  const happyFace = screen.getByTestId('happy-face');
+  expect(happyFace).toBeInTheDocument();
+});

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Cameraswitch } from "@mui/icons-material";
 import Bscan from "../Scanner/Scanner.js";
 import { useAuth0 } from "@auth0/auth0-react";
+import { AddToList } from "./AddToList.js";
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
 
 export default function Search() {
@@ -116,9 +117,6 @@ export default function Search() {
 		setSearch({ ...search, searchTerm: "" });
 	}
 
-	function addNewListItem(){
-	//	console.log(user)
-	}
 
 	return (
 		<div className="searchComponent">
@@ -198,7 +196,7 @@ export default function Search() {
 				)}
 			</div>
 			<div>
-				{isAuthenticated ? (<button onClick={addNewListItem}>Add to list</button>) : (<p></p>)}
+				{isAuthenticated ? (<AddToList searchResult={search.searchTerm}/>) : (<p></p>)}
 			</div>
 		</div>
 	);

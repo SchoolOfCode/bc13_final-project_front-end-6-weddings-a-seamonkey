@@ -106,8 +106,7 @@ const server = setupServer(
         },
       })
     );
-  }),
-
+  })
 );
 
 beforeAll(() => server.listen());
@@ -117,7 +116,7 @@ afterAll(() => server.close());
 describe('Testing for negative outcome when gluten, fodmap or lactose are checked and they are the only intolerance', () => {
   test("I can't eat Gluten Food if gluten toggle is selected, negative outcome displays with not happy face and gluten as a reason", async () => {
     render(<Search />);
-    const input = screen.getByPlaceholderText('Find by food or barcode');
+    const input = screen.getByTestId('search-input');
     userEvent.type(input, 'glutenfood');
     const glutenToggle = screen.getByTestId('gluten-toggle');
     fireEvent.click(glutenToggle);
@@ -134,7 +133,7 @@ describe('Testing for negative outcome when gluten, fodmap or lactose are checke
   });
   test("I can't eat Lactose Food if lactose toggle is selected, negative outcome displays with not happy face and lactose as a reason", async () => {
     render(<Search />);
-    const input = screen.getByPlaceholderText('Find by food or barcode');
+    const input = screen.getByTestId('search-input');
     userEvent.type(input, 'lactosefood');
     const lactoseToggle = screen.getByTestId('lactose-toggle');
     fireEvent.click(lactoseToggle);
@@ -151,7 +150,7 @@ describe('Testing for negative outcome when gluten, fodmap or lactose are checke
   });
   test("I can't eat Fodmap Food if fodmap toggle is selected, negative outcome displays with not happy face and fodmap as a reason", async () => {
     render(<Search />);
-    const input = screen.getByPlaceholderText('Find by food or barcode');
+    const input = screen.getByTestId('search-input');
     userEvent.type(input, 'fodmapfood');
     const fodmapToggle = screen.getByTestId('fodmap-toggle');
     fireEvent.click(fodmapToggle);
@@ -171,7 +170,7 @@ describe('Testing for negative outcome when gluten, fodmap or lactose are checke
 describe('Testing for positive outcome when gluten, fodmap or lactose are checked', () => {
   test('I can eat Gluten Food, but fodmap and lactose are checked, and expect a positive outcome', async () => {
     render(<Search />);
-    const input = screen.getByPlaceholderText('Find by food or barcode');
+    const input = screen.getByTestId('search-input');
     userEvent.type(input, 'glutenfood');
     const lactoseToggle = screen.getByTestId('lactose-toggle');
     fireEvent.click(lactoseToggle);
@@ -188,7 +187,7 @@ describe('Testing for positive outcome when gluten, fodmap or lactose are checke
   });
   test('I can eat Lactose Food, but fodmap and gluten are checked, and expect a positive outcome', async () => {
     render(<Search />);
-    const input = screen.getByPlaceholderText('Find by food or barcode');
+    const input = screen.getByTestId('search-input');
     userEvent.type(input, 'lactosefood');
     const glutenToggle = screen.getByTestId('gluten-toggle');
     fireEvent.click(glutenToggle);
@@ -205,7 +204,7 @@ describe('Testing for positive outcome when gluten, fodmap or lactose are checke
   });
   test('I can eat Fodmap Food, but gluten and lactose are checked, and expect a positive outcome', async () => {
     render(<Search />);
-    const input = screen.getByPlaceholderText('Find by food or barcode');
+    const input = screen.getByTestId('search-input');
     userEvent.type(input, 'fodmapfood');
     const lactoseToggle = screen.getByTestId('lactose-toggle');
     fireEvent.click(lactoseToggle);
@@ -225,7 +224,7 @@ describe('Testing for positive outcome when gluten, fodmap or lactose are checke
 describe('Testing no product and elements are present when rendering', () => {
   test('Product not found message appears when the searched product is not in the db', async () => {
     render(<Search />);
-    const input = screen.getByPlaceholderText('Find by food or barcode');
+    const input = screen.getByTestId('search-input');
     userEvent.type(input, 'noproduct');
     const searchButton = screen.getByText('Can I eat this?');
     fireEvent.click(searchButton);
@@ -245,10 +244,9 @@ describe('Testing no product and elements are present when rendering', () => {
   // Test that gluten, fodmap and lactose are true when rendering page - we don't know how to check this
 });
 
-
-test('testing when all toggles are selected and the product doesnt contain anything - expect positive response', async() => {
+test('testing when all toggles are selected and the product doesnt contain anything - expect positive response', async () => {
   render(<Search />);
-  const input = screen.getByPlaceholderText('Find by food or barcode');
+  const input = screen.getByTestId('search-input');
   userEvent.type(input, 'unchecked');
   const fodmapToggle = screen.getByTestId('fodmap-toggle');
   fireEvent.click(fodmapToggle);
@@ -264,11 +262,11 @@ test('testing when all toggles are selected and the product doesnt contain anyth
   await screen.findByTestId('happy-face');
   const HappyFace = screen.getByTestId('happy-face');
   expect(HappyFace).toBeInTheDocument();
-})
+});
 
-test('testing when all toggles are selected and the product contains everything - expect negative response', async() => {
+test('testing when all toggles are selected and the product contains everything - expect negative response', async () => {
   render(<Search />);
-  const input = screen.getByPlaceholderText('Find by food or barcode');
+  const input = screen.getByTestId('search-input');
   userEvent.type(input, 'checked');
   const fodmapToggle = screen.getByTestId('fodmap-toggle');
   fireEvent.click(fodmapToggle);
@@ -282,11 +280,10 @@ test('testing when all toggles are selected and the product contains everything 
   const pNegative = screen.getByTestId('negative-outcome');
   expect(pNegative).toHaveTextContent('all true');
   await screen.findByTestId('not-happy-face');
-  const reasonNegative = screen.getByTestId('not-happy-face');
-  expect(reasonNegative).toBeInTheDocument();
-  const reasonNeg = screen.getByTestId('negative-outcome-reason');
-  expect(reasonNeg).toHaveTextContent('Fodmap');
-  expect(reasonNeg).toHaveTextContent('Gluten');
-  expect(reasonNeg).toHaveTextContent('Lactose');
-})
-
+  const notHappyFace = screen.getByTestId('not-happy-face');
+  expect(notHappyFace).toBeInTheDocument();
+  const reasonNegative = screen.getByTestId('negative-outcome-reason');
+  expect(reasonNegative).toHaveTextContent('Fodmap');
+  expect(reasonNegative).toHaveTextContent('Gluten');
+  expect(reasonNegative).toHaveTextContent('Lactose');
+});

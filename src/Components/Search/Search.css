@@ -25,6 +25,7 @@
     margin: 0;
     margin-top: 50px;
     margin-bottom: 40px;
+
 }
 
 .search > input {
@@ -36,7 +37,9 @@
         border-radius: 15px;
         background-color: var(--content-color);
         border-style: none;
+
       font-size: 16px;
+
 }
 
 .search>input:focus {
@@ -59,6 +62,10 @@
     /* margin-left: -12%; */
 }
 
+.p {
+  font-size: 16px
+}
+
 /* CSS for the div of the toggle button */
 
 .toggle{
@@ -69,6 +76,8 @@
   background-color: var(--content-color);
   border-style: none;
   padding: 5px 20px;
+
+
 }
 
 /* CSS for toggle button */
@@ -136,9 +145,11 @@
 
   .search-button {
     border-radius: 15px;
+
     background-color: var(--toggle);
     padding: 5px 20px;
     color: var(--content-color);
+
     margin-bottom: 20px;
     font-size: 16px;
 

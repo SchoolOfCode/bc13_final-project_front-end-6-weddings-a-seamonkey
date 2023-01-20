@@ -1,7 +1,9 @@
+
 .about-section {
     padding: 20px;
     text-align: left;
     padding-bottom: 100px;
+
     background-color: var(--background-color);
   }
   
@@ -14,6 +16,7 @@
   .subheading {
     text-align: center;
     padding: 20px;
+
 
   }
 
@@ -29,5 +32,6 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+
   }
   

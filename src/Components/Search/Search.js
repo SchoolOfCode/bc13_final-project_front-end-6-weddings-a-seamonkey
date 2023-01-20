@@ -13,6 +13,7 @@ import { AddToList } from './AddToList.js';
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 export default function Search() {
+
   //   const { user } = useAuth0()
   //   const {sub} = user
   const { isAuthenticated } = useAuth0();
@@ -217,4 +218,5 @@ export default function Search() {
       </div>
     </div>
   );
+
 }

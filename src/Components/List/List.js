@@ -16,7 +16,9 @@ export default function List(){
 
             useEffect(()=>{GetList()},[])
             
+
     return (<><h1>Hello world its me margaret</h1>
+
             {array.map((item,index)=>{return <li key={index}>{item.product_name}</li>})}
             </>)
             

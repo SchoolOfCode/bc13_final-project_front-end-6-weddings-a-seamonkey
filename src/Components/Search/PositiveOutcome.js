@@ -1,12 +1,13 @@
-import "./outcome.css";
-import happy from "../../Images/happy.gif"
+import './outcome.css';
+import happy from '../../Images/happy.gif';
 
 export default function PositiveOutcome({ searchResult }) {
-	return (
-		<div className="outcome">
-			<img className="face" src={happy} alt="Happy emoji face"></img>
-			<p>You're good to go - enjoy your {searchResult}!</p>
-		</div>
-	);
-
+  return (
+    <div className="outcome">
+      <img data-testid="happy-face" className="face" src={happy} alt="Happy emoji face"></img>
+      <p data-testid="positive-outcome">
+        You're good to go - enjoy your {searchResult}!
+      </p>
+    </div>
+  );
 }

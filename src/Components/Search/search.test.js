@@ -18,18 +18,6 @@ import { fabClasses } from '@mui/material';
 //   expect(loading).toBeInTheDocument();
 // });
 
-//test barcode button work
-
-//if you call an item that is not suitable for gluten and other two you get correct output and a test for positive
-
-//product by name or barcode outcome contains name - type crumpet state contain crumpet
-
-//test outcome contains name and the reason - if tick gluten is displayed
-
-//test all states that they are using the correct initial states
-
-//test input not on database no product message
-
 const url = process.env.REACT_APP_SERVER_URL;
 
 const server = setupServer(
@@ -83,6 +71,9 @@ const server = setupServer(
         },
       })
     );
+  }),
+  rest.get(`${url}/api/foods/noproduct`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ success: true }));
   })
 );
 
@@ -144,10 +135,8 @@ describe('Testing for negative outcome when gluten, fodmap or lactose are checke
   });
 });
 
-
-
 describe('Testing for positive outcome when gluten, fodmap or lactose are checked', () => {
-  test("I can eat Gluten Food, but fodmap and lactose are checked, and expect a positive outcome", async () => {
+  test('I can eat Gluten Food, but fodmap and lactose are checked, and expect a positive outcome', async () => {
     render(<Search />);
     const input = screen.getByPlaceholderText('Find by food or barcode');
     userEvent.type(input, 'glutenfood');
@@ -164,7 +153,7 @@ describe('Testing for positive outcome when gluten, fodmap or lactose are checke
     const HappyFace = screen.getByTestId('happy-face');
     expect(HappyFace).toBeInTheDocument();
   });
-  test("I can eat Lactose Food, but fodmap and gluten are checked, and expect a positive outcome", async () => {
+  test('I can eat Lactose Food, but fodmap and gluten are checked, and expect a positive outcome', async () => {
     render(<Search />);
     const input = screen.getByPlaceholderText('Find by food or barcode');
     userEvent.type(input, 'lactosefood');
@@ -181,7 +170,7 @@ describe('Testing for positive outcome when gluten, fodmap or lactose are checke
     const HappyFace = screen.getByTestId('happy-face');
     expect(HappyFace).toBeInTheDocument();
   });
-  test("I can eat Fodmap Food, but gluten and lactose are checked, and expect a positive outcome", async () => {
+  test('I can eat Fodmap Food, but gluten and lactose are checked, and expect a positive outcome', async () => {
     render(<Search />);
     const input = screen.getByPlaceholderText('Find by food or barcode');
     userEvent.type(input, 'fodmapfood');
@@ -200,177 +189,28 @@ describe('Testing for positive outcome when gluten, fodmap or lactose are checke
   });
 });
 
-/* 1. test('I can eat Crumpets if no toggles are selected, positive outcome displays with happy face', async () => {
-  server.use(
-    rest.get('/api/foods/crumpet', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          success: true,
-          payload: {
-            product_id: 1,
-            product_name: 'warburtons crumpets',
-            picture: 'picture here',
-            lactose: true,
-            fodmap: true,
-            gluten: true,
-            barcode_number: '5010044000701',
-          },
-        })
-      );
-    })
-  );
-  render(<Search />);
-  const input = screen.getByPlaceholderText('Find by food or barcode');
-  userEvent.type(input, 'Crumpet');
-  const searchButton = screen.getByText('Can I eat this?');
-  fireEvent.click(searchButton);
-  await screen.findByTestId('positive-outcome');
-  const pPositive = screen.getByTestId('positive-outcome');
-  expect(pPositive).toHaveTextContent('warburtons crumpets');
-  await screen.findByTestId('happy-face');
-  const happyFace = screen.getByTestId('happy-face');
-  expect(happyFace).toBeInTheDocument();
+describe('Testing no product and elements are present when rendering', () => {
+  test('Product not found message appears when the searched product is not in the db', async () => {
+    render(<Search />);
+    const input = screen.getByPlaceholderText('Find by food or barcode');
+    userEvent.type(input, 'noproduct');
+    const searchButton = screen.getByText('Can I eat this?');
+    fireEvent.click(searchButton);
+    await screen.findByTestId('no-product');
+    const pNoProduct = screen.getByTestId('no-product');
+    expect(pNoProduct).toHaveTextContent('Product not found. Please try again');
+  });
+  test('When rendering the home page the toggles are present', async () => {
+    render(<Search />);
+    const glutenToggle = screen.getByTestId('gluten-toggle');
+    const fodmapToggle = screen.getByTestId('fodmap-toggle');
+    const lactoseToggle = screen.getByTestId('lactose-toggle');
+    expect(glutenToggle).toBeDefined();
+    expect(fodmapToggle).toBeDefined();
+    expect(lactoseToggle).toBeDefined();
+  });
+  // Test that gluten, fodmap and lactose are true when rendering page - we don't know how to check this
 });
-*/
-
-/* 2. test("I can't eat spaghetti if gluten toggle is selected, negative outcome displays with not happy face and gluten as a reason", async () => {
-  server.use(
-    rest.get('/api/foods/spaghetti', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          success: true,
-          payload: {
-            product_id: 4,
-            product_name: ' tesco spaghetti',
-            picture: 'picture here',
-            lactose: false,
-            fodmap: false,
-            gluten: true,
-            barcode_number: '5057545092514',
-          },
-        })
-      );
-    })
-  );
-  render(<Search />);
-  const input = screen.getByPlaceholderText('Find by food or barcode');
-  userEvent.type(input, 'spaghetti');
-  const glutenToggle = screen.getByTestId('gluten-toggle');
-  fireEvent.click(glutenToggle);
-  const searchButton = screen.getByText('Can I eat this?');
-  fireEvent.click(searchButton);
-  await screen.findByTestId('negative-outcome');
-  const pNegative = screen.getByTestId('negative-outcome');
-  expect(pNegative).toHaveTextContent('tesco spaghetti');
-  await screen.findByTestId('not-happy-face');
-  const notHappyFace = screen.getByTestId('not-happy-face');
-  expect(notHappyFace).toBeInTheDocument();
-  const reasonNegative = screen.getByTestId('negative-outcome-reason');
-  expect(reasonNegative).toHaveTextContent('Gluten');
-});
-
-*/
-
-/* 
-   3. *Waiting on onion*
-*/
-
-/* 4. */
-/*
-test("I can't eat nutella if lactose toggle is selected, negative outcome displays with not happy face and lactose as a reason", async () => {
-  server.use(
-    rest.get('/api/foods/nutella', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          success: true,
-          payload: {
-            product_id: 2,
-            product_name: 'nutella',
-            picture:
-              'https://thumbs.dreamstime.com/b/jar-nutella-jar-nutella-wood-background-179890683.jpg',
-            lactose: true,
-            fodmap: false,
-            gluten: false,
-            barcode_number: '3017620422003',
-          },
-        })
-      );
-    })
-  );
-  render(<Search />);
-  const input = screen.getByPlaceholderText('Find by food or barcode');
-  userEvent.type(input, 'nutella');
-  const lactoseToggle = screen.getByTestId('lactose-toggle');
-  fireEvent.click(lactoseToggle);
-  const searchButton = screen.getByText('Can I eat this?');
-  fireEvent.click(searchButton);
-  await screen.findByTestId('negative-outcome');
-  const pNegative = screen.getByTestId('negative-outcome');
-  expect(pNegative).toHaveTextContent('nutella');
-  await screen.findByTestId('not-happy-face');
-  const notHappyFace = screen.getByTestId('not-happy-face');
-  expect(notHappyFace).toBeInTheDocument();
-  const reasonNegative = screen.getByTestId('negative-outcome-reason');
-  expect(reasonNegative).toHaveTextContent('Lactose');
-});
-*/
-
-/* 5. test("I can't eat Crumpets if gluten, fodmap and lactose toggles are selected, negative outcome displays with not happy face and gluten, fodmap and lactose as the reason", async () => {
-  server.use(
-    rest.get('/api/foods/crumpet', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          success: true,
-          payload: {
-            product_id: 1,
-            product_name: 'warburtons crumpets',
-            picture: 'picture here',
-            lactose: true,
-            fodmap: true,
-            gluten: true,
-            barcode_number: '5010044000701',
-          },
-        })
-      );
-    })
-  );
-  render(<Search />);
-  const input = screen.getByPlaceholderText('Find by food or barcode');
-  userEvent.type(input, 'Crumpet');
-  const glutenToggle = screen.getByTestId('gluten-toggle');
-  fireEvent.click(glutenToggle);
-  const fodmapToggle = screen.getByTestId('fodmap-toggle');
-  fireEvent.click(fodmapToggle);
-  const lactoseToggle = screen.getByTestId('lactose-toggle');
-  fireEvent.click(lactoseToggle);
-  const searchButton = screen.getByText('Can I eat this?');
-  fireEvent.click(searchButton);
-  await screen.findByTestId('negative-outcome');
-  const pNegative = screen.getByTestId('negative-outcome');
-  expect(pNegative).toHaveTextContent('warburtons crumpets');
-  await screen.findByTestId('not-happy-face');
-  const notHappyFace = screen.getByTestId('not-happy-face');
-  expect(notHappyFace).toBeInTheDocument();
-  const reasonNegative = screen.getByTestId('negative-outcome-reason');
-  expect(reasonNegative).toHaveTextContent('Gluten');
-  expect(reasonNegative).toHaveTextContent('Lactose');
-  expect(reasonNegative).toHaveTextContent('High Fodmap');
-});
-*/
-
-/*
-   6.
-*/
-
-/*
-   7.
-*/
-
-/*
-   8.
-*/
-
-/* 1.B */
 
 /* test('I can eat strawberries even if gluten, fodmap and lactose toggles are selected, positive outcome displays with happy face', async () => {
   server.use(
@@ -447,94 +287,14 @@ test("I can't eat nutella if lactose toggle is selected, negative outcome displa
 });
 */
 
-/* 
-   3.B *Waiting on onion*
-*/
-
 /*
-   4.B
-*/
 
-/*
-   5.B
-*/
+//test barcode button work
 
-/*
-   6.B
-*/
+//test all states that they are using the correct initial states
 
-/*
-   7.B
-*/
-
-/*
-   8.B
-*/
-
-// Test that gluten, fodmap and lactose are true when rendering page
-
-/* MAYBE DELETE? test("I can't eat Crumpets if gluten toggle is selected, negative outcome displays with not happy face", async () => {
-  server.use(
-    rest.get('/api/foods/crumpet', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          success: true,
-          payload: {
-            product_id: 1,
-            product_name: 'warburtons crumpets',
-            picture: 'picture here',
-            lactose: true,
-            fodmap: true,
-            gluten: true,
-            barcode_number: '5010044000701',
-            // Check that there is no bug when gluten is checked if product contains all of it, change fodmap and lactose to false here ^^ to check that we are testing correctly - Change back to true afterwards obvs
-          },
-        })
-      );
-    })
-  );
-  render(<Search />);
-  const input = screen.getByPlaceholderText('Find by food or barcode');
-  userEvent.type(input, 'Crumpet');
-  const glutenToggle = screen.getByTestId('gluten-toggle');
-  fireEvent.click(glutenToggle);
-  const searchButton = screen.getByText('Can I eat this?');
-  fireEvent.click(searchButton);
-  await screen.findByTestId('negative-outcome');
-  const pNegative = screen.getByTestId('negative-outcome');
-  expect(pNegative).toHaveTextContent('warburtons crumpets');
-  await screen.findByTestId('not-happy-face');
-  const notHappyFace = screen.getByTestId('not-happy-face');
-  expect(notHappyFace).toBeInTheDocument();
-});
-
-*/
-
-// data-testid="gluten-toggle" click and check Negative outcome displays - look for "li" that says "gluten", and check the face is not happy
-// Write a test that breaks first and then fix it
-// Two test for fodmap, two for lactose and two for gluten (positive and negative)
-// Check that there is no bug when gluten is checked if product contains all of it, change fodmap and lactose to false here ^^ to check that we are testing correctly - Change back to true afterwards obvs
-
-/*
-1. Test no toggles - ✅
-
-2. Test gluten toggle - Only contain gluten: tesco spaghetti
-^^Can also test fodmap and lactose with positive outcome
-
-3. Test fodmap toggle - Only contain fodmap: LIDL onion
-^^Can also test gluten and lactose with positive outcome
-
-4. Test lactose toggle - Only contain lactose: nutella
-^^Can also test fodmap and gluten with positive outcome
 
 5. Test all toggles -  Contains everything: crumpets
                     Contains nothing: strawberries
-
-6. Test gluten and fodmap - only contain gluten and fodmap: couscous
-
-7. Test gluten and lactose - the same as testing all three together, as you cannot have both lactose and gluten but no fodmap.
-
-8. Test fodmap and lactose - Häagen-Dazs Vanilla Ice Cream
-
 
 */

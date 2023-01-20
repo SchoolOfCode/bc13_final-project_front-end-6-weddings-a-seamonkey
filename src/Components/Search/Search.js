@@ -124,7 +124,7 @@ export default function Search() {
         <div>
           <div className="searchCheckbox">
             {noProductError === true ? (
-              <p className="no-product-error">
+              <p data-testid="no-product" className="no-product-error">
                 Product not found. Please try again
               </p>
             ) : (

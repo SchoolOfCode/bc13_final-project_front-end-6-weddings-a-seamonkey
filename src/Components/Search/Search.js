@@ -23,12 +23,10 @@ export default function Search() {
 	};
 
 	const barcodeSearch = {
-
 		gluten: true,
 		fodmap: true,
 		lactose: true,
 	};
-
 
 	const initialOutcome = {
 		outcome: "default",
@@ -121,12 +119,15 @@ export default function Search() {
 					onChange={onChange}
 					value={search.searchTerm}
 				></input>
-				<img src={barcodeScan} alt="barcode scan icon" onClick={switchBarcode}></img>
+				<img
+					src={barcodeScan}
+					alt="barcode scan icon"
+					onClick={switchBarcode}
+				></img>
 			</div>
 			{barcodeScanner === false ? (
 				<div>
 					<div className="searchCheckbox">
-
 						{noProductError === true ? (
 							<p className="no-product-error">
 								Product not found. Please try again
@@ -158,10 +159,10 @@ export default function Search() {
 							<span>Lactose Free</span>
 						</div>
 						<button className="search-button" onClick={onClick}>
-						Can I eat this?
-					</button>
+							Can I eat this?
+						</button>
 					</div>
-					
+
 					{loadingSearch === true ? (
 						<p className="loading-msg">Loading...</p>
 					) : (
@@ -169,8 +170,7 @@ export default function Search() {
 					)}
 				</div>
 			) : (
-				<div>
-
+				<div className="barcode-div">
 					<Bscan
 						barcodeScanner={barcodeScanner}
 						setBarcodeScanner={setBarcodeScanner}

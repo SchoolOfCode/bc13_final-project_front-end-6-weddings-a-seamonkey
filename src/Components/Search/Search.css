@@ -21,7 +21,6 @@
     margin: 0;
     margin-top: 50px;
     margin-bottom: 40px;
-    padding: 20px;
 }
 
 .search > input {
@@ -33,7 +32,7 @@
         border-radius: 15px;
         background-color: var(--content-color);
         border-style: none;
-    font-size: calc(13px + 2vmin);
+      font-size: 16px;
 }
 
 .search>input:focus {
@@ -56,10 +55,6 @@
     /* margin-left: -12%; */
 }
 
-.p {
-  font-size: 16px
-}
-
 /* CSS for the div of the toggle button */
 
 .toggle{
@@ -70,7 +65,6 @@
   background-color: var(--content-color);
   border-style: none;
   padding: 5px 20px;
-  font-size: calc(14px + 2vmin);
 }
 
 /* CSS for toggle button */
@@ -140,7 +134,6 @@
     border-radius: 15px;
     background-color: var(--toggle);
     padding: 5px 20px;
-    font-size: calc(16px + 2vmin);
     color: var(--content-color);
     margin-bottom: 20px;
 
@@ -164,4 +157,8 @@
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.barcode-div {
+  width: 365px;
 }

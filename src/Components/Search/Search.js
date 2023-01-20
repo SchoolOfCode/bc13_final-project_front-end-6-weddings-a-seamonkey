@@ -8,9 +8,11 @@ import { useState } from "react";
 import { Cameraswitch } from "@mui/icons-material";
 import Bscan from "../Scanner/Scanner.js";
 
-const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
+
+const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 export default function Search() {
+
 	function updateBarcode(barcode) {
 		setSearch({ ...search, searchTerm: barcode });
 	}
@@ -129,7 +131,7 @@ export default function Search() {
 				<div>
 					<div className="searchCheckbox">
 						{noProductError === true ? (
-							<p className="no-product-error">
+							<p data-testid="no-product" className="no-product-error">
 								Product not found. Please try again
 							</p>
 						) : (
@@ -139,21 +141,21 @@ export default function Search() {
 						<p>Choose all that apply:</p>
 						<div className="toggle">
 							<label className="switch">
-								<input type="checkbox" onClick={glutenChecked}></input>
+								<input   data-testid="gluten-toggle" type="checkbox" onClick={glutenChecked}></input>
 								<span className="slider round"></span>
 							</label>
 							<span className="toggleText">Gluten Free</span>
 						</div>
 						<div className="toggle">
 							<label className="switch">
-								<input type="checkbox" onClick={fodmapChecked}></input>
+								<input   data-testid="fodmap-toggle" type="checkbox" onClick={fodmapChecked}></input>
 								<span className="slider round"></span>
 							</label>
 							<span>Low FODMAP</span>
 						</div>
 						<div className="toggle">
 							<label className="switch">
-								<input type="checkbox" onClick={lactoseChecked}></input>
+								<input   data-testid="lactose-toggle" type="checkbox" onClick={lactoseChecked}></input>
 								<span className="slider round"></span>
 							</label>
 							<span>Lactose Free</span>

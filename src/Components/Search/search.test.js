@@ -6,6 +6,7 @@ import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
+import { fabClasses } from '@mui/material';
 
 // test('select a button', () => {
 //   render(<Search />);
@@ -32,62 +33,118 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 const url = process.env.REACT_APP_SERVER_URL;
 
 const server = setupServer(
-	rest.get(`${url}/api/foods/uni`, (req, res, ctx) => {
-		return res(
-			ctx.status(200),
-			ctx.json({
-				success: true,
-				payload: {
-					product_id: 1,
-					product_name: "Unicorn nugget",
-					picture: "picture here",
-					lactose: true,
-					fodmap: true,
-					gluten: true,
-					barcode_number: "5010044000701",
-				},
-			})
-		);
-	}),
-  rest.get(`${url}/api/foods/lactoseandfodmap`, (req, res, ctx) => {
-		return res(
-			ctx.status(200),
-			ctx.json({
-				success: true,
-				payload: {
-					product_id: 2,
-					product_name: "nutella",
-					picture: "picture here",
-					lactose: true,
-					fodmap: true,
-					gluten: false,
-					barcode_number: "5010044000701",
-				},
-			})
-		);
-	}),
-  rest.get(`${url}/api/foods/`, (req, res, ctx) => {
-		return res(
-			ctx.status(200),
-			ctx.json({
-				success: true,
-				payload: {
-					product_id: 1,
-					product_name: "Unicorn nugget",
-					picture: "picture here",
-					lactose: true,
-					fodmap: true,
-					gluten: true,
-					barcode_number: "5010044000701",
-				},
-			})
-		);
-	})
+  rest.get(`${url}/api/foods/glutenfood`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        payload: {
+          product_id: 1,
+          product_name: 'Gluten Food',
+          picture: 'picture here',
+          lactose: false,
+          fodmap: false,
+          gluten: true,
+          barcode_number: '5010044000701',
+        },
+      })
+    );
+  }),
+  rest.get(`${url}/api/foods/lactosefood`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        payload: {
+          product_id: 2,
+          product_name: 'Lactose Food',
+          picture: 'picture here',
+          lactose: true,
+          fodmap: false,
+          gluten: false,
+          barcode_number: '5010044000701',
+        },
+      })
+    );
+  }),
+  rest.get(`${url}/api/foods/fodmapfood`, (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json({
+        success: true,
+        payload: {
+          product_id: 1,
+          product_name: 'Fodmap Food',
+          picture: 'picture here',
+          lactose: false,
+          fodmap: true,
+          gluten: false,
+          barcode_number: '5010044000701',
+        },
+      })
+    );
+  })
 );
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
+
+describe('Testing for negative outcome when gluten, fodmap or lactose are checked and they are the only intolerance', () => {
+  beforeAll(() => server.listen());
+  afterAll(() => server.close());
+  test("I can't eat Gluten Food if gluten toggle is selected, negative outcome displays with not happy face and gluten as a reason", async () => {
+    render(<Search />);
+    const input = screen.getByPlaceholderText('Find by food or barcode');
+    userEvent.type(input, 'glutenfood');
+    const glutenToggle = screen.getByTestId('gluten-toggle');
+    fireEvent.click(glutenToggle);
+    const searchButton = screen.getByText('Can I eat this?');
+    fireEvent.click(searchButton);
+    await screen.findByTestId('negative-outcome');
+    const pNegative = screen.getByTestId('negative-outcome');
+    expect(pNegative).toHaveTextContent('Gluten Food');
+    await screen.findByTestId('not-happy-face');
+    const notHappyFace = screen.getByTestId('not-happy-face');
+    expect(notHappyFace).toBeInTheDocument();
+    const reasonNegative = screen.getByTestId('negative-outcome-reason');
+    expect(reasonNegative).toHaveTextContent('Gluten');
+  });
+  test("I can't eat Lactose Food if lactose toggle is selected, negative outcome displays with not happy face and lactose as a reason", async () => {
+    render(<Search />);
+    const input = screen.getByPlaceholderText('Find by food or barcode');
+    userEvent.type(input, 'lactosefood');
+    const lactoseToggle = screen.getByTestId('lactose-toggle');
+    fireEvent.click(lactoseToggle);
+    const searchButton = screen.getByText('Can I eat this?');
+    fireEvent.click(searchButton);
+    await screen.findByTestId('negative-outcome');
+    const pNegative = screen.getByTestId('negative-outcome');
+    expect(pNegative).toHaveTextContent('Lactose Food');
+    await screen.findByTestId('not-happy-face');
+    const notHappyFace = screen.getByTestId('not-happy-face');
+    expect(notHappyFace).toBeInTheDocument();
+    const reasonNegative = screen.getByTestId('negative-outcome-reason');
+    expect(reasonNegative).toHaveTextContent('Lactose');
+  });
+  test("I can't eat Fodmap Food if fodmap toggle is selected, negative outcome displays with not happy face and fodmap as a reason", async () => {
+    render(<Search />);
+    const input = screen.getByPlaceholderText('Find by food or barcode');
+    userEvent.type(input, 'fodmapfood');
+    const fodmapToggle = screen.getByTestId('fodmap-toggle');
+    fireEvent.click(fodmapToggle);
+    const searchButton = screen.getByText('Can I eat this?');
+    fireEvent.click(searchButton);
+    await screen.findByTestId('negative-outcome');
+    const pNegative = screen.getByTestId('negative-outcome');
+    expect(pNegative).toHaveTextContent('Fodmap Food');
+    await screen.findByTestId('not-happy-face');
+    const notHappyFace = screen.getByTestId('not-happy-face');
+    expect(notHappyFace).toBeInTheDocument();
+    const reasonNegative = screen.getByTestId('negative-outcome-reason');
+    expect(reasonNegative).toHaveTextContent('Fodmap');
+  });
+});
 
 /* 1. test('I can eat Crumpets if no toggles are selected, positive outcome displays with happy face', async () => {
   server.use(
@@ -121,7 +178,6 @@ afterAll(() => server.close());
   expect(happyFace).toBeInTheDocument();
 });
 */
-
 
 /* 2. test("I can't eat spaghetti if gluten toggle is selected, negative outcome displays with not happy face and gluten as a reason", async () => {
   server.use(
@@ -161,24 +217,29 @@ afterAll(() => server.close());
 
 */
 
-
 /* 
    3. *Waiting on onion*
 */
 
 /* 4. */
-  test ("I can't eat nutella if lactose toggle is selected, negative outcome displays with not happy face and lactose as a reason", async () => {
+/*
+test("I can't eat nutella if lactose toggle is selected, negative outcome displays with not happy face and lactose as a reason", async () => {
   server.use(
     rest.get('/api/foods/nutella', (req, res, ctx) => {
       return res(
-        ctx.json({"success":true,
-        "payload":{"product_id":2,
-        "product_name":"nutella",
-        "picture":"https://thumbs.dreamstime.com/b/jar-nutella-jar-nutella-wood-background-179890683.jpg",
-        "lactose":true,
-        "fodmap":false,
-        "gluten":false,
-        "barcode_number":"3017620422003"}})
+        ctx.json({
+          success: true,
+          payload: {
+            product_id: 2,
+            product_name: 'nutella',
+            picture:
+              'https://thumbs.dreamstime.com/b/jar-nutella-jar-nutella-wood-background-179890683.jpg',
+            lactose: true,
+            fodmap: false,
+            gluten: false,
+            barcode_number: '3017620422003',
+          },
+        })
       );
     })
   );
@@ -198,6 +259,7 @@ afterAll(() => server.close());
   const reasonNegative = screen.getByTestId('negative-outcome-reason');
   expect(reasonNegative).toHaveTextContent('Lactose');
 });
+*/
 
 /* 5. test("I can't eat Crumpets if gluten, fodmap and lactose toggles are selected, negative outcome displays with not happy face and gluten, fodmap and lactose as the reason", async () => {
   server.use(
@@ -253,7 +315,6 @@ afterAll(() => server.close());
 /*
    8.
 */
-
 
 /* 1.B */
 
@@ -395,12 +456,10 @@ afterAll(() => server.close());
 
 */
 
-
 // data-testid="gluten-toggle" click and check Negative outcome displays - look for "li" that says "gluten", and check the face is not happy
 // Write a test that breaks first and then fix it
 // Two test for fodmap, two for lactose and two for gluten (positive and negative)
 // Check that there is no bug when gluten is checked if product contains all of it, change fodmap and lactose to false here ^^ to check that we are testing correctly - Change back to true afterwards obvs
-
 
 /*
 1. Test no toggles - ✅

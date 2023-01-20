@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export function AddToList ({searchResult}){
+export function AddToList ({productName}){
     const { user } = useAuth0()
     const {sub} = user
 
     async function handleClick (){
         console.log(sub)
-        console.log(searchResult)
+        console.log(productName)
 
     }
 

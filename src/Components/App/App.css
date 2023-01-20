@@ -40,8 +40,8 @@
 }
 
 .logo {
-  height: 5vh;
-  width:auto;
+  height: 100%;
+  width: auto;
   margin-left: 5%;
 }
 
@@ -50,4 +50,5 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  height: 8vh;
 }

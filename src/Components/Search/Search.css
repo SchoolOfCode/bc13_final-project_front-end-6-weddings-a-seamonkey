@@ -33,7 +33,7 @@
         border-radius: 15px;
         background-color: var(--content-color);
         border-style: none;
-    font-size: calc(16px + 2vmin);
+    font-size: calc(13px + 2vmin);
 }
 
 .search>input:focus {
@@ -138,10 +138,10 @@
 
   .search-button {
     border-radius: 15px;
-    background-color: rgb(92, 194, 87);
+    background-color: var(--toggle);
     padding: 5px 20px;
     font-size: calc(16px + 2vmin);
-    color: var(--font-color);
+    color: var(--content-color);
     margin-bottom: 20px;
 
   }

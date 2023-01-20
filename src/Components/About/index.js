@@ -47,7 +47,7 @@ export default function About() {
     
             <h3>Rachel Morris</h3>
             <p>SoC Bootcamper</p>
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>Rachel was a Geotechnical Engineer before going onto exploring teaching, until she rediscovered her passion for coding. She enjoys full stack programming, particularly, all the creative and problem-solving aspects of coding.</p>
     
 
             <h3>Luke Alexander</h3>

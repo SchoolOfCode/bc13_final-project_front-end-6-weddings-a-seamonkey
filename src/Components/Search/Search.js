@@ -196,7 +196,7 @@ export default function Search() {
 				)}
 			</div>
 			<div>
-				{isAuthenticated ? (<AddToList searchResult={search.searchTerm}/>) : (<p></p>)}
+				{isAuthenticated ? (<AddToList searchResult={outcome.productName}/>) : (<p></p>)}
 			</div>
 		</div>
 	);

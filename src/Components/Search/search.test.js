@@ -91,8 +91,6 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 describe('Testing for negative outcome when gluten, fodmap or lactose are checked and they are the only intolerance', () => {
-  beforeAll(() => server.listen());
-  afterAll(() => server.close());
   test("I can't eat Gluten Food if gluten toggle is selected, negative outcome displays with not happy face and gluten as a reason", async () => {
     render(<Search />);
     const input = screen.getByPlaceholderText('Find by food or barcode');
@@ -143,6 +141,62 @@ describe('Testing for negative outcome when gluten, fodmap or lactose are checke
     expect(notHappyFace).toBeInTheDocument();
     const reasonNegative = screen.getByTestId('negative-outcome-reason');
     expect(reasonNegative).toHaveTextContent('Fodmap');
+  });
+});
+
+
+
+describe('Testing for positive outcome when gluten, fodmap or lactose are checked', () => {
+  test("I can eat Gluten Food, but fodmap and lactose are checked, and expect a positive outcome", async () => {
+    render(<Search />);
+    const input = screen.getByPlaceholderText('Find by food or barcode');
+    userEvent.type(input, 'glutenfood');
+    const lactoseToggle = screen.getByTestId('lactose-toggle');
+    fireEvent.click(lactoseToggle);
+    const fodmapToggle = screen.getByTestId('fodmap-toggle');
+    fireEvent.click(fodmapToggle);
+    const searchButton = screen.getByText('Can I eat this?');
+    fireEvent.click(searchButton);
+    await screen.findByTestId('positive-outcome');
+    const pPositive = screen.getByTestId('positive-outcome');
+    expect(pPositive).toHaveTextContent('Gluten Food');
+    await screen.findByTestId('happy-face');
+    const HappyFace = screen.getByTestId('happy-face');
+    expect(HappyFace).toBeInTheDocument();
+  });
+  test("I can eat Lactose Food, but fodmap and gluten are checked, and expect a positive outcome", async () => {
+    render(<Search />);
+    const input = screen.getByPlaceholderText('Find by food or barcode');
+    userEvent.type(input, 'lactosefood');
+    const glutenToggle = screen.getByTestId('gluten-toggle');
+    fireEvent.click(glutenToggle);
+    const fodmapToggle = screen.getByTestId('fodmap-toggle');
+    fireEvent.click(fodmapToggle);
+    const searchButton = screen.getByText('Can I eat this?');
+    fireEvent.click(searchButton);
+    await screen.findByTestId('positive-outcome');
+    const pPositive = screen.getByTestId('positive-outcome');
+    expect(pPositive).toHaveTextContent('Lactose Food');
+    await screen.findByTestId('happy-face');
+    const HappyFace = screen.getByTestId('happy-face');
+    expect(HappyFace).toBeInTheDocument();
+  });
+  test("I can eat Fodmap Food, but gluten and lactose are checked, and expect a positive outcome", async () => {
+    render(<Search />);
+    const input = screen.getByPlaceholderText('Find by food or barcode');
+    userEvent.type(input, 'fodmapfood');
+    const lactoseToggle = screen.getByTestId('lactose-toggle');
+    fireEvent.click(lactoseToggle);
+    const glutenToggle = screen.getByTestId('gluten-toggle');
+    fireEvent.click(glutenToggle);
+    const searchButton = screen.getByText('Can I eat this?');
+    fireEvent.click(searchButton);
+    await screen.findByTestId('positive-outcome');
+    const pPositive = screen.getByTestId('positive-outcome');
+    expect(pPositive).toHaveTextContent('Fodmap Food');
+    await screen.findByTestId('happy-face');
+    const HappyFace = screen.getByTestId('happy-face');
+    expect(HappyFace).toBeInTheDocument();
   });
 });
 

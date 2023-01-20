@@ -23,13 +23,67 @@ import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 
 //product by name or barcode outcome contains name - type crumpet state contain crumpet
 
-//test outcome contains name and the reason - if tick gluten gluten is displayed
+//test outcome contains name and the reason - if tick gluten is displayed
 
 //test all states that they are using the correct initial states
 
 //test input not on database no product message
 
-const server = setupServer();
+const url = process.env.REACT_APP_SERVER_URL;
+
+const server = setupServer(
+	rest.get(`${url}/api/foods/uni`, (req, res, ctx) => {
+		return res(
+			ctx.status(200),
+			ctx.json({
+				success: true,
+				payload: {
+					product_id: 1,
+					product_name: "Unicorn nugget",
+					picture: "picture here",
+					lactose: true,
+					fodmap: true,
+					gluten: true,
+					barcode_number: "5010044000701",
+				},
+			})
+		);
+	}),
+  rest.get(`${url}/api/foods/lactoseandfodmap`, (req, res, ctx) => {
+		return res(
+			ctx.status(200),
+			ctx.json({
+				success: true,
+				payload: {
+					product_id: 2,
+					product_name: "nutella",
+					picture: "picture here",
+					lactose: true,
+					fodmap: true,
+					gluten: false,
+					barcode_number: "5010044000701",
+				},
+			})
+		);
+	}),
+  rest.get(`${url}/api/foods/`, (req, res, ctx) => {
+		return res(
+			ctx.status(200),
+			ctx.json({
+				success: true,
+				payload: {
+					product_id: 1,
+					product_name: "Unicorn nugget",
+					picture: "picture here",
+					lactose: true,
+					fodmap: true,
+					gluten: true,
+					barcode_number: "5010044000701",
+				},
+			})
+		);
+	})
+);
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -346,7 +400,6 @@ afterAll(() => server.close());
 // Write a test that breaks first and then fix it
 // Two test for fodmap, two for lactose and two for gluten (positive and negative)
 // Check that there is no bug when gluten is checked if product contains all of it, change fodmap and lactose to false here ^^ to check that we are testing correctly - Change back to true afterwards obvs
-
 
 
 /*

@@ -74,7 +74,40 @@ const server = setupServer(
   }),
   rest.get(`${url}/api/foods/noproduct`, (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ success: true }));
-  })
+  }),
+  rest.get(`${url}/api/foods/unchecked`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        success: true,
+        payload: {
+          product_id: 9,
+          product_name: 'all false',
+          picture: 'picture here',
+          lactose: false,
+          fodmap: false,
+          gluten: false,
+          barcode_number: '03223529',
+        },
+      })
+    );
+  }),
+  rest.get(`${url}/api/foods/checked`, (req, res, ctx) => {
+    return res(
+      ctx.json({
+        success: true,
+        payload: {
+          product_id: 9,
+          product_name: 'all true',
+          picture: 'picture here',
+          lactose: true,
+          fodmap: true,
+          gluten: true,
+          barcode_number: '03223529',
+        },
+      })
+    );
+  }),
+
 );
 
 beforeAll(() => server.listen());
@@ -212,28 +245,11 @@ describe('Testing no product and elements are present when rendering', () => {
   // Test that gluten, fodmap and lactose are true when rendering page - we don't know how to check this
 });
 
-/* test('I can eat strawberries even if gluten, fodmap and lactose toggles are selected, positive outcome displays with happy face', async () => {
-  server.use(
-    rest.get('/api/foods/spaghetti', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          success: true,
-          payload: {
-            product_id: 9,
-            product_name: 'tesco strawberries',
-            picture: 'picture here',
-            lactose: false,
-            fodmap: false,
-            gluten: false,
-            barcode_number: '03223529',
-          },
-        })
-      );
-    })
-  );
+
+test('testing when all toggles are selected and the product doesnt contain anything - expect positive response', async() => {
   render(<Search />);
   const input = screen.getByPlaceholderText('Find by food or barcode');
-  userEvent.type(input, 'strawberries');
+  userEvent.type(input, 'unchecked');
   const fodmapToggle = screen.getByTestId('fodmap-toggle');
   fireEvent.click(fodmapToggle);
   const lactoseToggle = screen.getByTestId('lactose-toggle');
@@ -244,57 +260,33 @@ describe('Testing no product and elements are present when rendering', () => {
   fireEvent.click(searchButton);
   await screen.findByTestId('positive-outcome');
   const pPositive = screen.getByTestId('positive-outcome');
-  expect(pPositive).toHaveTextContent('tesco strawberries');
+  expect(pPositive).toHaveTextContent('all false');
   await screen.findByTestId('happy-face');
-  const happyFace = screen.getByTestId('happy-face');
-  expect(happyFace).toBeInTheDocument();
-}); 
+  const HappyFace = screen.getByTestId('happy-face');
+  expect(HappyFace).toBeInTheDocument();
+})
 
-/* 2.B test('I can eat spaghetti if fodmap and lactose toggles are selected, positive outcome displays with happy face', async () => {
-  server.use(
-    rest.get('/api/foods/spaghetti', (req, res, ctx) => {
-      return res(
-        ctx.json({
-          success: true,
-          payload: {
-            product_id: 4,
-            product_name: ' tesco spaghetti',
-            picture: 'picture here',
-            lactose: false,
-            fodmap: false,
-            gluten: true,
-            barcode_number: '5057545092514',
-          },
-        })
-      );
-    })
-  );
+test('testing when all toggles are selected and the product contains everything - expect negative response', async() => {
   render(<Search />);
   const input = screen.getByPlaceholderText('Find by food or barcode');
-  userEvent.type(input, 'spaghetti');
+  userEvent.type(input, 'checked');
   const fodmapToggle = screen.getByTestId('fodmap-toggle');
   fireEvent.click(fodmapToggle);
   const lactoseToggle = screen.getByTestId('lactose-toggle');
   fireEvent.click(lactoseToggle);
+  const glutenToggle = screen.getByTestId('gluten-toggle');
+  fireEvent.click(glutenToggle);
   const searchButton = screen.getByText('Can I eat this?');
   fireEvent.click(searchButton);
-  await screen.findByTestId('positive-outcome');
-  const pPositive = screen.getByTestId('positive-outcome');
-  expect(pPositive).toHaveTextContent('tesco spaghetti');
-  await screen.findByTestId('happy-face');
-  const happyFace = screen.getByTestId('happy-face');
-  expect(happyFace).toBeInTheDocument();
-});
-*/
+  await screen.findByTestId('negative-outcome');
+  const pNegative = screen.getByTestId('negative-outcome');
+  expect(pNegative).toHaveTextContent('all true');
+  await screen.findByTestId('not-happy-face');
+  const reasonNegative = screen.getByTestId('not-happy-face');
+  expect(reasonNegative).toBeInTheDocument();
+  const reasonNeg = screen.getByTestId('negative-outcome-reason');
+  expect(reasonNeg).toHaveTextContent('Fodmap');
+  expect(reasonNeg).toHaveTextContent('Gluten');
+  expect(reasonNeg).toHaveTextContent('Lactose');
+})
 
-/*
-
-//test barcode button work
-
-//test all states that they are using the correct initial states
-
-
-5. Test all toggles -  Contains everything: crumpets
-                    Contains nothing: strawberries
-
-*/

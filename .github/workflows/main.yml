@@ -14,12 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: 'Create env file'
-      run: |
-          touch .env
-          echo REACT_APP_SERVER_URL=http://localhost:3010 >> .env
-          cat .env
-    - name: 'run tests'
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
       with:

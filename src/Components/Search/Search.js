@@ -2,6 +2,7 @@ import NegativeOutcome from "./NegativeOutcome.js";
 import PositiveOutcome from "./PositiveOutcome.js";
 import DefaultOutcome from "./DefaultOutcome.js";
 import magnifying from "../../Images/magnifying-dark.png";
+import barcodeScan from "../../Images/barcode-scan.png";
 import "./Search.css";
 import { useState } from "react";
 import { Cameraswitch } from "@mui/icons-material";
@@ -22,12 +23,10 @@ export default function Search() {
 	};
 
 	const barcodeSearch = {
-
 		gluten: true,
 		fodmap: true,
 		lactose: true,
 	};
-
 
 	const initialOutcome = {
 		outcome: "default",
@@ -116,16 +115,19 @@ export default function Search() {
 				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
 				<input
 					type="text"
-					placeholder="Find by food or barcode"
+					placeholder="Search food or barcode"
 					onChange={onChange}
 					value={search.searchTerm}
 				></input>
-				<button onClick={switchBarcode}>Barcode?</button>
+				<img
+					src={barcodeScan}
+					alt="barcode scan icon"
+					onClick={switchBarcode}
+				></img>
 			</div>
 			{barcodeScanner === false ? (
 				<div>
 					<div className="searchCheckbox">
-
 						{noProductError === true ? (
 							<p className="no-product-error">
 								Product not found. Please try again
@@ -156,10 +158,11 @@ export default function Search() {
 							</label>
 							<span>Lactose Free</span>
 						</div>
+						<button className="search-button" onClick={onClick}>
+							Can I eat this?
+						</button>
 					</div>
-					<button className="search-button" onClick={onClick}>
-						Can I eat this?
-					</button>
+
 					{loadingSearch === true ? (
 						<p className="loading-msg">Loading...</p>
 					) : (
@@ -167,8 +170,7 @@ export default function Search() {
 					)}
 				</div>
 			) : (
-				<div>
-
+				<div className="barcode-div">
 					<Bscan
 						barcodeScanner={barcodeScanner}
 						setBarcodeScanner={setBarcodeScanner}

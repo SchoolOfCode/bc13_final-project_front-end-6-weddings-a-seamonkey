@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Quagga from "quagga";
+import "./Scanner.css";
 
 const Bscan = (props) => {
 	const firstUpdate = useRef(true);
@@ -10,7 +11,6 @@ const Bscan = (props) => {
 		props.updateBarcode(barcode);
 
 		props.setBarcodeScanner(!props.barcodeScanner);
-
 	}
 	//   useEffect(() => {
 	//     return () => {
@@ -148,10 +148,14 @@ const Bscan = (props) => {
 		startScanner();
 	}, []);
 	return (
-		<div>
+		<div className="Bscan-container">
 			<span>Is this the right barcode: {barcode}</span>
-			<button onClick={onClick}>Yes, search this product</button>
-			<button onClick={startScanner}>No, scan product again</button>
+			<button className="scanner-button" onClick={onClick}>
+				Yes, search this product
+			</button>
+			<button className="scanner-button" onClick={startScanner}>
+				No, scan product again
+			</button>
 			<div id="scanner-container"></div>
 		</div>
 	);

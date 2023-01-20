@@ -10,7 +10,9 @@ export function AddToList ({productName}){
     async function handleClick (){
         console.log(sub)
         console.log(productName)
+
         const response = await fetch(`${url}/api/userproducts/${sub}/${productName}`,{method:'POST'})
+
         console.log(response);
     }
 

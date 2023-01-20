@@ -5,7 +5,7 @@ import ingredientsRed from '../../Images/ingredients-red.png';
 export default function About() {
     return (
 <div className="about-section">
-   
+
 
         <h1 className="heading">Welcome to FoodMap</h1>
 
@@ -15,6 +15,7 @@ export default function About() {
         
         <h2 className="subheading">What's the problem?</h2>
         
+
         <p>Packaging in supermarkets can be hard to interpret and there are so many variables to consider, that shopping for even basic foodstuffs can feel overwhelming.</p>
 
         <h2 className="subheading">Example</h2>
@@ -25,13 +26,16 @@ export default function About() {
 
         <p>But what if you have been advised to follow a low FODMAP diet?</p>
         
-        <p>You will be asked to avoid ingredients that are high in FODMAPs. This includes not only higlighted allergens such as <strong>wheat,</strong> <strong>milk</strong> and <strong>celery</strong>, but also ingredients that are not highlighted in bold.</p>
+
+        <p>You will be asked to avoid ingredients that are high in FODMAPs. This includes not only highlighted allergens such as <strong>wheat,</strong> <strong>milk</strong> and <strong>celery</strong>, but also ingredients that are not highlighted in bold.</p>
+
         
         <p>Foods which are high in FODMAPs are underlined in red:</p>
 
         <img src={ingredientsRed} alt="ingredients with red underline" className="ingredients-red"></img>
-
+        
         <p>As you can see, it's hard to pick out the ingredients you're trying to avoid.</p>
+
 
         <h2 className="subheading">That's where FoodMap helps!</h2>
         
@@ -61,27 +65,23 @@ export default function About() {
             <h3>Violeta Cique Fernández</h3>
             <p>SoC Bootcamper</p>
 
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>With a background in Primary Teaching Education and P.E., Violeta worked for almost six years as a SEND Tutor with young people on the Autism Spectrum before switching careers to software developing. She wants to use her experience to make a difference towards making sites more accessible for all kinds of users.</p>
          
 
             <h3>Steven Collins</h3>
-
             <p>SoC Bootcamper</p>
-
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>Before School of Code Steve worked for a global organisation for 16 years. He started in customer services and had various roles over that time, the last role Steve had was a Site Manager for a factory. Having solved problems throughout his career and a passion for tech Steve has decided to change careers to follow that passion and become a software developer.</p>
                
 
             <h3>Daniel B</h3>
-
             <p>SoC Bootcamper</p>
-
-            <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            <p>Dan is a coffee addict and video gamer with a passion for Horror and food. After studying law and working in social media he decided to listen to his brain and switch to a career that would challenge him and make him happy.</p>
                
             
             <h3>Martha Bennett</h3>
-
             <p>SoC Bootcamper</p>
-            <p>Martha studied Education at University before launching her own education business in China and Hong Kong. Six years on, she has worked with some great developers and is curious to find out more about coding</p>
+            <p>Martha studied Education at University before founding an edtech business in China, Hong Kong and the UK. Six years on, she has worked with some great developers and is curious to find out more about coding.</p>
+
 
             
 </div> )}

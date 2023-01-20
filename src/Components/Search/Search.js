@@ -1,203 +1,196 @@
-import NegativeOutcome from './NegativeOutcome.js';
-import PositiveOutcome from './PositiveOutcome.js';
-import DefaultOutcome from './DefaultOutcome.js';
-import magnifying from '../../Images/magnifying-dark.png';
-import './Search.css';
-import { useState } from 'react';
-import { Cameraswitch } from '@mui/icons-material';
-import Bscan from '../Scanner/Scanner.js';
+import NegativeOutcome from "./NegativeOutcome.js";
+import PositiveOutcome from "./PositiveOutcome.js";
+import DefaultOutcome from "./DefaultOutcome.js";
+import magnifying from "../../Images/magnifying-dark.png";
+import barcodeScan from "../../Images/barcode-scan.png";
+import "./Search.css";
+import { useState } from "react";
+import { Cameraswitch } from "@mui/icons-material";
+import Bscan from "../Scanner/Scanner.js";
+
 
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 export default function Search() {
-  function updateBarcode(barcode) {
-    setSearch({ ...search, searchTerm: barcode });
-  }
 
-  const initialSearch = {
-    searchTerm: '',
-    gluten: true,
-    fodmap: true,
-    lactose: true,
-  };
+	function updateBarcode(barcode) {
+		setSearch({ ...search, searchTerm: barcode });
+	}
 
-  const barcodeSearch = {
-    gluten: true,
-    fodmap: true,
-    lactose: true,
-  };
+	const initialSearch = {
+		searchTerm: "",
+		gluten: true,
+		fodmap: true,
+		lactose: true,
+	};
 
-  const initialOutcome = {
-    outcome: 'default',
-    reason: [],
-    productName: '',
-  };
+	const barcodeSearch = {
+		gluten: true,
+		fodmap: true,
+		lactose: true,
+	};
 
-  const [search, setSearch] = useState(initialSearch);
-  const [outcome, setOutcome] = useState(initialOutcome);
-  const [noProductError, setNoProductError] = useState(false);
-  const [loadingSearch, setLoadingSearch] = useState(false);
-  const [barcodeScanner, setBarcodeScanner] = useState(false);
+	const initialOutcome = {
+		outcome: "default",
+		reason: [],
+		productName: "",
+	};
 
-  function switchBarcode() {
-    setBarcodeScanner(!barcodeScanner);
-    setOutcome({ ...outcome, outcome: 'default' });
-    setSearch({ ...search, ...barcodeSearch });
-  }
+	const [search, setSearch] = useState(initialSearch);
+	const [outcome, setOutcome] = useState(initialOutcome);
+	const [noProductError, setNoProductError] = useState(false);
+	const [loadingSearch, setLoadingSearch] = useState(false);
+	const [barcodeScanner, setBarcodeScanner] = useState(false);
 
-  function onChange(e) {
-    const newSearchTerm = e.target.value;
-    setSearch({ ...search, searchTerm: newSearchTerm });
-  }
+	function switchBarcode() {
+		setBarcodeScanner(!barcodeScanner);
+		setOutcome({ ...outcome, outcome: "default" });
+		setSearch({ ...search, ...barcodeSearch });
+	}
 
-  function glutenChecked(e) {
-    setSearch({ ...search, gluten: !e.target.checked });
-  }
+	function onChange(e) {
+		const newSearchTerm = e.target.value;
+		setSearch({ ...search, searchTerm: newSearchTerm });
+	}
 
-  function fodmapChecked(e) {
-    setSearch({ ...search, fodmap: !e.target.checked });
-  }
+	function glutenChecked(e) {
+		setSearch({ ...search, gluten: !e.target.checked });
+	}
 
-  function lactoseChecked(e) {
-    setSearch({ ...search, lactose: !e.target.checked });
-  }
+	function fodmapChecked(e) {
+		setSearch({ ...search, fodmap: !e.target.checked });
+	}
 
-  async function onClick() {
-    if (search.searchTerm !== '') {
-      setOutcome(initialOutcome);
-      setLoadingSearch(true);
-      const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
-      const data = await response.json();
-      const payload = data.payload;
-      setLoadingSearch(false);
+	function lactoseChecked(e) {
+		setSearch({ ...search, lactose: !e.target.checked });
+	}
 
-      if (payload !== undefined) {
-        setNoProductError(false);
-        console.log('payload - object from db', payload);
-        console.log('search - object that we want to compare', search);
-        let newProductName = payload.product_name;
-        const reasonArray = [];
-        let newOutcome = '';
+	async function onClick() {
+		if (search.searchTerm !== "") {
+			setOutcome(initialOutcome);
+			setLoadingSearch(true);
+			const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
+			const data = await response.json();
+			const payload = data.payload;
+			setLoadingSearch(false);
 
-        if (search.gluten === false && payload.gluten === true) {
-          newOutcome = 'negative';
-          reasonArray.push('Gluten');
-        }
+			if (payload !== undefined) {
+				setNoProductError(false);
+				console.log("payload - object from db", payload);
+				console.log("search - object that we want to compare", search);
+				let newProductName = payload.product_name;
+				const reasonArray = [];
+				let newOutcome = "";
 
-        if (search.lactose === false && payload.lactose === true) {
-          newOutcome = 'negative';
-          reasonArray.push('Lactose');
-        }
+				if (search.gluten === false && payload.gluten === true) {
+					newOutcome = "negative";
+					reasonArray.push("Gluten");
+				}
 
-        if (search.fodmap === false && payload.fodmap === true) {
-          newOutcome = 'negative';
-          reasonArray.push('High Fodmap');
-        }
+				if (search.lactose === false && payload.lactose === true) {
+					newOutcome = "negative";
+					reasonArray.push("Lactose");
+				}
 
-        const newObject = {
-          outcome: newOutcome,
-          reason: reasonArray,
-          productName: newProductName,
-        };
+				if (search.fodmap === false && payload.fodmap === true) {
+					newOutcome = "negative";
+					reasonArray.push("High Fodmap");
+				}
 
-        setOutcome(newObject);
-      } else {
-        setNoProductError(true);
-      }
-    }
-    setSearch({ ...search, searchTerm: '' });
-  }
+				const newObject = {
+					outcome: newOutcome,
+					reason: reasonArray,
+					productName: newProductName,
+				};
 
-  return (
-    <div className="searchComponent">
-      <div className="search">
-        <img src={magnifying} alt="Magnifying glass" onClick={onClick} />
-        <input
-          type="text"
-          placeholder="Find by food or barcode"
-          onChange={onChange}
-          value={search.searchTerm}
-        ></input>
-        <button onClick={switchBarcode}>Barcode?</button>
-      </div>
-      {barcodeScanner === false ? (
-        <div>
-          <div className="searchCheckbox">
-            {noProductError === true ? (
-              <p data-testid="no-product" className="no-product-error">
-                Product not found. Please try again
-              </p>
-            ) : (
-              <></>
-            )}
-            {/* Toggle component to avoid repetition here:
-DRY => Don't Repeat Yourself
-YAGNI => You Ain't Gonna Need It
-*/}
-            <p>Choose all that apply:</p>
-            <div className="toggle">
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  data-testid="gluten-toggle"
-                  onClick={glutenChecked}
-                ></input>
-                <span className="slider round"></span>
-              </label>
-              <span className="toggleText">Gluten Free</span>
-            </div>
-            <div className="toggle">
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  data-testid="fodmap-toggle"
-                  onClick={fodmapChecked}
-                ></input>
-                <span className="slider round"></span>
-              </label>
-              <span>Low FODMAP</span>
-            </div>
-            <div className="toggle">
-              <label className="switch">
-                <input
-                  type="checkbox"
-                  data-testid="lactose-toggle"
-                  onClick={lactoseChecked}
-                ></input>
-                <span className="slider round"></span>
-              </label>
-              <span>Lactose Free</span>
-            </div>
-          </div>
-          <button className="search-button" onClick={onClick}>
-            Can I eat this?
-          </button>
-          {loadingSearch === true ? (
-            <p className="loading-msg">Loading...</p>
-          ) : (
-            <></>
-          )}
-        </div>
-      ) : (
-        <div>
-          <Bscan
-            barcodeScanner={barcodeScanner}
-            setBarcodeScanner={setBarcodeScanner}
-            updateBarcode={updateBarcode}
-            switchBarcode={switchBarcode}
-          />
-        </div>
-      )}
+				setOutcome(newObject);
+			} else {
+				setNoProductError(true);
+			}
+		}
+		setSearch({ ...search, searchTerm: "" });
+	}
 
-      <div className="display-outcome">
-        {outcome.outcome === 'default' ? (
-          <DefaultOutcome />
-        ) : outcome.outcome === 'negative' ? (
-          <NegativeOutcome outcome={outcome} />
-        ) : (
-          <PositiveOutcome searchResult={outcome.productName} />
-        )}
-      </div>
-    </div>
-  );
+	return (
+		<div className="searchComponent">
+			<div className="search">
+				<img src={magnifying} alt="Magnifying glass" onClick={onClick} />
+				<input
+					type="text"
+					placeholder="Search food or barcode"
+					onChange={onChange}
+					value={search.searchTerm}
+				></input>
+				<img
+					src={barcodeScan}
+					alt="barcode scan icon"
+					onClick={switchBarcode}
+				></img>
+			</div>
+			{barcodeScanner === false ? (
+				<div>
+					<div className="searchCheckbox">
+						{noProductError === true ? (
+							<p data-testid="no-product" className="no-product-error">
+								Product not found. Please try again
+							</p>
+						) : (
+							<></>
+						)}
+
+						<p>Choose all that apply:</p>
+						<div className="toggle">
+							<label className="switch">
+								<input   data-testid="gluten-toggle" type="checkbox" onClick={glutenChecked}></input>
+								<span className="slider round"></span>
+							</label>
+							<span className="toggleText">Gluten Free</span>
+						</div>
+						<div className="toggle">
+							<label className="switch">
+								<input   data-testid="fodmap-toggle" type="checkbox" onClick={fodmapChecked}></input>
+								<span className="slider round"></span>
+							</label>
+							<span>Low FODMAP</span>
+						</div>
+						<div className="toggle">
+							<label className="switch">
+								<input   data-testid="lactose-toggle" type="checkbox" onClick={lactoseChecked}></input>
+								<span className="slider round"></span>
+							</label>
+							<span>Lactose Free</span>
+						</div>
+						<button className="search-button" onClick={onClick}>
+							Can I eat this?
+						</button>
+					</div>
+
+					{loadingSearch === true ? (
+						<p className="loading-msg">Loading...</p>
+					) : (
+						<></>
+					)}
+				</div>
+			) : (
+				<div className="barcode-div">
+					<Bscan
+						barcodeScanner={barcodeScanner}
+						setBarcodeScanner={setBarcodeScanner}
+						updateBarcode={updateBarcode}
+						switchBarcode={switchBarcode}
+					/>
+				</div>
+			)}
+
+			<div className="display-outcome">
+				{outcome.outcome === "default" ? (
+					<DefaultOutcome />
+				) : outcome.outcome === "negative" ? (
+					<NegativeOutcome outcome={outcome} />
+				) : (
+					<PositiveOutcome searchResult={outcome.productName} />
+				)}
+			</div>
+		</div>
+	);
 }

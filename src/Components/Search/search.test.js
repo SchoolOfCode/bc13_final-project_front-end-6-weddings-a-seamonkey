@@ -5,8 +5,7 @@ import { expect } from '@jest/globals';
 import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import { fabClasses } from '@mui/material';
+import { render, fireEvent, screen } from '@testing-library/react';
 
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 

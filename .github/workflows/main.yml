@@ -17,7 +17,7 @@ jobs:
     - name: Make envfile
       with:
         envkey_DEBUG: false
-        envkey_REACT_APP_SERVER_URL: http://localhost:3010
+        envkey_REACT_APP_SERVER_URL: http://localhost:3012
         file_name: .env
         fail_on_empty: false
     - uses: actions/checkout@v2

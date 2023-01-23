@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import './AddToList.css';
 
 
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
@@ -17,8 +18,8 @@ export function AddToList ({productName}){
     }
 
     return (
-        <div className="add-to-list">
-            <button onClick={handleClick}>Add to list</button>
+        <div>
+            <button className="add-button" onClick={handleClick}>Add to list</button>
         </div>
     )
 

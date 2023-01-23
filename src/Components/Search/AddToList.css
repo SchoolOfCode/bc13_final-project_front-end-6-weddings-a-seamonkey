@@ -1,0 +1,13 @@
+.add-button {
+    border-radius: 15px;
+    background-color: var(--font-color);
+    padding: 5px 20px;
+    color: #f0ffff;
+    margion-top: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  .add-button:active {
+    background-color: var(--toggle);
+  } 

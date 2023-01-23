@@ -45,6 +45,7 @@ export default function Search() {
   const [noProductError, setNoProductError] = useState(false);
   const [loadingSearch, setLoadingSearch] = useState(false);
   const [barcodeScanner, setBarcodeScanner] = useState(false);
+  const [error, setError] = useState(false);
 
   function switchBarcode() {
     setBarcodeScanner(!barcodeScanner);
@@ -54,6 +55,8 @@ export default function Search() {
 
   function onChange(e) {
     const newSearchTerm = e.target.value;
+    setError(false)
+    setNoProductError(false)
     setSearch({ ...search, searchTerm: newSearchTerm });
   }
 
@@ -74,6 +77,11 @@ export default function Search() {
       setOutcome(initialOutcome);
       setLoadingSearch(true);
       const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
+      if(response.status !== 200){
+        setError(true)
+        setLoadingSearch(false)
+        throw new Error ("this did not return any item, please try again")
+      }
       const data = await response.json();
       const payload = data.payload;
       setLoadingSearch(false);
@@ -188,6 +196,11 @@ export default function Search() {
           {loadingSearch === true ? (
             <p className="loading-msg">Loading...</p>
           ) : (
+            <></>
+          )}
+          {error === true ? (
+            <p className="error-msg">{search.searchTerm} is not valid, please search again</p>
+          ): (
             <></>
           )}
         </div>

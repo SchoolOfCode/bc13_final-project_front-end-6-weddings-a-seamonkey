@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useNavigate } from "react-router";
 import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
-import { Search, Cameraswitch, FeaturedPlayList, FoodBank } from "@mui/icons-material";
+import { Search, FoodBank } from "@mui/icons-material";
 // import ViewWeekIcon from '@mui/icons-material/ViewWeek';
 
 export default function FixedBottomNavigation() {

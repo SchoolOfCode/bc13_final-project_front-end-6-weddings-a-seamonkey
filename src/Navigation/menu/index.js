@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import './style.css'
-import { Box, Button, Drawer, List, ListItem, Divider } from '@mui/material';
+import { Box, Button, Drawer, List, ListItem, Divider, ListItemIcon } from '@mui/material';
 import { Dehaze } from '@mui/icons-material';
 import { Auth0Provider } from '@auth0/auth0-react';
 import AuthenticationButton from '../../Components/Login-Logout/AuthenticationButton.js';
-
+import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
+import { Appicons } from './appicons.js';
+import { Login, Logout, FoodBank } from '@mui/icons-material';
 
 
 
 export default function TemporaryDrawer() {
   const { isAuthenticated } = useAuth0();
   const [state, setState] = React.useState(false,);
+
+  const navigate = useNavigate();
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown') {
@@ -28,25 +31,27 @@ export default function TemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       
     >
+    <Divider sx={{backgroundColor: "var(--menu-bar)"}}/>
       <List >
 
-        {[{id:0, label:'Search', route:"/"}, {id:1, label:'About', route:"/about"}, {id:2, label:'Instructions', route:"/instructions"}].map((text) => (
-
-          <ListItem key={text.id}>
-            <Link className="label" to={text.route}>{text.label}</Link>
+        {Appicons.map((element) => (
+          <ListItem key={element.id}>
+            <Button onClick={() => navigate(element.route)} sx={{color: "var(--font-color)", fontWeight: "Bold"}} startIcon={<ListItemIcon sx={{color: "var(--font-color)", fontSize: "large"}}>{element.icon}</ListItemIcon>}>{element.label}</Button>
           </ListItem>
         ))}
+
       </List>
       <Divider sx={{backgroundColor: "var(--menu-bar)"}}/>
       <List >
 
-        {[isAuthenticated ?{id:3, label:'Logout',route:"/Login"}:{id:4, label:'Login',route:"/Login"} , isAuthenticated ?{id:4, label:'List',route:"/List"} : {}].map((text) => (
+        {[isAuthenticated ?{id:3, label:'Logout', icon: <Logout/>, route:"/Login"}:{id:4, label:'Login', icon: <Login/>, route:"/Login"} , isAuthenticated ?{id:4, icon: <FoodBank/>, label:'List',route:"/List"} : {}].map((text) => (
 
           <ListItem key={text.id}>
-            <Link className="label" to={text.route}>{text.label}</Link>
+            <Button className="label" onClick={() => navigate(text.route)} sx={{color: "var(--font-color)", fontWeight: "Bold"}} startIcon={<ListItemIcon sx={{color: "var(--font-color)"}}>{text.icon}</ListItemIcon>} >{text.label}</Button>
           </ListItem>
         ))}
       </List>
+      <Divider sx={{backgroundColor: "var(--menu-bar)"}}/>
     </Box>
   );
 

@@ -11,7 +11,6 @@ const Bscan = (props) => {
 		props.updateBarcode(barcode);
 
 		props.setBarcodeScanner(!props.barcodeScanner);
-
 	}
 	//   useEffect(() => {
 	//     return () => {

@@ -13,7 +13,6 @@ import { AddToList } from './AddToList.js';
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 export default function Search() {
-
   //   const { user } = useAuth0()
   //   const {sub} = user
   const { isAuthenticated } = useAuth0();
@@ -148,6 +147,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
+                  aria-label="gluten-toggle"
                   data-testid="gluten-toggle"
                   type="checkbox"
                   onClick={glutenChecked}
@@ -159,6 +159,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
+                  aria-label="fodmap-toggle"
                   data-testid="fodmap-toggle"
                   type="checkbox"
                   onClick={fodmapChecked}
@@ -170,6 +171,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
+                  aria-label="lactose-toggle"
                   data-testid="lactose-toggle"
                   type="checkbox"
                   onClick={lactoseChecked}
@@ -218,5 +220,4 @@ export default function Search() {
       </div>
     </div>
   );
-
 }

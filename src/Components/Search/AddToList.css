@@ -1,9 +1,10 @@
 .add-button {
+    display: flex;
     border-radius: 15px;
     background-color: var(--font-color);
     padding: 5px 20px;
     color: #f0ffff;
-    margion-top: 10px;
+    margin-top: 10px;
     margin-bottom: 20px;
     font-size: 16px;
   }

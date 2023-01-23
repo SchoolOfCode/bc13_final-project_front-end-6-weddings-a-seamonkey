@@ -6,6 +6,7 @@ export default function About() {
     return (
 <div className="about-section">
 
+
         <h1 className="heading">Welcome to FoodMap</h1>
 
         <h2 className="subheading">Do you find it difficult to shop for your dietary requirements?</h2>
@@ -14,6 +15,7 @@ export default function About() {
         
         <h2 className="subheading">What's the problem?</h2>
         
+
         <p>Packaging in supermarkets can be hard to interpret and there are so many variables to consider, that shopping for even basic foodstuffs can feel overwhelming.</p>
 
         <h2 className="subheading">Example</h2>
@@ -24,13 +26,16 @@ export default function About() {
 
         <p>But what if you have been advised to follow a low FODMAP diet?</p>
         
+
         <p>You will be asked to avoid ingredients that are high in FODMAPs. This includes not only highlighted allergens such as <strong>wheat,</strong> <strong>milk</strong> and <strong>celery</strong>, but also ingredients that are not highlighted in bold.</p>
+
         
         <p>Foods which are high in FODMAPs are underlined in red:</p>
 
         <img src={ingredientsRed} alt="ingredients with red underline" className="ingredients-red"></img>
         
         <p>As you can see, it's hard to pick out the ingredients you're trying to avoid.</p>
+
 
         <h2 className="subheading">That's where FoodMap helps!</h2>
         
@@ -48,15 +53,18 @@ export default function About() {
             <h3>Rachel Morris</h3>
             <p>SoC Bootcamper</p>
             <p>Rachel was a Geotechnical Engineer before going onto exploring teaching, until she rediscovered her passion for coding. She enjoys full stack programming, particularly, all the creative and problem-solving aspects of coding.</p>
+
     
 
             <h3>Luke Alexander</h3>
+
             <p>SoC Bootcamper</p>
             <p>Luke spent five years in the civil service working as a debt management adviser before deciding to make a career switch and re-training as a software developer. He wants to use the communication skills gained from thousands of difficult conversations with taxpayers and apply them in an exciting field where he can collaborate on projects that make a difference in the world.</p>
    
 
             <h3>Violeta Cique Fernández</h3>
             <p>SoC Bootcamper</p>
+
             <p>With a background in Primary Teaching Education and P.E., Violeta worked for almost six years as a SEND Tutor with young people on the Autism Spectrum before switching careers to software developing. She wants to use her experience to make a difference towards making sites more accessible for all kinds of users.</p>
          
 
@@ -73,6 +81,7 @@ export default function About() {
             <h3>Martha Bennett</h3>
             <p>SoC Bootcamper</p>
             <p>Martha studied Education at University before founding an edtech business in China, Hong Kong and the UK. Six years on, she has worked with some great developers and is curious to find out more about coding.</p>
+
 
             
 </div> )}

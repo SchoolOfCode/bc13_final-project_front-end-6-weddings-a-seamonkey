@@ -97,6 +97,7 @@ export default function About() {
         linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
         bootcamper="Rachel"
       />
+      <hr></hr>
       <h3>Luke Alexander</h3>
       <p>SoC Bootcamper</p>
       <p>
@@ -112,7 +113,7 @@ export default function About() {
         linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
         bootcamper="Luke"
       />
-
+      <hr></hr>
       <h3>Violeta Cique Fernández</h3>
       <p>SoC Bootcamper</p>
       <p>
@@ -127,7 +128,7 @@ export default function About() {
         linkedinAddress="https://www.linkedin.com/in/violeta-cf/"
         bootcamper="Violeta"
       />
-
+      <hr></hr>
       <h3>Steven Collins</h3>
       <p>SoC Bootcamper</p>
       <p>
@@ -143,7 +144,7 @@ export default function About() {
         linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
         bootcamper="Steve"
       />
-
+      <hr></hr>
       <h3>Daniel B</h3>
       <p>SoC Bootcamper</p>
       <p>
@@ -157,7 +158,7 @@ export default function About() {
         linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
         bootcamper="Daniel"
       />
-
+      <hr></hr>
       <h3>Martha Bennett</h3>
       <p>SoC Bootcamper</p>
       <p>

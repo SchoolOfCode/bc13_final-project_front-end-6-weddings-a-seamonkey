@@ -1,20 +1,19 @@
-.delete-button {
-    border-radius: 15px;
-    /* background-color: var(--toggle); */
-    background-color: var(--font-color);
-    padding: 5px 20px;
-    /* color: var(--font-color); */
-    color: #f0ffff;
-    margin-bottom: 20px;
-    font-size: 16px;
-  }
-  
-  /* .search-button:hover { */
-  /* background-color: var(--toggle); */
-  /* color: white; */
-  /* } */
-  
-  .delete-button:active {
-    background-color: var(--toggle);
-  }
-  
+li.delete-button {
+  /* border-radius: 15px;
+  background-color: var(--font-color);
+  padding: 5px 20px;
+  color: #f0ffff;
+  margin-bottom: 20px;
+  font-size: 16px; */
+  border-radius: 20px;
+  border-color: blueviolet;
+}
+
+/* .search-button:hover { */
+/* background-color: var(--toggle); */
+/* color: white; */
+/* } */
+
+/* li.delete-button:active {
+  background-color: var(--toggle);
+} */

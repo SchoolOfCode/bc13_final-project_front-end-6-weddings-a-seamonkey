@@ -48,7 +48,7 @@ export default function TemporaryDrawer() {
         <React.Fragment key={anchor}>
           <Box>
             <Button
-              name="hamburger-button"
+              aria-label="Menu-button"
               sx={{ color: 'var(--background-color)' }}
               onClick={toggleDrawer(anchor, true)}
             >

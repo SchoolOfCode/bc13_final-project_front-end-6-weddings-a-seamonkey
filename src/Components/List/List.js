@@ -7,6 +7,13 @@ export default function List(){
     const { user } = useAuth0()
     const {sub} = user
 
+    async function DeleteFromList(item){
+        const response = await fetch (`${url}/api/userproducts/${sub}/${item.product_name}`,{method: 'DELETE'})
+        console.log(sub)
+        console.log(item.product_name)
+        GetList()
+    }
+
     async function GetList(){
     const response = await fetch(`${url}/api/userproducts/${sub}`);
 			const data = await response.json();
@@ -19,7 +26,7 @@ export default function List(){
 
     return (<><h1>Hello world its me margaret</h1>
 
-            {array.map((item,index)=>{return <li key={index}>{item.product_name}</li>})}
+            {array.map((item,index)=>{return <li key={index}>{item.product_name}<button onClick={()=>{DeleteFromList(item)}}>Delete from list</button></li>})}
             </>)
             
             

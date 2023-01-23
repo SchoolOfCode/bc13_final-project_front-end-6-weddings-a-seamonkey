@@ -26,7 +26,9 @@ export default function List(){
 
     return (<><h1>Hello world its me margaret</h1>
 
+
             {array.map((item,index)=>{return <li key={index}>{item.product_name}<button onClick={()=>{DeleteFromList(item)}}>Delete from list</button></li>})}
+
             </>)
             
             

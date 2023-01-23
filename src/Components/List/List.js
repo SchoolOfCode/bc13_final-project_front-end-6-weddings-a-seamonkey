@@ -18,6 +18,7 @@ export default function List() {
   }
 
   async function GetList() {
+
     const response = await fetch(`${url}/api/userproducts/${sub}`);
     const data = await response.json();
     const payload = data.payload;

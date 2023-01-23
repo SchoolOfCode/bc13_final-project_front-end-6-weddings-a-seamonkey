@@ -24,10 +24,10 @@ export default function List(){
             useEffect(()=>{GetList()},[])
             
 
-    return (<><h1>Hello world its me margaret</h1>
+    return (<><h1>My Foods</h1>
 
 
-            {array.map((item,index)=>{return <li key={index}>{item.product_name}<button onClick={()=>{DeleteFromList(item)}}>Delete from list</button></li>})}
+            {array.map((item,index)=>{return <li key={index}>{item.product_name}<button className="delete-button" onClick={()=>{DeleteFromList(item)}}>Delete from list</button></li>})}
 
 
             </>)

@@ -1,23 +1,19 @@
 
 .about-section {
-    padding: 20px;
+    padding: 10px;
     text-align: left;
-    padding-bottom: 100px;
-
+    padding-bottom: 5px;
     background-color: var(--background-color);
   }
   
   .heading {
     color: var(--font-color);
     text-align: center;
-    padding: 20px;
+    padding: 5px;
   }
 
   .subheading {
     text-align: center;
-    padding: 20px;
-
-
   }
 
   .ingredients {
@@ -32,6 +28,5 @@
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-
   }
   

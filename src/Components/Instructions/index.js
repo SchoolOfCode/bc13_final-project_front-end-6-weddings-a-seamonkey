@@ -40,8 +40,7 @@ function Instructions() {
 			<p className="paragraph">If you can eat this product, a happy face will appear:</p>
 			<img src={happyFace} alt="happy face" className="happy-face"></img>
 			<p className="paragraph">If you can't eat this product, a sad face will appear:</p>
-			<img src={sadFace} alt="sad face" className="sad-face"></img>
-			<p className="paragraph">Happy shopping!</p>																					
+			<img src={sadFace} alt="sad face" className="sad-face"></img>																					
 		</div>
 
 	);

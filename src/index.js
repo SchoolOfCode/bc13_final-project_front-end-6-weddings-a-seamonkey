@@ -13,8 +13,8 @@ import About from './Components/About/index.js';
 import Instructions from './Components/Instructions/index.js';
 import AuthenticationButton from './Components/Login-Logout/AuthenticationButton.js';
 import LoginButton from './Components/Login-Logout/LoginButton.js';
+import Myfoods from './Components/myFoods/index.js';
 
-import List from './Components/List/List.js';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +24,7 @@ const router = createBrowserRouter(
       <Route path="/instructions" element={<Instructions />} />
       <Route path="/Login" element={<AuthenticationButton />} />
 
-      <Route path="/List" element={<List/>} />
+      <Route path="/MyFoods" element={<Myfoods/>} />
 
     </Route>
   )

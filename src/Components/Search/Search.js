@@ -13,7 +13,6 @@ import { AddToList } from './AddToList.js';
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 export default function Search() {
-
   //   const { user } = useAuth0()
   //   const {sub} = user
   const { isAuthenticated } = useAuth0();
@@ -46,6 +45,7 @@ export default function Search() {
   const [noProductError, setNoProductError] = useState(false);
   const [loadingSearch, setLoadingSearch] = useState(false);
   const [barcodeScanner, setBarcodeScanner] = useState(false);
+  const [error, setError] = useState(false);
 
   function switchBarcode() {
     setBarcodeScanner(!barcodeScanner);
@@ -55,6 +55,8 @@ export default function Search() {
 
   function onChange(e) {
     const newSearchTerm = e.target.value;
+    setError(false)
+    setNoProductError(false)
     setSearch({ ...search, searchTerm: newSearchTerm });
   }
 
@@ -75,6 +77,11 @@ export default function Search() {
       setOutcome(initialOutcome);
       setLoadingSearch(true);
       const response = await fetch(`${url}/api/foods/${search.searchTerm}`);
+      if(response.status !== 200){
+        setError(true)
+        setLoadingSearch(false)
+        throw new Error ("this did not return any item, please try again")
+      }
       const data = await response.json();
       const payload = data.payload;
       setLoadingSearch(false);
@@ -148,6 +155,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
+                  aria-label="gluten-toggle"
                   data-testid="gluten-toggle"
                   type="checkbox"
                   onClick={glutenChecked}
@@ -159,6 +167,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
+                  aria-label="fodmap-toggle"
                   data-testid="fodmap-toggle"
                   type="checkbox"
                   onClick={fodmapChecked}
@@ -170,6 +179,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
+                  aria-label="lactose-toggle"
                   data-testid="lactose-toggle"
                   type="checkbox"
                   onClick={lactoseChecked}
@@ -186,6 +196,11 @@ export default function Search() {
           {loadingSearch === true ? (
             <p className="loading-msg">Loading...</p>
           ) : (
+            <></>
+          )}
+          {error === true ? (
+            <p className="error-msg">{search.searchTerm} is not valid, please search again</p>
+          ): (
             <></>
           )}
         </div>
@@ -218,5 +233,4 @@ export default function Search() {
       </div>
     </div>
   );
-
 }

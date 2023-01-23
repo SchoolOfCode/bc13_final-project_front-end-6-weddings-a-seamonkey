@@ -34,7 +34,9 @@ export default function FixedBottomNavigation() {
 					/> */}
 					<BottomNavigationAction
 						sx={{ color: "var(--background-color)" }}
-						onClick={() => navigate("/List")}
+
+						onClick={() => navigate("/MyFoods")}
+
 						label="My Foods"
 						icon={<FoodBank sx={{ fontSize: "xxx-large" }} />}
 					/>

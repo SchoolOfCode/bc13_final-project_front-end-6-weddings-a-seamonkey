@@ -1,69 +1,66 @@
-  .instructions {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--font-color);
-    background-color: var(--background-color);
+.instructions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color);
+  background-color: var(--background-color);
+}
 
-  }
+.heading {
+  padding: 10px;
+  padding-bottom: 5px;
+  text-align: center;
+  background-color: #d4eddd;
+}
 
-  .heading {
-    padding: 20px;
+.subheading {
+  text-align: center;
+  background-color: #d4eddd;
+}
 
-    text-align: center;
-    background-color: #D4EDDD;
-  }
+.paragraph {
+  text-align: left;
+  background-color: #d4eddd;
+  padding: 5px;
+}
 
-  .subheading {
-    text-align: center;
-    background-color: #D4EDDD;
-  }
+.search-bar {
+  width: 50%;
+}
 
-  .paragraph {
+.dietary-requirements {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    text-align: left;
-    background-color: #D4EDDD;
-    padding: 20px;
+.can-i-eat-this {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  }
+.barcode-scanner {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .search-bar {
-    width: 50%;
-  }
+.happy-face {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .dietary-requirements {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .can-i-eat-this {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .barcode-scanner {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .happy-face {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sad-face {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 50px
-  }
+.sad-face {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 80pt;
+}

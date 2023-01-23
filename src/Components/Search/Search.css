@@ -1,54 +1,48 @@
-
 /* CSS for search component */
 
 .searchCheckbox {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .searchCheckbox > p {
   margin: 0;
 }
 
-.search{
-    display: flex;
-    /* flex-direction: column; */
-    gap: 5px;
-    width: 85%;
-    max-width: 500px;
-    border-radius: 15px;
-    background-color: var(--content-color);
-    box-shadow: 0px 4px 4px var(--font-color);
-    padding: 5px 20px;
-    margin: 0;
-    margin-top: 50px;
-    margin-bottom: 40px;
-
-
+.search {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 5px;
+  width: 85%;
+  max-width: 500px;
+  border-radius: 15px;
+  background-color: var(--content-color);
+  box-shadow: 0px 4px 4px var(--font-color);
+  padding: 5px 20px;
+  margin: 0;
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 
 .search > input {
-    
-    align-self: center;
-    width: 90%;
-    height: 98%;
-    border-style: none;
-        border-radius: 15px;
-        background-color: var(--content-color);
-        border-style: none;
-      font-size: 16px;
-
-}
-
-.search>input:focus {
-    outline: none;   
-}
-
-.searchComponent{
+  align-self: center;
   width: 90%;
-  display:flex;
+  height: 98%;
+  border-style: none;
+  border-radius: 15px;
+  background-color: var(--content-color);
+  border-style: none;
+  font-size: 16px;
+}
+
+.search > input:focus {
+  outline: none;
+}
+
+.searchComponent {
+  width: 90%;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -56,15 +50,15 @@
 
 /* CSS for magnifing glass */
 .search > img {
-    height: auto;
-    width: 10%;
-    /* transform: translate(-120%, 0%); */
-    /* margin-left: -12%; */
+  height: auto;
+  width: 10%;
+  /* transform: translate(-120%, 0%); */
+  /* margin-left: -12%; */
 }
 
 /* CSS for the div of the toggle button */
 
-.toggle{
+.toggle {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -72,92 +66,89 @@
   background-color: var(--content-color);
   border-style: none;
   padding: 5px 20px;
-
 }
 
 /* CSS for toggle button */
 
 .switch {
-    position: relative;
-    display: inline-block;
-    /* width: 60px; */
-    /* height: 34px; */
-    width: 50px;
-    height: 28px;
-  }
-  
-  .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--background-color);
-    -webkit-transition: .4s;
-    transition: .4s;
-    /* box-shadow: 0px 4px 4px var(--font-color); */
-  }
+  position: relative;
+  display: inline-block;
+  /* width: 60px; */
+  /* height: 34px; */
+  width: 50px;
+  height: 28px;
+}
 
-  input:checked + .slider {
-    background-color: var(--toggle);
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
-  }
-  
-  /* CSS for circles inside of toggle */
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 21px;
-    width: 21px;
-    left: 4px;
-    bottom: 4px;
-    background-color: var(--menu-bar);
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-    
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-    
-  }
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-  .search-button {
-    border-radius: 15px;
-    background-color: var(--toggle);
-    padding: 5px 20px;
-    color: var(--content-color);
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--background-color);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  /* box-shadow: 0px 4px 4px var(--font-color); */
+}
 
-    margin-bottom: 20px;
-    font-size: 16px;
+input:checked + .slider {
+  background-color: var(--toggle);
+}
 
-  }
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* CSS for circles inside of toggle */
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 21px;
+  width: 21px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--menu-bar);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.search-button {
+  border-radius: 15px;
+  /* background-color: var(--toggle); */
+  background-color: var(--font-color);
+  padding: 5px 20px;
+  /* color: var(--font-color); */
+  color: #f0ffff;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
 
 /* .search-button:hover { */
-  /* background-color: var(--toggle); */
-  /* color: white; */
+/* background-color: var(--toggle); */
+/* color: white; */
 /* } */
 
 .search-button:active {
-      background-color: var(--toggle);
+  background-color: var(--toggle);
 }
-
 
 #scanner-container {
   position: relative;
@@ -166,7 +157,7 @@
 .loading-msg {
   text-align: center;
 }
- 
+
 .drawingBuffer {
   position: absolute;
   left: 0;

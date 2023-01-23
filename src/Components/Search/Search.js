@@ -147,7 +147,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
-                  aria-labelledby="gluten-toggle"
+                  aria-label="gluten-toggle"
                   data-testid="gluten-toggle"
                   type="checkbox"
                   onClick={glutenChecked}
@@ -159,7 +159,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
-                  aria-labelledby="fodmap-toggle"
+                  aria-label="fodmap-toggle"
                   data-testid="fodmap-toggle"
                   type="checkbox"
                   onClick={fodmapChecked}
@@ -171,7 +171,7 @@ export default function Search() {
             <div className="toggle">
               <label className="switch">
                 <input
-                  aria-labelledby="lactose-toggle"
+                  aria-label="lactose-toggle"
                   data-testid="lactose-toggle"
                   type="checkbox"
                   onClick={lactoseChecked}

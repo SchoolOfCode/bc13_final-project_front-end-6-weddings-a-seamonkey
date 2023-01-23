@@ -1,0 +1,25 @@
+name: SeaMonkeys
+
+on:
+  # runs on pushes to the main branch
+  push:
+    branches: [main]
+  # also runs inside pull requests that target the main branch
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    # uses a Ubuntu Docker image (like a virtual machine)
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+          node-version: "18.x"
+          #cache: "npm"
+      # install dependencies
+    - run: npm i
+      # run tests
+    - run: npm run test 

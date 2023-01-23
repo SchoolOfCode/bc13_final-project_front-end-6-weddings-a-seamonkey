@@ -8,17 +8,7 @@ import { setupServer } from 'msw/node';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
 import { fabClasses } from '@mui/material';
 
-// test('select a button', () => {
-//   render(<Search />);
-//   const searchButton = screen.getByText('Can I eat this?');
-//   const input = screen.getByPlaceholderText('Find by food or barcode');
-//   userEvent.type(input, 'Crumpet');
-//   userEvent.click(searchButton);
-//   const loading = screen.findByText('Loading...');
-//   expect(loading).toBeInTheDocument();
-// });
-
-const url = process.env.REACT_APP_SERVER_URL;
+const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 
 const server = setupServer(
   rest.get(`${url}/api/foods/glutenfood`, (req, res, ctx) => {

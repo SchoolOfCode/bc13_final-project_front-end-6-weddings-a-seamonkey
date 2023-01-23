@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useNavigate } from "react-router";
 import { BottomNavigation, BottomNavigationAction, Paper } from "@mui/material";
-import { Home, Cameraswitch } from "@mui/icons-material";
+import { Search, Cameraswitch, FeaturedPlayList, FoodBank } from "@mui/icons-material";
 // import ViewWeekIcon from '@mui/icons-material/ViewWeek';
 
 export default function FixedBottomNavigation() {
@@ -23,16 +23,21 @@ export default function FixedBottomNavigation() {
 					<BottomNavigationAction
 						sx={{ color: "var(--background-color)" }}
 						onClick={() => navigate("/")}
-						label="Home"
-						icon={<Home sx={{ fontSize: "xx-large" }} />}
+						label="Search"
+						icon={<Search sx={{ fontSize: "xxx-large" }} />}
 					/>
-					<BottomNavigationAction
+					{/* <BottomNavigationAction
 						sx={{ color: "var(--background-color)" }}
 						onClick={() => navigate("/")}
-						label="Barcode Scanner"
-						icon={<Cameraswitch sx={{ fontSize: "xx-large" }} />}
+						label="My Foods"
+						icon={<FeaturedPlayList sx={{ fontSize: "xxx-large" }} />}
+					/> */}
+					<BottomNavigationAction
+						sx={{ color: "var(--background-color)" }}
+						onClick={() => navigate("/List")}
+						label="My Foods"
+						icon={<FoodBank sx={{ fontSize: "xxx-large" }} />}
 					/>
-					{/* <BottomNavigationAction label="Favorites" icon={<ViewWeek />} /> */}
 				</BottomNavigation>
 			</Paper>
 		</>

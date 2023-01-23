@@ -1,32 +1,30 @@
-
 .about-section {
-    padding: 10px;
-    text-align: left;
-    padding-bottom: 5px;
-    background-color: var(--background-color);
-  }
-  
-  .heading {
-    color: var(--font-color);
-    text-align: center;
-    padding: 5px;
-  }
+  padding: 10px;
+  text-align: left;
+  padding-bottom: 60pt;
+  background-color: var(--background-color);
+}
 
-  .subheading {
-    text-align: center;
-  }
+.heading {
+  color: var(--font-color);
+  text-align: center;
+  padding: 5px;
+}
 
-  .ingredients {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
+.subheading {
+  text-align: center;
+}
 
-  .ingredients-red {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-  }
-  
+.ingredients {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.ingredients-red {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}

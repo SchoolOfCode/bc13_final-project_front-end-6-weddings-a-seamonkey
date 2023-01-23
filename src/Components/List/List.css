@@ -1,12 +1,10 @@
 li.delete-button {
-  /* border-radius: 15px;
+  border-radius: 15px;
   background-color: var(--font-color);
   padding: 5px 20px;
   color: #f0ffff;
   margin-bottom: 20px;
-  font-size: 16px; */
-  border-radius: 20px;
-  border-color: blueviolet;
+  font-size: 16px;
 }
 
 /* .search-button:hover { */

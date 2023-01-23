@@ -7,7 +7,6 @@ export default function List() {
   const { sub } = user;
 
   async function DeleteFromList(item) {
-    const [active, setActive] = useState(false);
     const response = await fetch(
       `${url}/api/userproducts/${sub}/${item.product_name}`,
       { method: 'DELETE' }
@@ -37,6 +36,9 @@ export default function List() {
           <li key={index}>
             {item.product_name}
             <button
+              onClick={() => {
+                DeleteFromList(item);
+              }}
               style={{
                 borderRadius: '15px',
                 backgroundColor: 'var(--font-color)',
@@ -44,9 +46,6 @@ export default function List() {
                 color: '#f0ffff',
                 marginBottom: '20px',
                 fontSize: '16px',
-              }}
-              onClick={() => {
-                DeleteFromList(item);
               }}
             >
               Delete from list

@@ -31,25 +31,30 @@ export default function List() {
     GetList();
   }, []);
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <>
       <h1>My Foods</h1>
-
-      {array.map((item, index) => {
-        return (
-          <li key={index}>
-            {item.product_name}
-            <button
-              className="delete-button"
-              onClick={() => {
-                DeleteFromList(item);
-              }}
-            >
-              Delete from list
-            </button>
-          </li>
-        );
-      })}
+      <div className="list-items">
+        {array.map((item, index) => {
+          return (
+            <li key={index}>
+              {item.product_name}
+              <button
+                className="delete-button"
+                onClick={() => {
+                  DeleteFromList(item);
+                }}
+              >
+                Delete from list
+              </button>
+            </li>
+          );
+        })}
+      </div>
     </>
   );
 }

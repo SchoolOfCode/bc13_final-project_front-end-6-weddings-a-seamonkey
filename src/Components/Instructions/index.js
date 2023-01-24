@@ -1,10 +1,12 @@
 import "./instructions.css";
 import searchBar from '../../Images/searchbar.png';
-import barcodeScanner from '../../Images/barcodescanner.png';
-import dietaryRequirements from '../../Images/dietary-requirements.png';
+import barcodeScanner from '../../Images/barcode-scanner2.png';
+import dietaryRequirements from '../../Images/dietary-requirements2.png';
 import happyFace from '../../Images/happy.gif';
 import sadFace from '../../Images/sad.gif';
-import canIEatThis from '../../Images/can-i-eat-this.png';
+import canIEatThis from '../../Images/can-i-eat-this2.png';
+import addToList from '../../Images/add-to-list.png';
+import myFoods from '../../Images/myfoods.png';
 
 function Instructions() {
 	return (
@@ -32,15 +34,21 @@ function Instructions() {
 			<h2 className="subheading">Or, you can use the Barcode Scanner to scan the barcode of each product:</h2>
 			<p className="paragraph">1. Select your dietary requirements:</p>
 			<img src={dietaryRequirements} alt="dietary requirements" className="dietary-requirements"></img>
-			<p className="paragraph">2. Click on the Barcode Scanner icon at the bottom of your screen</p>
+			<p className="paragraph">2. Click on the Barcode Scanner icon on the right of the search bar</p>
 			<img src={barcodeScanner} alt="barcode scanner" className="barcode-scanner"></img>
-			<p className="paragraph">3. Use the Barcode Scanner thus*:</p>
 
 			<h2 className="subheading">Results:</h2>
 			<p className="paragraph">If you can eat this product, a happy face will appear:</p>
 			<img src={happyFace} alt="happy face" className="happy-face"></img>
 			<p className="paragraph">If you can't eat this product, a sad face will appear:</p>
-			<img src={sadFace} alt="sad face" className="sad-face"></img>																					
+			<img src={sadFace} alt="sad face" className="sad-face"></img>	
+
+			<h2 className="subheading">Saving your favourite foods:</h2>
+			<p className="paragraph">If you want to save this product to your shopping list, click:</p>
+			<img src={addToList} alt="add to list button" className="add-to-list"></img>
+			<p className="paragraph">If you want to view your shopping list, click 'My Foods':</p>
+			<img src={myFoods} alt="my foods page" className="my-foods"></img>	
+			<p className="paragraph">Or, head to the 'My Foods' page from the navigation menu:</p>																			
 		</div>
 
 	);

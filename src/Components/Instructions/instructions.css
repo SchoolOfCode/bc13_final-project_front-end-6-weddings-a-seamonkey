@@ -44,11 +44,12 @@
 }
 
 .barcode-scanner {
-  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+  max-width: 40px;
+  max-height: auto;
+  }
 
 .happy-face {
   width: 50%;
@@ -62,5 +63,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 80pt;
 }
+
+.my-foods {
+  padding-bottom: 100pt;
+}
+

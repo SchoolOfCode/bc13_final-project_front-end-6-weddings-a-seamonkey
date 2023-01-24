@@ -140,8 +140,8 @@ export default function About() {
         developer.
       </p>
       <Contacts
-        githubAddress="https://en.wikipedia.org/wiki/Main_Page"
-        linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
+        githubAddress="https://github.com/Sunbearian"
+        linkedinAddress="https://www.linkedin.com/in/steven-c-687b4b4b/"
         bootcamper="Steve"
       />
       <hr></hr>
@@ -154,7 +154,7 @@ export default function About() {
         make him happy.
       </p>
       <Contacts
-        githubAddress="https://en.wikipedia.org/wiki/Main_Page"
+        githubAddress="https://github.com/Cmndgrab"
         linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
         bootcamper="Daniel"
       />

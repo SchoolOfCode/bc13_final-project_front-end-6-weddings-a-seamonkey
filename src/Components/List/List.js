@@ -22,6 +22,7 @@ export default function List() {
   // Query above deletes all products with same name ^^
 
   async function GetList() {
+
     const response = await fetch(`${url}/api/userproducts/${sub}`);
     const data = await response.json();
     const payload = data.payload;

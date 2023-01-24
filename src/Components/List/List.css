@@ -1,3 +1,7 @@
+.list-items {
+ align-content: left;
+}
+
 .delete-button {
   border-radius: 15px;
   background-color: var(--font-color);
@@ -35,3 +39,4 @@ li {
 .product-name {
   text-transform: capitalize;
 }
+

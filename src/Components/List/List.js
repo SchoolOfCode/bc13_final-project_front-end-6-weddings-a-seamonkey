@@ -1,6 +1,6 @@
-
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import './List.css';
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 export default function List() {
   const [array, setArray] = useState([]);
@@ -16,6 +16,9 @@ export default function List() {
     console.log(item.product_name);
     GetList();
   }
+
+  //SQL query to capitalise first letter of product name
+  // Query above deletes all products with same name ^^
 
   async function GetList() {
     const response = await fetch(`${url}/api/userproducts/${sub}`);
@@ -37,17 +40,9 @@ export default function List() {
           <li key={index}>
             {item.product_name}
             <button
+              className="delete-button"
               onClick={() => {
                 DeleteFromList(item);
-              }}
-              style={{
-                borderRadius: '15px',
-                backgroundColor: 'var(--font-color)',
-                color: '#f0ffff',
-                padding: '5px, 5px, 10px, 15px',
-                marginLeft: "15px",
-                marginBottom: '20px',
-                fontSize: '16px',
               }}
             >
               Delete from list

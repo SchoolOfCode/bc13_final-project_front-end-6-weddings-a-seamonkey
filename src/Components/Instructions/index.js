@@ -47,7 +47,8 @@ function Instructions() {
 			<p className="paragraph">If you want to save this product to your shopping list, click:</p>
 			<img src={addToList} alt="add to list button" className="add-to-list"></img>
 			<p className="paragraph">If you want to view your shopping list, click 'My Foods':</p>
-			<img src={myFoods} alt="my foods page" className="my-foods"></img>																				
+			<img src={myFoods} alt="my foods page" className="my-foods"></img>	
+			<p className="paragraph">Or, head to the 'My Foods' page from the navigation menu:</p>																			
 		</div>
 
 	);

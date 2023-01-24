@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './List.css';
+import logo from '../../Images/logo.png';
+
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 export default function List() {
   const [array, setArray] = useState([]);
@@ -17,7 +19,6 @@ export default function List() {
     GetList();
   }
 
-  //SQL query to capitalise first letter of product name
   // Query above deletes all products with same name ^^
 
   async function GetList() {
@@ -31,10 +32,6 @@ export default function List() {
     GetList();
   }, []);
 
-  function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
-
   return (
     <>
       <h1>My Foods</h1>
@@ -42,7 +39,10 @@ export default function List() {
         {array.map((item, index) => {
           return (
             <li key={index}>
-              {item.product_name}
+              <div className="list-item">
+                <img className="list-image" src={logo} alt="foodmap-logo"></img>
+                <p className="product-name">{item.product_name}</p>
+              </div>
               <button
                 className="delete-button"
                 onClick={() => {

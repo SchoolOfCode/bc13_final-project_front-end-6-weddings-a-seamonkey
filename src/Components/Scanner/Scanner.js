@@ -8,14 +8,13 @@ const Bscan = (props) => {
 	const [barcode, setBarcode] = useState("");
 
 	function onClick() {
-		props.updateBarcode(barcode);
-
+		
 		props.setBarcodeScanner(!props.barcodeScanner);
 	}
 	//   useEffect(() => {
-	//     return () => {
-	//       if (isStart) stopScanner();
-	//     };
+		//     return () => {
+			//       if (isStart) stopScanner();
+			//     };
 	//   }, []);
 
 	//   useEffect(() => {
@@ -32,6 +31,7 @@ const Bscan = (props) => {
 		// stopScanner();
 		setBarcode(res.codeResult.code);
 		console.log(res.codeResult.code);
+		props.updateBarcode(res.codeResult.code);
 	};
 
 	const startScanner = () => {
@@ -149,12 +149,12 @@ const Bscan = (props) => {
 	}, []);
 	return (
 		<div className="Bscan-container">
-			<span>Is this the right barcode: {barcode}</span>
+			
 			<button className="scanner-button" onClick={onClick}>
-				Yes, search this product
+				 Search this product
 			</button>
 			<button className="scanner-button" onClick={startScanner}>
-				No, scan product again
+			 Scan product again
 			</button>
 			<div id="scanner-container"></div>
 		</div>

@@ -277,3 +277,8 @@ test('testing when all toggles are selected and the product contains everything 
   expect(reasonNegative).toHaveTextContent('Gluten');
   expect(reasonNegative).toHaveTextContent('Lactose');
 });
+
+/* 
+When type a barcode and click search it find the product
+Type the barcode straight into the input box 
+*/

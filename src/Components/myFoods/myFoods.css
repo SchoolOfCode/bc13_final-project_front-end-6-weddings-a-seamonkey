@@ -1,0 +1,18 @@
+.auth-button {
+    border-radius: 15px;
+    background-color: var(--font-color);
+    padding: 5px 20px;
+    color: #f0ffff;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.auth-button:active {
+    background-color: var(--toggle);
+  } 
+
+  .h1 {
+    color: var(--font-color);
+    text-align: center;
+    padding: 20px;
+  }

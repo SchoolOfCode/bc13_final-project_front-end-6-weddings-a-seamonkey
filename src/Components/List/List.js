@@ -1,4 +1,4 @@
-
+import "./List.css";
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
@@ -33,29 +33,24 @@ export default function List() {
     <>
       <h1>My Foods</h1>
 
+      <div className="list-items">
       {array.map((item, index) => {
-        return (
+        return ( 
           <li key={index}>
             {item.product_name}
+            <div>
             <button
               onClick={() => {
                 DeleteFromList(item);
               }}
-              style={{
-                borderRadius: '15px',
-                backgroundColor: 'var(--font-color)',
-                color: '#f0ffff',
-                padding: '5px, 5px, 10px, 15px',
-                marginLeft: "15px",
-                marginBottom: '20px',
-                fontSize: '16px',
-              }}
             >
               Delete from list
             </button>
+            <DeleteFromList/>
+            </div>
           </li>
-        );
-      })}
+        ); 
+      })} </div>
     </>
   );
 }

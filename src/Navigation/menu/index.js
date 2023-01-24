@@ -40,7 +40,9 @@ export default function TemporaryDrawer() {
       
       <List >
 
+
         {[isAuthenticated ?{id:3, label:'Logout',route:"/Login"}:{id:4, label:'Login',route:"/Login"} , isAuthenticated ?{id:4, label:'My Foods',route:"/Myfoods"} : {}].map((text) => (
+
           <ListItem key={text.id}>
             <Link className="label" to={text.route}>
               {text.label}

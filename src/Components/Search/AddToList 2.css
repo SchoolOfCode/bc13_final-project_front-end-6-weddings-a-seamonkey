@@ -1,0 +1,19 @@
+.add-button {
+  border-radius: 15px;
+  /* background-color: var(--toggle); */
+  background-color: var(--font-color);
+  padding: 5px 20px;
+  /* color: var(--font-color); */
+  color: #f0ffff;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* .search-button:hover { */
+/* background-color: var(--toggle); */
+/* color: white; */
+/* } */
+
+.add-button:active {
+  background-color: var(--toggle);
+}

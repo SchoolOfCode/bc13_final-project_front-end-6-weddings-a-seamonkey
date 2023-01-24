@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import './style.css'
 import { Box, Button, Drawer, List, ListItem, ListItemIcon, Divider } from '@mui/material';
 import { Dehaze } from '@mui/icons-material';
@@ -46,7 +45,6 @@ export default function TemporaryDrawer() {
               <Button onClick={() => navigate(element.route)} 
                   sx={{
                     color: "var(--font-color)",
-                    textDecoration: "none",
                     fontSize: "large",
                     fontWeight: "bold",
                     fontFamily: "Verdana, Geneva, Tahoma, sans-serif"}} startIcon={<ListItemIcon sx={{color: "var(--font-color)", fontSize: "large"}}>{element.icon}</ListItemIcon>}>{element.label}</Button>
@@ -61,7 +59,6 @@ export default function TemporaryDrawer() {
             <Button className="label" onClick={() => navigate(text.route)} 
               sx={{
                     color: "var(--font-color)",
-                    textDecoration: "none",
                     fontSize: "large",
                     fontWeight: "bold",
                     fontFamily: "Verdana, Geneva, Tahoma, sans-serif"}} startIcon={<ListItemIcon sx={{color: "var(--font-color)"}}>{text.icon}</ListItemIcon>} >
@@ -92,7 +89,7 @@ export default function TemporaryDrawer() {
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-            PaperProps={{ sx: { backgroundColor: 'var(--background-color)' } }}
+            PaperProps={{ sx: { backgroundColor: 'var(--background-color)', border: 1} }}
           >
             {list(anchor)}
           </Drawer>

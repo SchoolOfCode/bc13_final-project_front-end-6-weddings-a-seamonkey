@@ -8,11 +8,6 @@
   margin-left: 15px;
 }
 
-/* .search-button:hover { */
-/* background-color: var(--toggle); */
-/* color: white; */
-/* } */
-
 .delete-button:active {
   background-color: var(--toggle);
 }

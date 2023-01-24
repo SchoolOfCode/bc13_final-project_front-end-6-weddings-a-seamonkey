@@ -223,14 +223,9 @@ export default function Search() {
         ) : (
           <PositiveOutcome searchResult={outcome.productName} />
         )}
+        
       </div>
-      <div>
-        {isAuthenticated ? (
-          <AddToList productName={outcome.productName} />
-        ) : (
-          <p></p>
-        )}
-      </div>
+      
     </div>
   );
 }

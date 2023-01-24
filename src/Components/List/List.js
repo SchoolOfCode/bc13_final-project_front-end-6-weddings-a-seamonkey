@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './List.css';
@@ -23,6 +24,7 @@ export default function List() {
 
   async function GetList() {
 
+
     const response = await fetch(`${url}/api/userproducts/${sub}`);
     const data = await response.json();
     const payload = data.payload;
@@ -36,6 +38,7 @@ export default function List() {
   return (
     <>
       <h1>My Foods</h1>
+
       <div className="list-items">
         {array.map((item, index) => {
           return (
@@ -56,6 +59,7 @@ export default function List() {
           );
         })}
       </div>
+
     </>
   );
 }

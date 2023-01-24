@@ -15,6 +15,7 @@ import AuthenticationButton from './Components/Login-Logout/AuthenticationButton
 import LoginButton from './Components/Login-Logout/LoginButton.js';
 import Myfoods from './Components/myFoods/index.js';
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<App />}>
@@ -23,7 +24,9 @@ const router = createBrowserRouter(
       <Route path="/instructions" element={<Instructions />} />
       <Route path="/Login" element={<AuthenticationButton />} />
 
+
       <Route path="/MyFoods" element={<Myfoods />} />
+
     </Route>
   )
 );

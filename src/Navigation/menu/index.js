@@ -37,20 +37,12 @@ export default function TemporaryDrawer() {
         ))}
       </List>
       <Divider sx={{backgroundColor: "var(--menu-bar)"}}/>
+      
       <List >
 
-        {[isAuthenticated ?{id:3, label:'Logout',route:"/Login"}:{id:4, label:'Login',route:"/Login"} , isAuthenticated ?{id:4, label:'List',route:"/List"} : {}].map((text) => (
 
+        {[isAuthenticated ?{id:3, label:'Logout',route:"/Login"}:{id:4, label:'Login',route:"/Login"} , isAuthenticated ?{id:4, label:'My Foods',route:"/Myfoods"} : {}].map((text) => (
 
-          <ListItem key={text.id}>
-            <Link className="label" to={text.route}>{text.label}</Link>
-          </ListItem>
-        ))}
-      </List>
-      <Divider sx={{backgroundColor: "var(--menu-bar)"}}/>
-      <List >
-
-        {[isAuthenticated ?{id:3, label:'Logout',route:"/Login"}:{id:4, label:'Login',route:"/Login"} , isAuthenticated ?{id:4, label:'MyFoods',route:"/Myfoods"} : {}].map((text) => (
           <ListItem key={text.id}>
             <Link className="label" to={text.route}>
               {text.label}

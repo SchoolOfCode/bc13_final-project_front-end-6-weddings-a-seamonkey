@@ -1,35 +1,29 @@
 .scanner-container {
-    width: 365px;
+  width: 365px;
 }
 
 .drawingBuffer {
-    width: 365px;
+  width: 365px;
 }
 
 video {
-    width: 365px;
+  width: 365px;
 }
 
 .Bscan-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+.scanner-button {
+  border-radius: 15px;
+  background-color: var(--font-color);
+  padding: 5px 20px;
+  color: #f0ffff;
+  margin-bottom: 20px;
+  font-size: 16px;
+  margin-left: 15px;
 }
 
- .scanner-button {
-     border-radius: 15px;
-     background-color: var(--toggle);
-     padding: 5px 20px;
-     font-size: 16px;
-     color: var(--content-color);
-     margin-bottom: 20px;
-
- }
-
- /* .search-button:hover { */
- /* background-color: var(--toggle); */
- /* color: white; */
- /* } */
-
- .scanner-button:active {
-     background-color: var(--toggle);
- }
+.scanner-button:active {
+  background-color: var(--toggle);
+}

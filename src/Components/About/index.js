@@ -109,8 +109,8 @@ export default function About() {
         difference in the world.
       </p>
       <Contacts
-        githubAddress="https://en.wikipedia.org/wiki/Main_Page"
-        linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
+        githubAddress="https://github.com/luke123adams"
+        linkedinAddress="https://www.linkedin.com/in/luke-adams-9447a2172/"
         bootcamper="Luke"
       />
       <hr></hr>

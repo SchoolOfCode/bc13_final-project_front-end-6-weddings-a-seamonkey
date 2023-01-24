@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import './List.css';
@@ -23,8 +22,6 @@ export default function List() {
   // Query above deletes all products with same name ^^
 
   async function GetList() {
-
-
     const response = await fetch(`${url}/api/userproducts/${sub}`);
     const data = await response.json();
     const payload = data.payload;
@@ -42,24 +39,29 @@ export default function List() {
       <div className="list-items">
         {array.map((item, index) => {
           return (
-            <li key={index}>
-              <div className="list-item">
-                <img className="list-image" src={logo} alt="foodmap-logo"></img>
-                <p className="product-name">{item.product_name}</p>
-              </div>
-              <button
-                className="delete-button"
-                onClick={() => {
-                  DeleteFromList(item);
-                }}
-              >
-                Delete from list
-              </button>
-            </li>
+            <ul>
+              <li key={index}>
+                <div className="list-item">
+                  <img
+                    className="list-image"
+                    src={logo}
+                    alt="foodmap-logo"
+                  ></img>
+                  <p className="product-name">{item.product_name}</p>
+                </div>
+                <button
+                  className="delete-button"
+                  onClick={() => {
+                    DeleteFromList(item);
+                  }}
+                >
+                  Delete from list
+                </button>
+              </li>
+            </ul>
           );
         })}
       </div>
-
     </>
   );
 }

@@ -13,7 +13,7 @@ export default function NegativeOutcome({ outcome }) {
         alt="Sad emoji face"
       ></img>
 
-      <p data-testid="negative-outcome">Don't eat {outcome.productName}!</p>
+      <p data-testid="negative-outcome">Don't eat <span className="capitalise-outcome">{outcome.productName}</span>!</p>
       <div data-testid="negative-outcome-reason">
         <>Product contains:</>
         {outcome.reason.map((reason, index) => {

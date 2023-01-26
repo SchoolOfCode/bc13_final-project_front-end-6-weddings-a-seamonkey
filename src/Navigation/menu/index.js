@@ -29,6 +29,7 @@ export default function TemporaryDrawer() {
 		setState({ ...state, [anchor]: open });
 	};
 
+
 	const list = (anchor) => (
 		<Box sx={{ width: 300 }} onClick={toggleDrawer(anchor, false)}>
 			<Divider sx={{ backgroundColor: "var(--menu-bar)" }} />
@@ -115,6 +116,7 @@ export default function TemporaryDrawer() {
 							<Dehaze sx={{ fontSize: "xx-large" }} />
 						</Button>
 					</Box>
+
 
 					<Drawer
 						anchor={anchor}

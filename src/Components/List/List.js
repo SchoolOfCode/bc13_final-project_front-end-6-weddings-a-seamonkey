@@ -1,24 +1,33 @@
-import { useEffect, useState } from "react";
-import { useAuth0 } from "@auth0/auth0-react";
-import "./List.css";
-import logo from "../../Images/logo.png";
+import { useEffect, useState } from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+import './List.css';
+import logo from '../../Images/logo.png';
 
-const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
+const url = process.env.REACT_APP_SERVER_URL ?? 'http://localhost:3010';
 export default function List() {
-	const [array, setArray] = useState([]);
-	const { user } = useAuth0();
-	const { sub } = user;
+  const [array, setArray] = useState([]);
+  const { user } = useAuth0();
+  const { sub } = user;
 
-	async function DeleteFromList(item) {
-		const response = await fetch(
-			`${url}/api/userproducts/${sub}/${item.product_name}`,
-			{ method: "DELETE" }
-		);
-		console.log(response);
-		console.log(sub);
-		console.log(item.product_name);
-		GetList();
-	}
+  async function DeleteFromList(item) {
+    const response = await fetch(
+      `${url}/api/userproducts/${sub}/${item.product_name}`,
+      { method: 'DELETE' }
+    );
+    console.log(sub);
+    console.log(item.product_name);
+    GetList();
+  }
+
+  // Query above deletes all products with same name ^^
+
+  async function GetList() {
+    const response = await fetch(`${url}/api/userproducts/${sub}`);
+    const data = await response.json();
+    const payload = data.payload;
+    setArray(payload);
+  }
+
 
 	// Query above deletes all products with same name ^^
 
@@ -29,6 +38,7 @@ export default function List() {
 		console.log(payload, "this is the list payload");
 		setArray(payload);
 	}
+
 
 	useEffect(() => {
 		GetList();
@@ -70,4 +80,5 @@ export default function List() {
 			)}
 		</>
 	);
+
 }

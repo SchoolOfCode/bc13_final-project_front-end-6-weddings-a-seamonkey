@@ -28,40 +28,57 @@ export default function List() {
     setArray(payload);
   }
 
-  useEffect(() => {
-    GetList();
-  }, []);
 
-  return (
-    <>
-      <h1>My Foods</h1>
+	// Query above deletes all products with same name ^^
 
-      <div className="list-items">
-        {array.map((item, index) => {
-          return (
-            <ul>
-              <li key={index}>
-                <div className="list-item">
-                  <img
-                    className="list-image"
-                    src={logo}
-                    alt="foodmap-logo"
-                  ></img>
-                  <p className="product-name">{item.product_name}</p>
-                </div>
-                <button
-                  className="delete-button"
-                  onClick={() => {
-                    DeleteFromList(item);
-                  }}
-                >
-                  Delete from list
-                </button>
-              </li>
-            </ul>
-          );
-        })}
-      </div>
-    </>
-  );
+	async function GetList() {
+		const response = await fetch(`${url}/api/userproducts/${sub}`);
+		const data = await response.json();
+		const payload = data.payload;
+		console.log(payload, "this is the list payload");
+		setArray(payload);
+	}
+
+
+	useEffect(() => {
+		GetList();
+		// eslint-disable-next-line
+	}, []);
+
+	return (
+		<>
+			<h1>My Foods</h1>
+			{array.length === 0 ? (
+				<h3>Scanned foods can be added to this list</h3>
+			) : (
+				<div className="list-items">
+					{array.map((item, index) => {
+						return (
+							<ul>
+								<li key={index}>
+									<div className="list-item">
+										<img
+											className="list-image"
+											src={logo}
+											alt="foodmap-logo"
+										></img>
+										<p className="product-name">{item.product_name}</p>
+									</div>
+									<button
+										className="delete-button"
+										onClick={() => {
+											DeleteFromList(item);
+										}}
+									>
+										Delete from list
+									</button>
+								</li>
+							</ul>
+						);
+					})}
+				</div>
+			)}
+		</>
+	);
+
 }

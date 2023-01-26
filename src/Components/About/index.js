@@ -93,8 +93,8 @@ export default function About() {
         of coding.
       </p>
       <Contacts
-        githubAddress="https://en.wikipedia.org/wiki/Main_Page"
-        linkedinAddress="https://en.wikipedia.org/wiki/Main_Page"
+        githubAddress="https://github.com/rachvm"
+        linkedinAddress="https://www.linkedin.com/in/rachel-morris-a3b125251/"
         bootcamper="Rachel"
       />
       <hr></hr>

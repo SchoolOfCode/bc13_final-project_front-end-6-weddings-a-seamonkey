@@ -10,8 +10,6 @@ import {
 	Divider,
 } from "@mui/material";
 import { Dehaze } from "@mui/icons-material";
-import { Auth0Provider } from "@auth0/auth0-react";
-import AuthenticationButton from "../../Components/Login-Logout/AuthenticationButton.js";
 import { Appicons } from "./appicons.js";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";

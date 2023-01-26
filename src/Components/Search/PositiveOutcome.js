@@ -8,7 +8,7 @@ export default function PositiveOutcome({ searchResult }) {
     <div className="outcome">
       <img data-testid="happy-face" className="face" src={happy} alt="Happy emoji face"></img>
       <p data-testid="positive-outcome">
-        You're good to go - enjoy your {searchResult}!
+        You're good to go - enjoy your <span className="capitalise-outcome">{searchResult}</span>!
       </p>
       <div>
         {isAuthenticated ? (

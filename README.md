@@ -15,7 +15,7 @@ FoodMap was developed by a team of Bootcampers from [School of Code](https://www
 - [Violeta Cique Fernández](https://github.com/violetacf)
 - [Steven Collins](https://github.com/Sunbearian)
 - [Daniel Baillie](https://github.com/Cmndgrab)
-- [Martha Bennet](https://github.com/MarthaBennett)
+- [Martha Bennett](https://github.com/MarthaBennett)
 
 ## Deployment
 

@@ -6,7 +6,9 @@ import closeIcon from "../../Images/x-mark.png";
 import barcodeScan from "../../Images/barcode-scan.png";
 import "./Search.css";
 import { useState } from "react";
+
 import Bscan from "../Scanner/Scanner.js";
+
 
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
 

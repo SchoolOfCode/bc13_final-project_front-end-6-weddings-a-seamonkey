@@ -1,0 +1,21 @@
+.label{
+    color: var(--font-color);
+    text-decoration: none;
+    font-size: x-large;
+    padding: 5%;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.thelogo{
+    height:auto;
+    width: 15%;
+}
+
+.thedivide{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 8vh;
+}

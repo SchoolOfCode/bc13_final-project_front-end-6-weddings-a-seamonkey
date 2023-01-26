@@ -1,0 +1,36 @@
+.about-section {
+  padding: 10px;
+  text-align: left;
+  padding-bottom: 60pt;
+  background-color: var(--background-color);
+}
+
+.heading {
+  color: var(--font-color);
+  text-align: center;
+  padding: 5px;
+}
+
+.subheading {
+  text-align: center;
+}
+
+.ingredients {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.ingredients-red {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* hr {
+  border: solid var(--font-color);
+} 
+SEE HERE ^^ change the colour of the hr
+*/

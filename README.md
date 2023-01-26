@@ -1,6 +1,6 @@
 # FoodMap - Final Project
 
-![search-component](https://i.imgur.com/ILV0XhO.png)
+<img height="600pt" src="https://i.imgur.com/ILV0XhO.png"/>
 
 FoodMap is designed to help you work out whether the food you're buying fits with your dietary requirements.
 

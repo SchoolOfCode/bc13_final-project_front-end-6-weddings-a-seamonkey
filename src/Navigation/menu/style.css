@@ -7,3 +7,15 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.thelogo{
+    height:auto;
+    width: 15%;
+}
+
+.thedivide{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 8vh;
+}

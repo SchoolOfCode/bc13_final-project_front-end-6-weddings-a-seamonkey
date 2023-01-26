@@ -39,6 +39,11 @@ li {
 .product-name {
   text-transform: capitalize;
 }
+ul {
+  padding: 0;
+}
+
+
 
 
 

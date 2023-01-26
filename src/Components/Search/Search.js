@@ -6,17 +6,15 @@ import closeIcon from "../../Images/x-mark.png";
 import barcodeScan from "../../Images/barcode-scan.png";
 import "./Search.css";
 import { useState } from "react";
-import { Cameraswitch } from "@mui/icons-material";
+
 import Bscan from "../Scanner/Scanner.js";
 
-import { useAuth0 } from "@auth0/auth0-react";
-import { AddToList } from "./AddToList.js";
+
 const url = process.env.REACT_APP_SERVER_URL ?? "http://localhost:3010";
 
 export default function Search() {
 	//   const { user } = useAuth0()
 	//   const {sub} = user
-	const { isAuthenticated } = useAuth0();
 
 	function updateBarcode(barcode) {
 		setSearch({ ...search, searchTerm: barcode });
